@@ -1,34 +1,218 @@
 <!doctype html>
 <html lang="hi">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="मध्य प्रदेश के जिलों के लिए आज के सब्जी बाजार भाव।">
-  <title>आज का बाजार भाव | अपना किसान</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/css/home.css"><link rel="stylesheet" href="assets/css/responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css">
-  <link rel="stylesheet" href="assets/css/market-price.css">
-</head>
-<body class="ak-market-page">
-  <div class="main-top-nav"></div><section class="nav-sec"></section>
-  <main>
-    <section class="market-hero"><div class="ak-shell market-hero-inner"><div><p class="ak-kicker"><span></span> लाइव बाजार जानकारी</p><h1>आज का बाजार भाव,<br><em>आपके जिले के अनुसार।</em></h1><p>अपने जिले और सब्जी का नाम चुनकर मंडी में उपलब्ध नवीनतम भाव देखें। यह जानकारी सरकारी कृषि बाजार API से प्राप्त होती है और बाजार के अनुसार बदल सकती है।</p></div><div class="market-hero-mark"><i class="fa-solid fa-chart-line"></i><strong id="lastUpdated">भाव लोड हो रहे हैं...</strong><small>अंतिम अपडेट</small></div></div></section>
-    <section class="ak-shell market-content">
-      <div class="market-toolbar"><div class="market-field"><label for="districtSelect">जिला चुनें</label><div><i class="fa-solid fa-location-dot"></i><select id="districtSelect"><option value="">सभी जिले</option><option>दमोह</option><option>पन्ना</option><option>छतरपुर</option><option>भोपाल</option><option>राजगढ़</option><option>सागर</option><option>नरसिंहपुर</option><option>जबलपुर</option><option>ग्वालियर</option><option>बालाघाट</option><option>रीवा</option><option>टीकमगढ़</option></select></div></div><div class="market-field market-search"><label for="vegetableSearch">सब्जी खोजें</label><div><i class="fa-solid fa-magnifying-glass"></i><input id="vegetableSearch" type="search" placeholder="जैसे: टमाटर, प्याज"></div></div><div class="market-field"><label for="priceDate">तारीख</label><div><i class="fa-regular fa-calendar"></i><input id="priceDate" type="date"></div></div><button class="ak-button market-refresh" id="refreshPrices"><i class="fa-solid fa-rotate"></i><span>भाव अपडेट करें</span></button></div>
-      <div id="marketError" class="market-state market-error" hidden><i class="fa-solid fa-triangle-exclamation"></i><div><strong>भाव प्राप्त नहीं हो सके</strong><p id="marketErrorText">कृपया कुछ समय बाद फिर प्रयास करें।</p></div><button class="market-retry" id="retryPrices">फिर प्रयास करें</button></div>
-      <div id="marketDemoNotice" class="market-state market-demo" hidden><i class="fa-solid fa-flask"></i><div><strong>डेमो डेटा प्रदर्शित है</strong><p>API key उपलब्ध होने तक यह उदाहरणात्मक भाव दिखाए जा रहे हैं। बिक्री का निर्णय इन भावों के आधार पर न लें।</p></div><button class="market-retry" id="retryLivePrices">लाइव भाव पुनः खोजें</button></div>
-      <div id="marketLoading" class="market-state" hidden><i class="fa-solid fa-spinner fa-spin"></i><span>आज के भाव खोजे जा रहे हैं...</span></div>
-      <div class="market-summary"><div><span class="summary-icon green"><i class="fa-solid fa-list"></i></span><span><strong id="recordCount">0</strong><small>कुल रिकॉर्ड</small></span></div><div><span class="summary-icon orange"><i class="fa-solid fa-arrow-trend-up"></i></span><span><strong id="highestPrice">-</strong><small>सबसे अधिक भाव</small></span></div><div><span class="summary-icon blue"><i class="fa-solid fa-calendar-day"></i></span><span><strong id="priceDateLabel">आज</strong><small>भाव की तारीख</small></span></div></div>
-      <div class="market-grid"><section class="market-panel"><div class="panel-heading"><div><p class="ak-kicker"><span></span> भाव सूची</p><h2>सब्जियों के आज के भाव</h2></div><span class="live-badge"><i></i> लाइव डेटा</span></div><div class="table-wrap"><table><thead><tr><th>सब्जी</th><th>बाजार</th><th>जिला</th><th>न्यूनतम</th><th>अधिकतम</th><th>इकाई</th></tr></thead><tbody id="priceTableBody"></tbody></table></div><div id="marketEmpty" class="market-empty" hidden><i class="fa-solid fa-seedling"></i><strong>कोई भाव नहीं मिला</strong><span>जिला या सब्जी का नाम बदलकर देखें।</span></div></section><section class="market-panel chart-panel"><div class="panel-heading"><div><p class="ak-kicker"><span></span> तुलना</p><h2>अधिकतम भाव तुलना</h2></div></div><div class="chart-wrap"><canvas id="priceChart" aria-label="सब्जियों के अधिकतम भाव का बार चार्ट"></canvas></div><p class="chart-note">चार्ट में दिखाए गए भाव API से मिले अधिकतम मूल्य के आधार पर हैं।</p></section></div>
-      <div class="market-note"><i class="fa-solid fa-circle-info"></i><p><strong>जरूरी सूचना:</strong> बाजार भाव फसल की गुणवत्ता, आवक, मांग, मौसम और स्थानीय मंडी के अनुसार बदल सकते हैं। बिक्री का अंतिम निर्णय लेने से पहले अपने नजदीकी बाजार से पुष्टि जरूर करें।</p></div>
-    </section>
-  </main>
-  <footer class="sion-top-footer"></footer>
-  <script>window.APNA_KISAAN_MARKET_API = window.APNA_KISAAN_MARKET_API || "/api/market";</script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script><script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script><script src="assets/js/home.js"></script><script src="assets/js/market-price.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="मध्य प्रदेश के जिलों के लिए आज के सब्जी बाजार भाव।"
+    />
+    <title>आज का बाजार भाव | अपना किसान</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css"
+    />
+    <link rel="stylesheet" href="assets/css/market-price.css" />
+  </head>
+  <body class="ak-market-page">
+    <div class="main-top-nav"></div>
+    <section class="nav-sec"></section>
+    <main>
+      <section class="market-hero">
+        <div class="ak-shell market-hero-inner">
+          <div>
+            <p class="ak-kicker"><span></span> लाइव बाजार जानकारी</p>
+            <h1>आज का बाजार भाव,<br /><em>आपके जिले के अनुसार।</em></h1>
+            <p>
+              अपने जिले और सब्जी का नाम चुनकर उपलब्ध नवीनतम बाजार भाव देखें।
+              यह जानकारी farmer.in के खुले कृषि डेटा API से प्राप्त होती है।
+              API में अभी जिला-स्तरीय रिकॉर्ड नहीं हैं, इसलिए जिले का चयन
+              मध्य प्रदेश क्षेत्रीय भाव दिखाता है।
+            </p>
+          </div>
+          <div class="market-hero-mark">
+            <i class="fa-solid fa-chart-line"></i
+            ><strong id="lastUpdated">भाव लोड हो रहे हैं...</strong
+            ><small>अंतिम अपडेट</small>
+          </div>
+        </div>
+      </section>
+      <section class="ak-shell market-content">
+        <div class="market-toolbar">
+          <div class="market-field">
+            <label for="districtSelect">जिला चुनें</label>
+            <div>
+              <i class="fa-solid fa-location-dot"></i
+              ><select id="districtSelect">
+                <option value="">सभी जिले</option>
+                <option>दमोह</option>
+                <option>पन्ना</option>
+                <option>छतरपुर</option>
+                <option>भोपाल</option>
+                <option>राजगढ़</option>
+                <option>सागर</option>
+                <option>नरसिंहपुर</option>
+                <option>जबलपुर</option>
+                <option>ग्वालियर</option>
+                <option>बालाघाट</option>
+                <option>रीवा</option>
+                <option>टीकमगढ़</option>
+              </select>
+            </div>
+          </div>
+          <div class="market-field market-search">
+            <label for="vegetableSearch">सब्जी खोजें</label>
+            <div>
+              <i class="fa-solid fa-magnifying-glass"></i
+              ><input
+                id="vegetableSearch"
+                type="search"
+                placeholder="जैसे: टमाटर, प्याज"
+              />
+            </div>
+          </div>
+          <div class="market-field">
+            <label for="priceDate">तारीख</label>
+            <div>
+              <i class="fa-regular fa-calendar"></i
+              ><input id="priceDate" type="date" />
+            </div>
+          </div>
+          <button class="ak-button market-refresh" id="refreshPrices">
+            <i class="fa-solid fa-rotate"></i><span>भाव अपडेट करें</span>
+          </button>
+        </div>
+        <div id="marketError" class="market-state market-error" hidden>
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <strong>भाव प्राप्त नहीं हो सके</strong>
+            <p id="marketErrorText">कृपया कुछ समय बाद फिर प्रयास करें।</p>
+          </div>
+          <button class="market-retry" id="retryPrices">फिर प्रयास करें</button>
+        </div>
+        <div id="marketDemoNotice" class="market-state market-demo" hidden>
+          <i class="fa-solid fa-flask"></i>
+          <div>
+            <strong>डेमो डेटा प्रदर्शित है</strong>
+              <p>लाइव भाव farmer.in API से आ रहे हैं। API में जिला-स्तरीय रिकॉर्ड उपलब्ध नहीं होने के कारण यह मध्य प्रदेश का क्षेत्रीय भाव है।</p>
+          </div>
+          <button class="market-retry" id="retryLivePrices">
+            लाइव भाव पुनः खोजें
+          </button>
+        </div>
+        <div id="marketLoading" class="market-state" hidden>
+          <i class="fa-solid fa-spinner fa-spin"></i
+          ><span>आज के भाव खोजे जा रहे हैं...</span>
+        </div>
+        <div class="market-summary">
+          <div>
+            <span class="summary-icon green"
+              ><i class="fa-solid fa-list"></i></span
+            ><span
+              ><strong id="recordCount">0</strong
+              ><small>कुल रिकॉर्ड</small></span
+            >
+          </div>
+          <div>
+            <span class="summary-icon orange"
+              ><i class="fa-solid fa-arrow-trend-up"></i></span
+            ><span
+              ><strong id="highestPrice">-</strong
+              ><small>सबसे अधिक भाव</small></span
+            >
+          </div>
+          <div>
+            <span class="summary-icon blue"
+              ><i class="fa-solid fa-calendar-day"></i></span
+            ><span
+              ><strong id="priceDateLabel">आज</strong
+              ><small>भाव की तारीख</small></span
+            >
+          </div>
+        </div>
+        <div class="market-grid">
+          <section class="market-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="ak-kicker"><span></span> भाव सूची</p>
+                <h2>सब्जियों के आज के भाव</h2>
+              </div>
+              <span class="live-badge"><i></i> लाइव डेटा</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>सब्जी</th>
+                    <th>बाजार</th>
+                    <th>जिला</th>
+                    <th>न्यूनतम</th>
+                    <th>अधिकतम</th>
+                    <th>इकाई</th>
+                  </tr>
+                </thead>
+                <tbody id="priceTableBody"></tbody>
+              </table>
+            </div>
+            <div id="marketEmpty" class="market-empty" hidden>
+              <i class="fa-solid fa-seedling"></i
+              ><strong>कोई भाव नहीं मिला</strong
+              ><span>जिला या सब्जी का नाम बदलकर देखें।</span>
+            </div>
+          </section>
+          <section class="market-panel chart-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="ak-kicker"><span></span> तुलना</p>
+                <h2>अधिकतम भाव तुलना</h2>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <canvas
+                id="priceChart"
+                aria-label="सब्जियों के अधिकतम भाव का बार चार्ट"
+              ></canvas>
+            </div>
+            <p class="chart-note">
+              चार्ट में दिखाए गए भाव API से मिले अधिकतम मूल्य के आधार पर हैं।
+            </p>
+          </section>
+        </div>
+        <div class="market-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <p>
+            <strong>जरूरी सूचना:</strong> बाजार भाव फसल की गुणवत्ता, आवक, मांग,
+            मौसम और स्थानीय मंडी के अनुसार बदल सकते हैं। बिक्री का अंतिम निर्णय
+            लेने से पहले अपने नजदीकी बाजार से पुष्टि जरूर करें।
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="sion-top-footer"></footer>
+    <script>
+      window.APNA_KISAAN_MARKET_API =
+        window.APNA_KISAAN_MARKET_API || "/api/market";
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+    <script src="assets/js/home.js"></script>
+    <script src="assets/js/market-price.js"></script>
+  </body>
 </html>

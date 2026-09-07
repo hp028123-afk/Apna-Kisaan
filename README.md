@@ -14,10 +14,4 @@ Open `home.html` in a browser or use VS Code Live Server.
 
 ## Daily market prices
 
-Open `market-price.html` to use the district-wise price table, search, date filter and chart. The Vercel `/api/market` serverless function reads the Government of India data.gov.in market-price resource without exposing the key in the browser. In Vercel Project Settings, add an Environment Variable named `DATA_GOV_API_KEY` for Preview and Production, then redeploy:
-
-```html
-DATA_GOV_API_KEY=YOUR_DATA_GOV_API_KEY
-```
-
-If the API is unavailable, the page shows clearly marked demo prices for all 12 districts and 10 vegetables so search, filters and charts remain testable. Demo values must not be used for selling decisions; live values appear automatically once the API key is configured.
+Open `market-price.html` to use the market price table, search, date filter and chart. The Vercel `/api/market` serverless function reads the open farmer.in prices feed, which attributes its data to Agmarknet and the Government of India. The feed provides commodity-level Madhya Pradesh coverage, not separate mandi records for each district, so the district selector clearly remains a regional view. If the feed is unavailable, the page shows clearly marked demo values for testing rather than presenting them as live prices.

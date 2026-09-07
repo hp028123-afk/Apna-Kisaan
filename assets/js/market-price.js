@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   var apiBase = window.APNA_KISAAN_MARKET_API;
-  var apiKey = window.APNA_KISAAN_MARKET_API_KEY || new URLSearchParams(window.location.search).get("apiKey");
   var districtMap = { "दमोह": "Damoh", "पन्ना": "Panna", "छतरपुर": "Chhatarpur", "भोपाल": "Bhopal", "राजगढ़": "Rajgarh", "सागर": "Sagar", "नरसिंहपुर": "Narsimhapur", "जबलपुर": "Jabalpur", "ग्वालियर": "Gwalior", "बालाघाट": "Balaghat", "रीवा": "Rewa", "टीकमगढ़": "Tikamgarh" };
   var vegetableMap = { "टमाटर": ["tomato", "tomatoes"], "प्याज": ["onion", "onions"], "आलू": ["potato", "potatoes"], "बैंगन": ["brinjal", "eggplant"], "फूलगोभी": ["cauliflower"], "भिंडी": ["okra", "lady finger"], "मिर्च": ["chilli", "green chilli"], "गोभी": ["cabbage"], "गाजर": ["carrot"], "लहसुन": ["garlic"] };
-  var state = { records: [], filtered: [], demo: false };
+  var state = { records: [], filtered: [], demo: false, districtLevel: false };
   var demoDistricts = ["दमोह", "पन्ना", "छतरपुर", "भोपाल", "राजगढ़", "सागर", "नरसिंहपुर", "जबलपुर", "ग्वालियर", "बालाघाट", "रीवा", "टीकमगढ़"];
   var demoVegetables = [["टमाटर", 1800, 2600], ["प्याज", 2200, 3200], ["आलू", 1400, 2100], ["बैंगन", 1600, 2400], ["फूलगोभी", 2000, 3000], ["भिंडी", 2800, 4200], ["हरी मिर्च", 3500, 5200], ["पत्तागोभी", 1200, 1900], ["गाजर", 2400, 3600], ["लहसुन", 7000, 9800]];
   var select = document.getElementById("districtSelect");
@@ -69,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var selected = districtMap[select.value] || "";
     var query = search.value.trim().toLocaleLowerCase("hi");
     state.filtered = state.records.filter(function (record) {
-      var districtMatch = !selected || record.district.toLocaleLowerCase("en").indexOf(selected.toLocaleLowerCase("en")) !== -1 || record.district.indexOf(select.value) !== -1;
+      var districtMatch = !selected || !state.districtLevel || record.district.toLocaleLowerCase("en").indexOf(selected.toLocaleLowerCase("en")) !== -1 || record.district.indexOf(select.value) !== -1;
       var commodityNames = vegetableMap[query] || [query];
       var commodityMatch = !query || record.commodity.toLocaleLowerCase("hi").indexOf(query) !== -1 || commodityNames.some(function (name) { return record.commodity.toLocaleLowerCase("en").indexOf(name) !== -1; });
       return districtMatch && commodityMatch;
@@ -104,19 +103,18 @@ document.addEventListener("DOMContentLoaded", function () {
   async function loadPrices() {
     if (!apiBase) { showError("API endpoint configured नहीं है।"); return; }
     loading.hidden = false; error.hidden = true;
-    var params = new URLSearchParams({ format: "json", limit: "500" });
-    if (apiKey) params.set(apiBase.indexOf("/api/market") === -1 ? "api-key" : "apiKey", apiKey);
-    params.set("filters[state]", "Madhya Pradesh");
-    if (select.value) params.set(apiBase.indexOf("/api/market") === -1 ? "filters[district]" : "district", districtMap[select.value] || select.value);
-    if (date.value) params.set(apiBase.indexOf("/api/market") === -1 ? "filters[arrival_date]" : "date", date.value.split("-").reverse().join("/"));
+    var params = new URLSearchParams({ limit: "500" });
+    if (select.value) params.set("district", districtMap[select.value] || select.value);
+    if (date.value) params.set("date", date.value.split("-").reverse().join("/"));
     try {
       var response = await fetch(apiBase + "?" + params.toString(), { headers: { Accept: "application/json" } });
       if (!response.ok) throw new Error("API ने " + response.status + " response दिया।");
       var payload = await response.json();
       var records = Array.isArray(payload.records) ? payload.records.map(normalize).filter(function (record) { return record.commodity; }) : [];
+      state.districtLevel = payload.districtLevel !== false;
       state.demo = false; setSourceLabel(false); state.records = records; applyFilters();
       document.getElementById("lastUpdated").textContent = new Date().toLocaleTimeString("hi-IN", { hour: "2-digit", minute: "2-digit" });
-      document.querySelector("#priceDateLabel").title = "API से प्राप्त समय";
+      document.querySelector("#priceDateLabel").title = state.districtLevel ? "API से प्राप्त समय" : "इस API में जिला-स्तरीय भाव उपलब्ध नहीं हैं।";
     } catch (requestError) {
       state.demo = true;
       setSourceLabel(true);
