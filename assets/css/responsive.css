@@ -1,0 +1,822 @@
+@media only screen and (max-width: 1440px) {
+    .topnav {
+        display: none;
+    }
+
+    .sion-navigation-sec-list-tems {
+        font-size: 16px;
+    }
+
+    .sion-services-web {
+        width: 296px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .sdmi-about-image-sec::before {
+        left: -10px;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) {
+    p.main-web-content {
+        font-size: 30px;
+        margin-top: 5px;
+    }
+
+    .web-about-sec-top {
+        left: 30%;
+    }
+
+    .col-md-6.web-about-right-section {
+        gap: 2rem;
+    }
+
+    .service-more-btn {
+        margin-left: 0rem;
+        margin-bottom: 0px;
+    }
+
+    p.af-btm-sec-agter-hadd {
+        font-size: 29px;
+    }
+
+    p.af-btm-sec-clients10 {
+        font-size: 28px;
+    }
+
+    .sion-bottom-footer {
+        padding: 10px 49px;
+    }
+
+    .Hero-section {
+        padding: 0px 70px;
+    }
+
+    .web-best-section1 {
+        width: 255px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    .web-best-section2 {
+        width: 255px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    .web-best-section3 {
+        width: 255px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    p.web-best-section-counting {
+        font-size: 20px;
+    }
+
+    p.web-best-section-details {
+        font-size: 18px;
+    }
+
+    ul.header-sec-sion21 {
+        gap: 25px;
+    }
+
+    a.header-sec-sion-listitems {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .sion-navs-button {
+        display: none;
+    }
+
+    .navigation-sdmi {
+        gap: 0px;
+    }
+
+}
+
+@media only screen and (max-width: 992px) {
+    p.main-web-content {
+        font-size: 25px;
+        margin-top: 5px;
+    }
+
+    .sion-services-web-sections {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Hero-section {
+        padding: 0px 50px;
+    }
+
+    .main-top-nav {
+        justify-content: center;
+        padding: 10px 80px;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .main-top-nav {
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    a.header-sec-sion-listitems {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .header-sec-sion3 {
+        width: 175px;
+    }
+
+    p.web-clg-how-work {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    section.nav-sec {
+        position: sticky;
+        top: 0px;
+        z-index: 999;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    /* Contact */
+    .contact-bottom-sec {
+        padding: 50px 20px;
+    }
+
+    /* common  */
+    p.e-commerce-services-hadding {
+        font-size: 20px;
+    }
+
+    .e-commerce-services {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    p.e-commerce-service2-detail {
+        font-size: 15px;
+        padding-top: 10px;
+    }
+
+    button.e-commerce-service3-btn {
+        width: 150px;
+        height: 35px;
+        margin-top: 15px;
+    }
+
+    a.e-commerce-service3-liink {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .e-commerce-services-show {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-us-hadding {
+        font-size: 30px;
+    }
+
+    .E-commerece-about1 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .E-commerece-about-2 {
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .E-commerece-about1::before {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        content: "";
+        background: none;
+        left: 0px;
+        top: 0%;
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+
+    p.E-commerece-about-company-hadding {
+        font-size: 20px;
+    }
+
+    p.E-commerece-about-company-para {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Inter';
+        color: #141631;
+        padding-top: 10px;
+    }
+
+    p.platform-we-work-hadding {
+        font-size: 20px;
+    }
+
+    .main-web-part-section {
+        height: auto;
+    }
+
+    .web-devlopment-parts {
+        margin-top: 40px;
+    }
+
+    p.web-devlopment-section-hadding {
+        font-size: 20px;
+        padding: 40px 0px 0px 0px;
+    }
+
+    .sion-web-languages {
+        max-width: 100px !important;
+    }
+
+    .support-ecommerce-sec {
+        margin: 2rem 0px;
+    }
+
+    .main-support-container {
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .main-support-sf-container {
+        height: 330px;
+        max-width: 310px !important;
+        margin-top: 10px;
+        padding: 0px;
+    }
+
+    .row.sion-recent-workbg {
+        height: auto;
+        justify-content: center;
+        padding: 0px 0px;
+    }
+
+    .sion-recent-work {
+        margin: 2rem 0rem 1rem 0rem;
+    }
+
+    p.sion-recent-work-hadding {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    p.sion-recent-work-para {
+        text-align: center;
+    }
+
+    .col-lg-12.sion-package-blog-section1 {
+        margin: 2rem 0px;
+    }
+
+    .sion-package-blog {
+        background-image: none;
+        background-repeat: no-repeat;
+        background-size: 0px;
+    }
+
+    p.sion-package-hadding {
+        font-size: 20px;
+        color: #141631;
+    }
+
+    .sion-package-para {
+        font-size: 14px;
+        color: #141631;
+    }
+
+    .web-develop-languages {
+        margin-bottom: 20px;
+    }
+
+    .row.sion-craft-sections {
+        padding: 50px 0px;
+    }
+
+    p.sion-craft-top-hadding {
+        font-size: 18px;
+    }
+
+    p.sion-craft-top-paragraph {
+        font-size: 14px;
+    }
+
+    p.craft-bottom-cards2-name {
+        font-size: 16px;
+    }
+
+}
+
+@media only screen and (max-width: 767px) {
+    p.main-web-content {
+        font-size: 31px;
+        margin-top: 5px;
+    }
+
+    .web-top5-section {
+        display: flex;
+        gap: 0px;
+        flex-direction: column;
+    }
+
+    p.web-clg-how-work {
+        font-size: 16px;
+    }
+
+    .web-best-section1 {
+        border-radius: 17px;
+    }
+
+    .web-best-section2 {
+        border-radius: 17px;
+    }
+
+    .web-best-section3 {
+        border-radius: 17px;
+    }
+
+    .web-about-sec-top {
+        left: 41%;
+    }
+
+    p.web-about-right-sec-para {
+        line-height: 25px;
+    }
+
+    .web-sion-service-bottom {
+        background-image: none;
+        background-color: #009CA6;
+        margin-top: 25px;
+    }
+
+    button.Seervice-ex-btn {
+        margin-bottom: 30px;
+    }
+
+    .for-margin {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .af-btm-sec-images::before {
+        position: absolute;
+        content: "";
+        background-image: none;
+        bottom: 14px;
+        z-index: -1;
+        width: 0px;
+        height: 0px;
+        background-repeat: no-repeat;
+        top: -4%;
+    }
+
+    ul.sion-top-footer-list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+        padding-left: 0px;
+    }
+
+    .sion-bottom-footer {
+        padding: 10px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .sion-top-footer {
+        padding: 50px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .social-icons {
+        padding: 15px 0px;
+        text-align: center;
+    }
+
+    .sion-top-footer-line {
+        margin-bottom: 15px;
+    }
+
+    a.sion-bottom-footer-para {
+        font-size: 13px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    a.sion-bottom-footer-privacy {
+        font-size: 13px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    a.sion-bottom-footer-term {
+        font-size: 13px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .sion-bottom-footer {
+        flex-direction: column;
+    }
+
+    .Hero-section {
+        padding: 0px 0px;
+    }
+
+    .websion-best-section {
+        flex-direction: column;
+    }
+
+    .web-best-section3 {
+        width: 320px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    .web-best-section2 {
+        width: 320px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    .web-best-section1 {
+        width: 320px;
+        height: 110px;
+        gap: 10px;
+    }
+
+    .topnav {
+        display: block;
+    }
+
+    .sion-head-section {
+        display: none;
+    }
+
+    .left-top-nav {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .main-top-nav {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .right-top-nav {
+        flex-wrap: nowrap;
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .main-top-nav {
+        padding: 10px 0px;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    button.btn.button-get {
+        width: 175px;
+        height: 42px;
+    }
+
+    a.get-web-start {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .web-top5-main-section1 {
+        width: 180px;
+        height: 48px;
+        margin-top: 10px;
+    }
+
+    .web-top5-section {
+        padding: 0px;
+    }
+
+    h2.web-about-heading {
+        margin-top: 50px;
+    }
+
+    p.web-cls-best2 {
+        font-size: 21px;
+        margin-top: 36px;
+    }
+
+    h2.web-about-heading {
+        font-size: 21px;
+    }
+
+    h2.sion-service-hadding {
+        font-size: 21px;
+    }
+
+    h2.web-customer-sec-hadding {
+        font-size: 21px;
+    }
+
+    h3.service-tabs-hadding {
+        font-size: 21px;
+    }
+
+    h2.sion-blog-sec-hadding {
+        font-size: 21px;
+    }
+
+    p.after-main-web-content {
+        font-size: 14px;
+    }
+
+    p.web-cls-best4 {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    p.web-about-paragraph {
+        font-size: 14px;
+    }
+
+    p.web-about-right-sec-para {
+        font-size: 14px;
+    }
+
+    .sion-service-discription {
+        font-size: 14px;
+    }
+
+    p.af-btm-sec-para {
+        font-size: 14px;
+    }
+
+    p.af-btm-sec-agter-hadd {
+        font-size: 25px;
+    }
+
+    p.web-customer-sec-para {
+        padding-top: 6px;
+        font-size: 14px;
+    }
+
+    .web-sion-customer-sec {
+        margin-top: 2rem;
+    }
+
+    p.service-tabs-paragraph {
+        font-size: 14px;
+    }
+
+    p.sion-blog-sec-pg {
+        font-size: 14px;
+        padding-top: 5px;
+    }
+
+    .sion-blog-sec-bottom-inner {
+        margin-top: 30px;
+    }
+
+    .web-about-left-section {
+        padding: 0px;
+    }
+
+    .sion-services-web-sections-row {
+        margin-top: 1rem !important;
+    }
+
+    .tabs-links {
+        font-weight: 400;
+    }
+
+    /* common */
+
+    p.support-ecommerce-hadding {
+        font-size: 20px;
+        padding: 10px 0px;
+    }
+
+    p.support-ecommerce-paragraph {
+        font-size: 14px;
+    }
+
+    p.support-hadding {
+        font-size: 20px;
+    }
+
+    p.support-para {
+        padding: 5px 20px;
+    }
+
+    .inter-show {
+        width: 265px;
+        height: 326px;
+    }
+
+
+    /* About Section */
+    .about-hero-section-dark {
+        background-image: url(../images/aboutus.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        padding: 58px 0px;
+        object-fit: contain;
+        background-position: center;
+    }
+
+    .about-us-hadding {
+        font-size: 30px;
+        font-weight: 600;
+        color: white;
+        font-family: 'Inter';
+    }
+
+    p.about-priority-paragraph {
+        font-size: 16px;
+        width: 320px;
+        height: 160px;
+    }
+
+    .sdmi-about-image::before {
+        background: none;
+    }
+
+    .sdmi-about-image {
+        margin: 15px 0px;
+    }
+
+    .sdmi-about-image-sec {
+        left: 0px;
+        top: 0px;
+    }
+
+    .col-lg-5.col-sm-12.sdmi-about-image-sec {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-priority-para {
+        margin: 25px 0px;
+    }
+
+    p.sion-about-section-para {
+        font-size: 14px;
+    }
+
+    p.sdmi-about-us-para {
+        font-size: 14px;
+        padding-bottom: 15px;
+    }
+
+    .after-vision-section {
+        margin: 43px auto;
+    }
+
+    .after-vision-brand-para {
+        width: 320px;
+        height: 126px;
+    }
+
+    .after-bottom-lapi {
+        bottom: 80px;
+    }
+
+    .sdmi-about-image-sec::before {
+        left: 0px;
+        background: none;
+    }
+
+    /* Contact */
+    .contact-hero-section {
+        margin: 0px 0px;
+    }
+
+    .contact-out-section {
+        padding: 25px 20px;
+        margin: 30px 0px;
+    }
+
+    .form-group-space {
+        margin-top: 15px;
+    }
+
+    .form-submit-btn {
+        margin-top: 26px;
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+    p.main-web-content {
+        font-size: 27px;
+        margin-top: 5px;
+    }
+
+    .row.web-top5-section {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        margin: 0px;
+        padding: 0pc;
+    }
+
+    .web-about-sec-top {
+        left: 33%;
+    }
+
+    .sion-services-web {
+        width: 300px;
+    }
+
+    .web-sion-customer-sec {
+        width: 374px;
+        height: 215px;
+        margin-top: 3rem;
+    }
+
+    .web-sion-customer-left {
+        width: 122px;
+        height: 145px;
+        margin-left: 13px;
+        padding-left: 10px;
+    }
+
+    p.web-sion-customer-comment {
+        right: 10px;
+    }
+
+    img.customer-real {
+        width: 100px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    p.main-web-content {
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    .web-best-section1 {
+        width: 320px;
+    }
+
+    .web-best-section2 {
+        width: 320px;
+    }
+
+    .web-best-section3 {
+        width: 320px;
+    }
+
+    .web-about-sec-top {
+        left: 31%;
+    }
+
+    .web-sion-customer-sec {
+        width: 315px;
+        height: 200px;
+        margin-top: 3rem;
+    }
+
+    .web-sion-customer-left {
+        width: 175px;
+        height: 110px;
+        margin-left: 8px;
+    }
+}
+
+@media only screen and (max-width: 320x) {
+    .web-about-sec-top {
+        left: 29%;
+    }
+}
