@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!apiBase) { showError("API endpoint configured नहीं है।"); return; }
     loading.hidden = false; error.hidden = true;
     var params = new URLSearchParams({ format: "json", limit: "500" });
-    if (apiKey && apiBase.indexOf("/api/market") === -1) params.set("api-key", apiKey);
+    if (apiKey) params.set(apiBase.indexOf("/api/market") === -1 ? "api-key" : "apiKey", apiKey);
     params.set("filters[state]", "Madhya Pradesh");
     if (select.value) params.set(apiBase.indexOf("/api/market") === -1 ? "filters[district]" : "district", districtMap[select.value] || select.value);
     if (date.value) params.set(apiBase.indexOf("/api/market") === -1 ? "filters[arrival_date]" : "date", date.value.split("-").reverse().join("/"));

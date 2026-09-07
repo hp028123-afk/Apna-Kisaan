@@ -6,9 +6,9 @@ export default async function handler(request, response) {
     return response.status(405).json({ error: "केवल GET request स्वीकार है।" });
   }
 
-  const apiKey = process.env.DATA_GOV_API_KEY;
+  const apiKey = process.env.DATA_GOV_API_KEY || request.query.apiKey;
   if (!apiKey) {
-    return response.status(503).json({ error: "DATA_GOV_API_KEY Vercel environment variable में configure नहीं है।" });
+    return response.status(503).json({ error: "DATA_GOV_API_KEY configure नहीं है। Vercel Environment Variables में इसे जोड़कर redeploy करें।" });
   }
 
   const query = new URLSearchParams({
@@ -25,7 +25,7 @@ export default async function handler(request, response) {
       headers: { Accept: "application/json" }
     });
     const payload = await upstream.json();
-    response.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate=600");
+    response.setHeader("Cache-Control", process.env.DATA_GOV_API_KEY ? "s-maxage=300, stale-while-revalidate=600" : "no-store");
     return response.status(upstream.status).json(payload);
   } catch (error) {
     return response.status(502).json({ error: "सरकारी बाजार API तक पहुंच नहीं हो सकी।", detail: error.message });
