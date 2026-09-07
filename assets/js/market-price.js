@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function normalize(record) {
     var district = record.district || record.District || "";
     var commodity = record.commodity || record.Commodity || record.item || "";
-    return { district: district, market: record.market || record.Market || "-", commodity: commodity, min: number(record.min_price || record.Min_x0020_Price || record.minPrice), max: number(record.max_price || record.Max_x0020_Price || record.maxPrice), modal: number(record.modal_price || record.Modal_x0020_Price || record.modalPrice), unit: record.unit || "रु./क्विंटल", date: record.arrival_date || record.Arrival_x0020_Date || "" };
+    return { district: district, market: record.market || record.Market || "-", commodity: commodity, min: number(record.min_price || record.Min_x0020_Price || record.minPrice), max: number(record.max_price || record.Max_x0020_Price || record.maxPrice), modal: number(record.modal_price || record.Modal_x0020_Price || record.modalPrice), unit: record.unit || "रु./क्विंटल", date: record.arrival_date || record.Arrival_x0020_Date || "", category: record.category || "सब्जियां", change: number(record.change), trend: record.trend || "same", season: record.season || "मौसम के अनुसार", description: record.description || "मध्य प्रदेश में इस फसल की खेती और बाजार मांग के अनुसार भाव बदल सकता है।" };
   }
 
   function createDemoRecords() {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return demoDistricts.reduce(function (records, district, districtIndex) {
       demoVegetables.forEach(function (vegetable, vegetableIndex) {
         var adjustment = ((districtIndex * 137 + vegetableIndex * 83) % 500) - 250;
-        records.push({ district: district, market: district + " सब्जी मंडी", commodity: vegetable[0], min: vegetable[1] + adjustment, max: vegetable[2] + adjustment, modal: Math.round((vegetable[1] + vegetable[2]) / 2) + adjustment, unit: "रु./क्विंटल", date: today });
+        records.push({ district: district, market: district + " सब्जी मंडी", commodity: vegetable[0], min: vegetable[1] + adjustment, max: vegetable[2] + adjustment, modal: Math.round((vegetable[1] + vegetable[2]) / 2) + adjustment, unit: "रु./क्विंटल", date: today, category: "सब्जियां", change: adjustment, trend: adjustment >= 0 ? "up" : "down", season: "स्थानीय मौसम", description: "यह फसल मध्य प्रदेश के स्थानीय बाजारों में नियमित रूप से उपलब्ध रहती है।" });
       });
       return records;
     }, []);
@@ -62,6 +62,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("highestPrice").textContent = maximum.length ? "रु. " + Math.max.apply(null, maximum).toLocaleString("hi-IN") : "-";
     document.getElementById("priceDateLabel").textContent = state.filtered[0] ? formatDate(state.filtered[0].date) : "-";
     drawChart(state.filtered);
+    renderCropCards(state.filtered);
+  }
+
+  function renderCropCards(records) {
+    var grid = document.getElementById("cropGrid");
+    if (!grid) return;
+    var unique = [];
+    records.forEach(function (record) {
+      if (!unique.some(function (item) { return item.commodity === record.commodity; })) unique.push(record);
+    });
+    grid.innerHTML = unique.slice(0, 12).map(function (record) {
+      var change = record.change === null ? "स्थिर" : (record.change > 0 ? "+" : "") + record.change.toLocaleString("hi-IN");
+      var trendClass = record.trend === "down" ? "down" : record.trend === "up" ? "up" : "same";
+      return "<article class=\"crop-card\"><div class=\"crop-card-top\"><span class=\"crop-icon\"><i class=\"fa-solid fa-seedling\"></i></span><span class=\"crop-category\">" + record.category + "</span></div><h3>" + record.commodity + "</h3><p>" + record.description.slice(0, 112) + "...</p><div class=\"crop-price\"><strong>रु. " + (record.modal === null ? "-" : record.modal.toLocaleString("hi-IN")) + "</strong><span class=\"crop-change " + trendClass + "\"><i class=\"fa-solid fa-arrow-trend-" + (record.trend === "down" ? "down" : "up") + "\"></i> " + change + "</span></div><small class=\"crop-season\"><i class=\"fa-regular fa-calendar\"></i> " + record.season + "</small></article>";
+    }).join("");
   }
 
   function applyFilters() {
