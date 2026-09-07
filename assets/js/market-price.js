@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var loading = document.getElementById("marketLoading");
   var error = document.getElementById("marketError");
   var errorText = document.getElementById("marketErrorText");
+  if (!date.value) date.value = new Date().toISOString().slice(0, 10);
 
   function formatDate(value) {
     if (!value) return "आज";
@@ -54,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function renderTable() {
     body.innerHTML = state.filtered.map(function (record) {
-      return "<tr><td><strong>" + record.commodity + "</strong></td><td>" + record.market + "</td><td>" + record.district + "</td><td>रु. " + (record.min === null ? "-" : record.min.toLocaleString("hi-IN")) + "</td><td class=\"price-high\">रु. " + (record.max === null ? "-" : record.max.toLocaleString("hi-IN")) + "</td><td>" + record.unit + "</td></tr>";
+      return "<tr><td data-label=\"सब्जी\"><strong>" + record.commodity + "</strong></td><td data-label=\"बाजार\">" + record.market + "</td><td data-label=\"जिला\">" + record.district + "</td><td data-label=\"न्यूनतम भाव\">रु. " + (record.min === null ? "-" : record.min.toLocaleString("hi-IN")) + "</td><td data-label=\"अधिकतम भाव\" class=\"price-high\">रु. " + (record.max === null ? "-" : record.max.toLocaleString("hi-IN")) + "</td><td data-label=\"इकाई\">" + record.unit + "</td></tr>";
     }).join("");
     empty.hidden = state.filtered.length !== 0;
     document.getElementById("recordCount").textContent = state.filtered.length.toLocaleString("hi-IN");

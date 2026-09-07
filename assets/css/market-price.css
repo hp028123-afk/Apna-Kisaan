@@ -1,3 +1,21 @@
+/* Mobile price rows become readable cards instead of forcing page-wide scrolling. */
+@media (max-width: 600px) {
+	.ak-market-page .ak-shell { width: calc(100% - 32px); }
+	.market-content { width: 100%; padding-left: 16px; padding-right: 16px; }
+	.table-wrap { overflow: visible; }
+	.market-panel table, .market-panel thead, .market-panel tbody, .market-panel tr, .market-panel td { display: block; width: 100%; }
+	.market-panel thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+	.market-panel tbody { display: grid; gap: 10px; }
+	.market-panel tr { padding: 12px; border: 1px solid #e4ece1; border-radius: 8px; background: #fbfdf9; }
+	.market-panel td { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border: 0; text-align: right; white-space: normal; font-size: 12px; }
+	.market-panel td::before { content: attr(data-label); color: #789080; font-size: 10px; font-weight: 700; text-align: left; }
+	.market-panel td:first-child { padding-top: 0; color: #176b45; font-size: 14px; font-weight: 700; }
+	.market-panel td:last-child { padding-bottom: 0; }
+	.market-panel td strong { font-size: 14px; }
+	.chart-wrap { height: 250px; }
+	.market-state { align-items: flex-start; font-size: 12px; }
+	.market-retry { font-size: 11px; }
+}
  .market-demo{border:1px solid #d8e7b5;background:#f8fbe9;color:#647d35}.market-demo strong{font:700 14px "Noto Sans Devanagari",sans-serif}.market-demo p{margin:3px 0 0;font:12px "Noto Sans Devanagari",sans-serif}
 /* Keep the shared language switcher available on this page. */
 .ak-market-page .ak-language-toggle { display: block; }
