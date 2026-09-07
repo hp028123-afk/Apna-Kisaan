@@ -91,32 +91,45 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   var translations = {
-    "अपना.किसान": "Apna Kisaan",
-    "सब्जी.बाजार": "Vegetable Market",
-    "सुरक्षा.सुविधा": "Safety & Support",
-    "संपर्क.करें": "Contact Us",
-    "संपूर्ण.जानकारी": "Complete Information",
-    "हमारे बारे में": "About Us",
-    "संपर्क करें": "Contact Us",
-    "जानकारी": "Information",
-    "Home": "होम",
-    "About": "हमारे बारे में",
-    "Contact us": "संपर्क करें"
+    "होम": "Home", "सब्जी बाजार": "Vegetable Market", "हमारे बारे में": "About Us",
+    "जानकारी": "Information", "संपर्क करें": "Contact Us", "जुड़ें": "Join Us",
+    "सब्जी बाजार देखें": "Explore Vegetable Markets", "जानिए कैसे काम करता है": "How It Works",
+    "हमारी सेवाएं": "Our Services", "खेती से बाजार तक,": "From Farm to Market,",
+    "हर कदम पर साथ।": "Support at Every Step.", "हमारा तरीका": "Our Approach",
+    "जिले के अनुसार": "By District", "अपने नजदीकी": "Find Your Nearby",
+    "बाजार को खोजें।": "Market.", "आज ही शुरुआत करें": "Get Started Today",
+    "संपर्क करें": "Contact Us", "गोपनीयता": "Privacy", "नियम और शर्तें": "Terms & Conditions",
+    "किसानों के साथ, हर मौसम में": "With Farmers, Every Season",
+    "मध्य प्रदेश का किसान नेटवर्क": "Madhya Pradesh Farmer Network",
+    "किसान पहले": "Farmers First", "बाजार की समझ": "Market Understanding", "भरोसे का साथ": "Trusted Support",
+    "सुरक्षित परिवहन": "Safe Transportation", "भुगतान और संपर्क": "Payments & Contact",
+    "सब्जी बाजार की जानकारी": "Vegetable Market Information", "पूरी जानकारी": "Full Information",
+    "हमसे जुड़ें": "Connect With Us", "बाजार देखें": "View Market",
+    "अपना किसान": "Apna Kisaan", "किसान का अपना बाजार": "A Market For Farmers"
   };
   var languageButton = document.createElement("button");
   languageButton.type = "button";
   languageButton.className = "ak-language-toggle";
-  languageButton.setAttribute("aria-label", "Switch language");
+  languageButton.setAttribute("aria-label", "भाषा बदलें / Switch language");
   languageButton.textContent = "EN";
   document.body.appendChild(languageButton);
+  function setLabel(element, label) {
+    var textNode = Array.from(element.childNodes).find(function (node) {
+      return node.nodeType === Node.TEXT_NODE && node.textContent.trim();
+    });
+    if (textNode) textNode.textContent = " " + label + " ";
+    else element.insertBefore(document.createTextNode(label + " "), element.firstChild);
+  }
+
   languageButton.addEventListener("click", function () {
-    var english = document.documentElement.lang === "en-US";
-    document.documentElement.lang = english ? "hi" : "en-US";
-    languageButton.textContent = english ? "EN" : "हिंदी";
-    document.querySelectorAll(".sion-navigation-sec-list-tems, .sion-navigation-sec3-btn, .about-us-links").forEach(function (element) {
-      var original = element.dataset.hiText || element.textContent.trim();
-      if (!element.dataset.hiText) element.dataset.hiText = original;
-      element.textContent = english ? original : (translations[original] || original);
+    var toEnglish = document.documentElement.lang !== "en-US";
+    document.documentElement.lang = toEnglish ? "en-US" : "hi";
+    languageButton.textContent = toEnglish ? "हिंदी" : "EN";
+    document.querySelectorAll(".ak-links .nav-link, .ak-button, .ak-text-link, .ak-kicker, .ak-strip-grid strong, .ak-service-card h3, .ak-card-link, .ak-section-heading h2, .ak-process h2, .ak-cta h2, .sion-navigation-sec-list-tems, .sion-navigation-sec3-btn, .about-us-links").forEach(function (element) {
+      var current = element.dataset.hiText || element.textContent.trim();
+      if (!element.dataset.hiText) element.dataset.hiText = current;
+      var translated = toEnglish ? translations[current] : current;
+      if (translated) setLabel(element, translated);
     });
   });
 
