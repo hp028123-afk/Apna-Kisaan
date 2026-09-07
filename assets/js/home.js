@@ -121,12 +121,19 @@ document.addEventListener("DOMContentLoaded", function () {
     else element.insertBefore(document.createTextNode(label + " "), element.firstChild);
   }
 
+  function getTextLabel(element) {
+    return Array.from(element.childNodes)
+      .filter(function (node) { return node.nodeType === Node.TEXT_NODE; })
+      .map(function (node) { return node.textContent.trim(); })
+      .join(" ").trim();
+  }
+
   languageButton.addEventListener("click", function () {
     var toEnglish = document.documentElement.lang !== "en-US";
     document.documentElement.lang = toEnglish ? "en-US" : "hi";
     languageButton.textContent = toEnglish ? "हिंदी" : "EN";
     document.querySelectorAll(".ak-links .nav-link, .ak-button, .ak-text-link, .ak-kicker, .ak-strip-grid strong, .ak-service-card h3, .ak-card-link, .ak-section-heading h2, .ak-process h2, .ak-cta h2, .sion-navigation-sec-list-tems, .sion-navigation-sec3-btn, .about-us-links").forEach(function (element) {
-      var current = element.dataset.hiText || element.textContent.trim();
+      var current = element.dataset.hiText || getTextLabel(element);
       if (!element.dataset.hiText) element.dataset.hiText = current;
       var translated = toEnglish ? translations[current] : current;
       if (translated) setLabel(element, translated);
