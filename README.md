@@ -20,4 +20,4 @@ Open `market-price.html` to use the district-wise price table, search, date filt
 DATA_GOV_API_KEY=YOUR_DATA_GOV_API_KEY
 ```
 
-The page shows a clear error state instead of displaying unverified prices when the API is unavailable.
+If the API is unavailable, the page shows clearly marked demo prices for all 12 districts and 10 vegetables so search, filters and charts remain testable. Demo values must not be used for selling decisions; live values appear automatically once the API key is configured.

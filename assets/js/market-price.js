@@ -3,7 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var apiKey = window.APNA_KISAAN_MARKET_API_KEY || new URLSearchParams(window.location.search).get("apiKey");
   var districtMap = { "दमोह": "Damoh", "पन्ना": "Panna", "छतरपुर": "Chhatarpur", "भोपाल": "Bhopal", "राजगढ़": "Rajgarh", "सागर": "Sagar", "नरसिंहपुर": "Narsimhapur", "जबलपुर": "Jabalpur", "ग्वालियर": "Gwalior", "बालाघाट": "Balaghat", "रीवा": "Rewa", "टीकमगढ़": "Tikamgarh" };
   var vegetableMap = { "टमाटर": ["tomato", "tomatoes"], "प्याज": ["onion", "onions"], "आलू": ["potato", "potatoes"], "बैंगन": ["brinjal", "eggplant"], "फूलगोभी": ["cauliflower"], "भिंडी": ["okra", "lady finger"], "मिर्च": ["chilli", "green chilli"], "गोभी": ["cabbage"], "गाजर": ["carrot"], "लहसुन": ["garlic"] };
-  var state = { records: [], filtered: [] };
+  var state = { records: [], filtered: [], demo: false };
+  var demoDistricts = ["दमोह", "पन्ना", "छतरपुर", "भोपाल", "राजगढ़", "सागर", "नरसिंहपुर", "जबलपुर", "ग्वालियर", "बालाघाट", "रीवा", "टीकमगढ़"];
+  var demoVegetables = [["टमाटर", 1800, 2600], ["प्याज", 2200, 3200], ["आलू", 1400, 2100], ["बैंगन", 1600, 2400], ["फूलगोभी", 2000, 3000], ["भिंडी", 2800, 4200], ["हरी मिर्च", 3500, 5200], ["पत्तागोभी", 1200, 1900], ["गाजर", 2400, 3600], ["लहसुन", 7000, 9800]];
   var select = document.getElementById("districtSelect");
   var search = document.getElementById("vegetableSearch");
   var date = document.getElementById("priceDate");
@@ -30,6 +32,26 @@ document.addEventListener("DOMContentLoaded", function () {
     return { district: district, market: record.market || record.Market || "-", commodity: commodity, min: number(record.min_price || record.Min_x0020_Price || record.minPrice), max: number(record.max_price || record.Max_x0020_Price || record.maxPrice), modal: number(record.modal_price || record.Modal_x0020_Price || record.modalPrice), unit: record.unit || "रु./क्विंटल", date: record.arrival_date || record.Arrival_x0020_Date || "" };
   }
 
+  function createDemoRecords() {
+    var today = new Date().toISOString().slice(0, 10);
+    return demoDistricts.reduce(function (records, district, districtIndex) {
+      demoVegetables.forEach(function (vegetable, vegetableIndex) {
+        var adjustment = ((districtIndex * 137 + vegetableIndex * 83) % 500) - 250;
+        records.push({ district: district, market: district + " सब्जी मंडी", commodity: vegetable[0], min: vegetable[1] + adjustment, max: vegetable[2] + adjustment, modal: Math.round((vegetable[1] + vegetable[2]) / 2) + adjustment, unit: "रु./क्विंटल", date: today });
+      });
+      return records;
+    }, []);
+  }
+
+  function setSourceLabel(isDemo) {
+    var badge = document.querySelector(".live-badge");
+    var notice = document.getElementById("marketDemoNotice");
+    var source = document.getElementById("lastUpdated");
+    if (badge) badge.innerHTML = '<i></i> ' + (isDemo ? "डेमो डेटा" : "लाइव डेटा");
+    if (notice) notice.hidden = !isDemo;
+    if (source && isDemo) source.textContent = "डेमो भाव";
+  }
+
   function renderTable() {
     body.innerHTML = state.filtered.map(function (record) {
       return "<tr><td><strong>" + record.commodity + "</strong></td><td>" + record.market + "</td><td>" + record.district + "</td><td>रु. " + (record.min === null ? "-" : record.min.toLocaleString("hi-IN")) + "</td><td class=\"price-high\">रु. " + (record.max === null ? "-" : record.max.toLocaleString("hi-IN")) + "</td><td>" + record.unit + "</td></tr>";
@@ -46,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var selected = districtMap[select.value] || "";
     var query = search.value.trim().toLocaleLowerCase("hi");
     state.filtered = state.records.filter(function (record) {
-      var districtMatch = !selected || record.district.toLocaleLowerCase("en").indexOf(selected.toLocaleLowerCase("en")) !== -1;
+      var districtMatch = !selected || record.district.toLocaleLowerCase("en").indexOf(selected.toLocaleLowerCase("en")) !== -1 || record.district.indexOf(select.value) !== -1;
       var commodityNames = vegetableMap[query] || [query];
-      var commodityMatch = !query || commodityNames.some(function (name) { return record.commodity.toLocaleLowerCase("en").indexOf(name) !== -1; });
+      var commodityMatch = !query || record.commodity.toLocaleLowerCase("hi").indexOf(query) !== -1 || commodityNames.some(function (name) { return record.commodity.toLocaleLowerCase("en").indexOf(name) !== -1; });
       return districtMatch && commodityMatch;
     });
     renderTable();
@@ -91,14 +113,21 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!response.ok) throw new Error("API ने " + response.status + " response दिया।");
       var payload = await response.json();
       var records = Array.isArray(payload.records) ? payload.records.map(normalize).filter(function (record) { return record.commodity; }) : [];
-      state.records = records; applyFilters();
+      state.demo = false; setSourceLabel(false); state.records = records; applyFilters();
       document.getElementById("lastUpdated").textContent = new Date().toLocaleTimeString("hi-IN", { hour: "2-digit", minute: "2-digit" });
       document.querySelector("#priceDateLabel").title = "API से प्राप्त समय";
-    } catch (requestError) { showError(requestError.message + " Vercel में DATA_GOV_API_KEY environment variable configure करें।"); }
+    } catch (requestError) {
+      state.demo = true;
+      setSourceLabel(true);
+      state.records = createDemoRecords();
+      applyFilters();
+      error.hidden = true;
+      document.getElementById("lastUpdated").title = "यह fallback उदाहरणात्मक डेटा है: " + requestError.message;
+    }
     finally { loading.hidden = true; }
   }
 
   function showError(message) { loading.hidden = true; error.hidden = false; errorText.textContent = message; state.records = []; state.filtered = []; renderTable(); }
-  select.addEventListener("change", loadPrices); search.addEventListener("input", applyFilters); date.addEventListener("change", loadPrices); document.getElementById("refreshPrices").addEventListener("click", loadPrices); document.getElementById("retryPrices").addEventListener("click", loadPrices); window.addEventListener("resize", function () { drawChart(state.filtered); });
+  select.addEventListener("change", loadPrices); search.addEventListener("input", applyFilters); date.addEventListener("change", loadPrices); document.getElementById("refreshPrices").addEventListener("click", loadPrices); document.getElementById("retryPrices").addEventListener("click", loadPrices); document.getElementById("retryLivePrices").addEventListener("click", loadPrices); window.addEventListener("resize", function () { drawChart(state.filtered); });
   loadPrices();
 });
