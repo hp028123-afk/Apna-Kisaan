@@ -1475,7 +1475,7 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
 }
 @media (max-width: 768px) {
   .ak-section { padding: 44px 0; }
-  .ak-quick-grid     { grid-template-columns: 1fr; }
+  .ak-quick-grid     { grid-template-columns: repeat(2, 1fr); }
   .ak-category-grid  { grid-template-columns: repeat(3, 1fr); }
   .ak-mandi-grid     { grid-template-columns: repeat(2, 1fr); }
   .ak-district-grid  { grid-template-columns: repeat(3, 1fr); }
@@ -1499,7 +1499,8 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   .ak-btn-primary, .ak-btn-outline-white { width: 100%; justify-content: center; }
 }
 @media (max-width: 375px) {
-  .ak-stats-grid     { grid-template-columns: 1fr; }
+  /* Keep stats 2-col even on tiny screens */
+  .ak-stats-grid     { grid-template-columns: repeat(2,1fr); }
   .ak-mandi-grid     { grid-template-columns: 1fr; }
   .ak-category-grid  { grid-template-columns: repeat(2, 1fr); }
   .ak-district-grid  { grid-template-columns: repeat(2, 1fr); }
