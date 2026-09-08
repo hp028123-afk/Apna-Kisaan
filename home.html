@@ -275,49 +275,101 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 16px;
       }
-      .ak-district-img-card {
-        position: relative;
+
+      /* Pure CSS card — no image dependency */
+      .ak-dist-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
         border-radius: var(--ak-r-lg);
         overflow: hidden;
         box-shadow: var(--ak-shadow-card);
-        aspect-ratio: 4/3;
-        transition:
-          transform var(--ak-transition),
-          box-shadow var(--ak-transition);
-        display: block;
         text-decoration: none;
+        transition: transform var(--ak-transition), box-shadow var(--ak-transition);
+        position: relative;
+        min-height: 160px;
+        background: var(--ak-white);
+        border: 1.5px solid var(--ak-border);
       }
-      .ak-district-img-card:hover {
-        transform: translateY(-4px);
+      .ak-dist-card:hover {
+        transform: translateY(-5px);
         box-shadow: var(--ak-shadow-lg);
+        border-color: transparent;
       }
-      .ak-district-img-card img {
+
+      /* Gradient top area with icon */
+      .ak-dist-card-top {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-      }
-      .ak-district-img-card:hover img {
-        transform: scale(1.06);
-      }
-      .ak-district-img-label {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(transparent, rgba(15, 61, 27, 0.85));
-        color: #fff;
-        font: 700 13px var(--ak-font-hi);
-        padding: 24px 12px 10px;
+        flex: 1;
         display: flex;
         align-items: center;
-        gap: 6px;
+        justify-content: center;
+        padding: 20px 12px 14px;
+        position: relative;
+        overflow: hidden;
       }
-      .ak-district-img-label i {
-        color: var(--ak-lime);
-        font-size: 11px;
+      /* Subtle radial glow behind icon */
+      .ak-dist-card-top::before {
+        content: '';
+        position: absolute;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        pointer-events: none;
       }
+      .ak-dist-card-top i {
+        font-size: 40px;
+        color: #fff;
+        position: relative;
+        z-index: 1;
+        filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
+        transition: transform 0.3s ease;
+      }
+      .ak-dist-card:hover .ak-dist-card-top i {
+        transform: translateY(-4px) scale(1.12);
+      }
+
+      /* Bottom label area */
+      .ak-dist-card-bottom {
+        width: 100%;
+        background: var(--ak-white);
+        padding: 10px 12px 12px;
+        text-align: center;
+        border-top: 1.5px solid var(--ak-border);
+      }
+      .ak-dist-card-name {
+        display: block;
+        font: 700 15px var(--ak-font-hi);
+        color: var(--ak-text);
+        margin-bottom: 2px;
+        transition: color var(--ak-transition);
+      }
+      .ak-dist-card:hover .ak-dist-card-name { color: var(--ak-green); }
+      .ak-dist-card-region {
+        display: block;
+        font: 400 11px var(--ak-font-hi);
+        color: var(--ak-text-muted);
+      }
+
+      /* Per-card gradient colours */
+      .ak-dist-g1  { background: linear-gradient(145deg,#0f3d1c,#1a5c2a); }
+      .ak-dist-g2  { background: linear-gradient(145deg,#1a3a5c,#2563a8); }
+      .ak-dist-g3  { background: linear-gradient(145deg,#5c1a1a,#b91c1c); }
+      .ak-dist-g4  { background: linear-gradient(145deg,#1a3c1a,#16a34a); }
+      .ak-dist-g5  { background: linear-gradient(145deg,#3c2c1a,#c47a1a); }
+      .ak-dist-g6  { background: linear-gradient(145deg,#1a2c3c,#0d9488); }
+      .ak-dist-g7  { background: linear-gradient(145deg,#1a1a3c,#7c3aed); }
+      .ak-dist-g8  { background: linear-gradient(145deg,#1c3a2a,#15803d); }
+      .ak-dist-g9  { background: linear-gradient(145deg,#3c1a1a,#dc2626); }
+      .ak-dist-g10 { background: linear-gradient(145deg,#1a3c3a,#059669); }
+      .ak-dist-g11 { background: linear-gradient(145deg,#3c2c1a,#f97316); }
+      .ak-dist-g12 { background: linear-gradient(145deg,#1a2c3c,#2563eb); }
 
       /* ── Team cards ──────────────────────────────────────────── */
       .ak-team-grid {
@@ -1784,7 +1836,7 @@
             <div class="ak-team-card">
               <img
                 class="ak-team-card-img"
-                src="assets/images/hemantpic1.png"
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_31_14 PM.png"
                 alt="हेमंत कच्छी — संस्थापक, अपना किसान"
                 loading="lazy"
               />
@@ -1800,7 +1852,7 @@
             <div class="ak-team-card">
               <img
                 class="ak-team-card-img"
-                src="assets/images/hemantpic2.png"
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_56_46 PM.png"
                 alt="अपना किसान टीम — मध्य प्रदेश"
                 loading="lazy"
               />
@@ -1816,7 +1868,7 @@
             <div class="ak-team-card">
               <img
                 class="ak-team-card-img"
-                src="assets/images/hemantpic3.png"
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_22_32 AM.png"
                 alt="अपना किसान टीम"
                 loading="lazy"
               />
