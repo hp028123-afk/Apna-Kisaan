@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="आज का सब्जी भाव — farmer.in API से प्राप्त ताज़ा सब्जी बाजार मूल्य। टमाटर, प्याज, आलू सहित सभी सब्जियों के न्यूनतम, अधिकतम और मोडल भाव देखें।"/>
+  <meta name="keywords" content="सब्जी भाव, आज का सब्जी भाव, mandi bhav, vegetable price, टमाटर भाव, प्याज भाव, आलू भाव, मध्य प्रदेश सब्जी भाव"/>
+  <meta name="robots" content="index,follow"/>
+  <meta name="author" content="अपना किसान"/>
+  <link rel="canonical" href="https://apna-kisaan.vercel.app/vegetable-price.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="आज का सब्जी भाव | अपना किसान"/>
+  <meta property="og:description" content="ताज़ा सब्जी बाजार मूल्य — टमाटर, प्याज, आलू सहित सभी सब्जियों के लाइव भाव।"/>
+  <meta property="og:url" content="https://apna-kisaan.vercel.app/vegetable-price.html"/>
+  <meta property="og:site_name" content="अपना किसान"/>
+  <title>आज का सब्जी भाव | अपना किसान</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/ak-design.css"/>
+  <link rel="stylesheet" href="assets/css/bhav.css"/>
+
+  <style>
+    /* ── page-level overrides so ak-design.css header/footer render cleanly ── */
+    body { background: #f7faf4; }
+    .ak-bhav-page .ak-header { position: sticky; top: 0; z-index: 1000; }
+  </style>
+</head>
+<body class="ak-bhav-page">
+
+<!-- ── TOP BAR ──────────────────────────────────────────────── -->
+<div class="ak-topbar">
+  <div class="ak-shell ak-topbar-inner">
+    <a href="tel:+916265071588"><i class="fa-solid fa-phone"></i> +91 626 507 1588</a>
+    <a href="mailto:hemantkachhi2002@gmail.com"><i class="fa-solid fa-envelope"></i> hemantkachhi2002@gmail.com</a>
+    <span class="ak-topbar-note"><i class="fa-solid fa-seedling"></i> किसानों के साथ, हर मौसम में</span>
+  </div>
+</div>
+
+<!-- ── HEADER / NAV ──────────────────────────────────────────── -->
+<header class="ak-header">
+  <nav class="ak-shell ak-nav" aria-label="मुख्य नेविगेशन">
+    <a class="ak-brand" href="home.html" aria-label="अपना किसान — मुख्य पृष्ठ">
+      <img src="assets/images/अपना.किसान.png" alt="अपना किसान लोगो" width="52" height="52"/>
+      <span><strong>अपना किसान</strong><small>ग्रामीण सब्जी — शहरी वितरण</small></span>
+    </a>
+    <button class="ak-toggler" id="navToggle" aria-label="मेनू खोलें" aria-expanded="false" aria-controls="akMainMenu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <ul class="ak-links" id="akMainMenu" role="menubar">
+      <li role="none"><a class="nav-link" href="home.html" role="menuitem">होम</a></li>
+      <li class="dropdown" role="none">
+        <a class="nav-link dropbtn" href="service.html" role="menuitem" aria-haspopup="true">
+          सब्जी बाजार <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-content" role="menu">
+          <a href="service1.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> दमोह</a>
+          <a href="service2.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> पन्ना</a>
+          <a href="service3.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> छतरपुर</a>
+          <a href="services4.html" role="menuitem"><i class="fa-solid fa-location-dot"></i> भोपाल</a>
+          <a href="internship.html"role="menuitem"><i class="fa-solid fa-location-dot"></i> राजगढ़</a>
+          <a href="service5.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> सागर</a>
+          <a href="service6.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> नरसिंहपुर</a>
+          <a href="service7.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> जबलपुर</a>
+          <a href="service8.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> ग्वालियर</a>
+          <a href="service9.html"  role="menuitem"><i class="fa-solid fa-location-dot"></i> बालाघाट</a>
+          <a href="service10.html" role="menuitem"><i class="fa-solid fa-location-dot"></i> रीवा</a>
+          <a href="service11.html" role="menuitem"><i class="fa-solid fa-location-dot"></i> टीकमगढ़</a>
+        </div>
+      </li>
+      <li role="none"><a class="nav-link" href="about.html" role="menuitem">हमारे बारे में</a></li>
+      <li role="none"><a class="nav-link" href="information.html" role="menuitem">कृषि जानकारी</a></li>
+      <li class="dropdown ak-bhav-dropdown" role="none">
+        <a class="nav-link dropbtn active" href="market-price.html" role="menuitem" aria-haspopup="true">
+          आज का भाव <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-content ak-bhav-menu" role="menu">
+          <a href="market-price.html"   role="menuitem"><i class="fa-solid fa-store"></i> बाजार भाव</a>
+          <a href="vegetable-price.html"role="menuitem" aria-current="page"><i class="fa-solid fa-leaf"></i> सब्जी भाव</a>
+          <a href="crop-price.html"     role="menuitem"><i class="fa-solid fa-wheat-awn"></i> फसल भाव</a>
+        </div>
+      </li>
+      <li role="none"><a class="nav-link" href="contactus.html" role="menuitem">संपर्क करें</a></li>
+      <li role="none"><a class="ak-nav-cta" href="contactus.html"><i class="fa-solid fa-arrow-right"></i> जुड़ें</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <!-- ── PAGE HERO ────────────────────────────────────────── -->
+  <section class="bhav-hero" aria-labelledby="veg-hero-h1">
+    <div class="ak-shell bhav-hero-inner">
+      <div class="bhav-hero-copy">
+        <nav class="ak-breadcrumb" aria-label="breadcrumb">
+          <a href="home.html">होम</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <a href="market-price.html">आज का भाव</a>
+          <i class="fa-solid fa-chevron-right"></i>
+          <span>सब्जी भाव</span>
+        </nav>
+        <p class="ak-kicker"><span></span> लाइव सब्जी बाजार</p>
+        <h1 id="veg-hero-h1">आज का सब्जी भाव,<br/><em>सीधे बाजार से।</em></h1>
+        <p class="bhav-hero-sub">
+          farmer.in के खुले कृषि डेटा API से प्राप्त ताज़ा सब्जी मूल्य।
+          टमाटर, प्याज, आलू सहित सभी उपलब्ध सब्जियों के न्यूनतम, अधिकतम और मोडल भाव।
+        </p>
+        <div class="bhav-hero-badges">
+          <span class="bhav-badge"><i class="fa-solid fa-satellite-dish"></i> लाइव API डेटा</span>
+          <span class="bhav-badge"><i class="fa-solid fa-arrows-rotate"></i> हर 5 मिनट अपडेट</span>
+          <span class="bhav-badge"><i class="fa-solid fa-indian-rupee-sign"></i> रु./क्विंटल</span>
+        </div>
+      </div>
+      <div class="bhav-hero-stat" aria-live="polite">
+        <i class="fa-solid fa-chart-line"></i>
+        <strong id="heroLastUpdated">भाव लोड हो रहे हैं…</strong>
+        <small>अंतिम अपडेट</small>
+      </div>
+    </div>
+  </section>
+
+  <div class="ak-shell bhav-content">
+
+    <!-- ── DASHBOARD SUMMARY ────────────────────────────── -->
+    <div class="bhav-dashboard" role="region" aria-label="सब्जी भाव सारांश">
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon green"><i class="fa-solid fa-list"></i></div>
+        <div class="bhav-dash-value" id="dashTotal">—</div>
+        <div class="bhav-dash-label">कुल सब्जियां</div>
+      </div>
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon orange"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div class="bhav-dash-value" id="dashRising">—</div>
+        <div class="bhav-dash-label">बढ़ते भाव</div>
+      </div>
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon red"><i class="fa-solid fa-arrow-trend-down"></i></div>
+        <div class="bhav-dash-value" id="dashFalling">—</div>
+        <div class="bhav-dash-label">गिरते भाव</div>
+      </div>
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon teal"><i class="fa-solid fa-equals"></i></div>
+        <div class="bhav-dash-value" id="dashStable">—</div>
+        <div class="bhav-dash-label">स्थिर भाव</div>
+      </div>
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon lime"><i class="fa-solid fa-arrow-up"></i></div>
+        <div class="bhav-dash-value" id="dashHighest">—</div>
+        <div class="bhav-dash-label">सर्वाधिक भाव</div>
+      </div>
+      <div class="bhav-dash-card">
+        <div class="bhav-dash-icon blue"><i class="fa-solid fa-arrow-down"></i></div>
+        <div class="bhav-dash-value" id="dashLowest">—</div>
+        <div class="bhav-dash-label">न्यूनतम भाव</div>
+      </div>
+    </div>
+
+    <!-- ── TOOLBAR ──────────────────────────────────────── -->
+    <div class="bhav-toolbar" role="search" aria-label="सब्जी खोजें और फ़िल्टर करें">
+      <div class="bhav-field">
+        <label for="vegSearch">सब्जी खोजें (हिंदी / English)</label>
+        <div class="bhav-field-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="vegSearch" type="search" placeholder="जैसे: टमाटर, Onion, आलू…" autocomplete="off" aria-label="सब्जी का नाम खोजें"/>
+        </div>
+      </div>
+      <div class="bhav-field">
+        <label for="vegCategory">श्रेणी</label>
+        <div class="bhav-field-wrap">
+          <i class="fa-solid fa-tag"></i>
+          <select id="vegCategory" aria-label="श्रेणी फ़िल्टर">
+            <option value="">सभी श्रेणियां</option>
+          </select>
+        </div>
+      </div>
+      <div class="bhav-field">
+        <label for="vegTrend">मूल्य रुझान</label>
+        <div class="bhav-field-wrap">
+          <i class="fa-solid fa-chart-simple"></i>
+          <select id="vegTrend" aria-label="भाव रुझान फ़िल्टर">
+            <option value="">सभी रुझान</option>
+            <option value="up">↑ बढ़ता भाव</option>
+            <option value="down">↓ गिरता भाव</option>
+            <option value="same">= स्थिर भाव</option>
+          </select>
+        </div>
+      </div>
+      <div class="bhav-field">
+        <label for="vegSort">क्रमबद्ध करें</label>
+        <div class="bhav-field-wrap">
+          <i class="fa-solid fa-sort"></i>
+          <select id="vegSort" aria-label="क्रमबद्ध करें">
+            <option value="default">डिफ़ॉल्ट क्रम</option>
+            <option value="price_high">भाव: अधिक से कम</option>
+            <option value="price_low">भाव: कम से अधिक</option>
+            <option value="change_high">बदलाव: सबसे ज़्यादा</option>
+            <option value="change_low">बदलाव: सबसे कम</option>
+            <option value="name_az">नाम: A→Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="bhav-toolbar-actions">
+        <button class="bhav-btn" id="vegRefresh" title="भाव अपडेट करें" aria-label="भाव अपडेट करें">
+          <i class="fa-solid fa-rotate"></i><span>अपडेट</span>
+        </button>
+        <button class="bhav-btn bhav-btn-ghost" id="vegReset" title="सभी फ़िल्टर हटाएं" aria-label="फ़िल्टर रीसेट करें">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── STATE BANNERS ────────────────────────────────── -->
+    <div id="vegError" class="bhav-state bhav-state-error" hidden role="alert">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <div class="bhav-state-body">
+        <strong>भाव प्राप्त नहीं हो सके</strong>
+        <p id="vegErrorText">कृपया कुछ समय बाद फिर प्रयास करें।</p>
+      </div>
+      <button class="bhav-retry" id="vegRetry">फिर प्रयास करें</button>
+    </div>
+
+    <div id="vegDemo" class="bhav-state bhav-state-demo" hidden role="status">
+      <i class="fa-solid fa-flask"></i>
+      <div class="bhav-state-body">
+        <strong>⚠ डेमो / फ़ॉलबैक डेटा प्रदर्शित है</strong>
+        <p>यह वास्तविक बाजार भाव नहीं है। API उपलब्ध न होने पर उदाहरणात्मक डेटा दिखाया जा रहा है।</p>
+      </div>
+      <button class="bhav-retry" id="vegRetryLive">लाइव भाव पुनः खोजें</button>
+    </div>
+
+    <!-- ── LOADING SKELETON ──────────────────────────────── -->
+    <div id="vegSkeleton" class="bhav-skeleton-grid" hidden aria-hidden="true">
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+      <div class="bhav-skeleton-card"><div class="bhav-skel-line xl"></div><div class="bhav-skel-line short"></div><div class="bhav-skel-line long"></div><div class="bhav-skel-line med"></div></div>
+    </div>
+
+    <!-- ── RESULTS META + VIEW TOGGLE ───────────────────── -->
+    <div class="bhav-result-meta" id="vegResultMeta" hidden>
+      <div class="bhav-result-count" aria-live="polite">
+        <span id="vegResultCount">0</span> सब्जियां मिलीं
+      </div>
+      <div class="bhav-view-tabs" role="tablist">
+        <button class="bhav-view-tab active" id="tabCards" data-view="cards" role="tab" aria-selected="true">
+          <i class="fa-solid fa-grip"></i> कार्ड
+        </button>
+        <button class="bhav-view-tab" id="tabTable" data-view="table" role="tab" aria-selected="false">
+          <i class="fa-solid fa-table"></i> टेबल
+        </button>
+      </div>
+    </div>
+
+    <!-- ── CARDS VIEW ────────────────────────────────────── -->
+    <div id="vegCardsView" role="tabpanel">
+      <div class="bhav-cards-grid" id="vegCards" aria-label="सब्जी भाव कार्ड"></div>
+      <div id="vegCardsEmpty" class="bhav-empty" hidden>
+        <i class="fa-solid fa-seedling"></i>
+        <strong>कोई सब्जी नहीं मिली</strong>
+        <span>खोज या फ़िल्टर बदलकर दोबारा देखें।</span>
+      </div>
+    </div>
+
+    <!-- ── TABLE VIEW ─────────────────────────────────────── -->
+    <div id="vegTableView" hidden role="tabpanel">
+      <div class="bhav-panel">
+        <div class="bhav-panel-heading">
+          <div>
+            <p class="ak-kicker"><span></span> भाव सूची</p>
+            <h2>सब्जियों के आज के भाव</h2>
+          </div>
+          <span class="bhav-live-badge" id="vegLiveBadge"><i></i> लाइव डेटा</span>
+        </div>
+        <div class="bhav-table-wrap">
+          <table class="bhav-table" aria-label="सब्जी मूल्य तालिका">
+            <thead>
+              <tr>
+                <th scope="col">सब्जी</th>
+                <th scope="col">श्रेणी</th>
+                <th scope="col">न्यूनतम</th>
+                <th scope="col">मोडल</th>
+                <th scope="col">अधिकतम</th>
+                <th scope="col">बदलाव</th>
+                <th scope="col">रुझान</th>
+                <th scope="col">इकाई</th>
+                <th scope="col">अपडेट</th>
+              </tr>
+            </thead>
+            <tbody id="vegTableBody"></tbody>
+          </table>
+        </div>
+        <div id="vegTableEmpty" class="bhav-empty" hidden>
+          <i class="fa-solid fa-seedling"></i>
+          <strong>कोई रिकॉर्ड नहीं मिला</strong>
+          <span>फ़िल्टर बदलकर देखें।</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CHARTS ─────────────────────────────────────────── -->
+    <div class="bhav-main-grid" id="vegChartsSection" hidden>
+      <div class="bhav-panel">
+        <div class="bhav-panel-heading">
+          <div>
+            <p class="ak-kicker"><span></span> भाव तुलना</p>
+            <h2>अधिकतम भाव चार्ट</h2>
+          </div>
+        </div>
+        <div class="bhav-chart-wrap">
+          <canvas id="vegPriceChart" aria-label="सब्जियों के अधिकतम भाव का बार चार्ट"></canvas>
+        </div>
+        <p class="bhav-chart-note">शीर्ष 10 सब्जियों के अधिकतम भाव (रु./क्विंटल) दिखाए गए हैं।</p>
+      </div>
+      <div class="bhav-panel">
+        <div class="bhav-panel-heading">
+          <div>
+            <p class="ak-kicker"><span></span> रुझान विश्लेषण</p>
+            <h2>भाव रुझान चार्ट</h2>
+          </div>
+        </div>
+        <div class="bhav-chart-wrap">
+          <canvas id="vegTrendChart" aria-label="सब्जियों के भाव रुझान का डोनट चार्ट"></canvas>
+        </div>
+        <p class="bhav-chart-note">बढ़ते, गिरते और स्थिर भाव का अनुपात।</p>
+      </div>
+    </div>
+
+    <!-- ── DISCLAIMER ────────────────────────────────────── -->
+    <div class="bhav-note" role="note">
+      <i class="fa-solid fa-circle-info"></i>
+      <p>
+        <strong>जरूरी सूचना:</strong> ये भाव farmer.in के खुले कृषि डेटा API से प्राप्त हैं।
+        बाजार भाव फसल की गुणवत्ता, आवक, मांग, मौसम और स्थानीय मंडी के अनुसार बदल सकते हैं।
+        बिक्री का अंतिम निर्णय लेने से पहले अपने नजदीकी मंडी से पुष्टि जरूर करें।
+        स्रोत: <a href="https://farmer.in" target="_blank" rel="noopener noreferrer">farmer.in</a>
+      </p>
+    </div>
+
+  </div><!-- /.bhav-content -->
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="ak-footer" role="contentinfo">
+  <div class="ak-shell">
+    <div class="ak-footer-grid">
+      <div class="ak-footer-brand">
+        <img src="assets/images/अपना.किसान.png" alt="अपना किसान लोगो"/>
+        <strong>अपना किसान</strong>
+        <small>ग्रामीण सब्जी — शहरी वितरण</small>
+        <p>मध्य प्रदेश के किसानों के लिए सब्जी बाजार, मंडी भाव, कृषि जानकारी और परिवहन सहायता का विश्वसनीय मंच।</p>
+      </div>
+      <div class="ak-footer-col">
+        <h4>उपयोगी लिंक</h4>
+        <a href="home.html"><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a>
+        <a href="about.html"><i class="fa-solid fa-circle-info"></i> हमारे बारे में</a>
+        <a href="service.html"><i class="fa-solid fa-shop"></i> सब्जी बाजार</a>
+        <a href="information.html"><i class="fa-solid fa-book-open"></i> कृषि जानकारी</a>
+        <a href="contactus.html"><i class="fa-solid fa-envelope"></i> संपर्क करें</a>
+      </div>
+      <div class="ak-footer-col">
+        <h4>मंडी भाव</h4>
+        <a href="market-price.html"><i class="fa-solid fa-store"></i> बाजार भाव</a>
+        <a href="vegetable-price.html"><i class="fa-solid fa-leaf"></i> सब्जी भाव</a>
+        <a href="crop-price.html"><i class="fa-solid fa-wheat-awn"></i> फसल भाव</a>
+        <a href="privacy.html"><i class="fa-solid fa-shield"></i> गोपनीयता नीति</a>
+        <a href="term.html"><i class="fa-solid fa-file-lines"></i> नियम एवं शर्तें</a>
+      </div>
+      <div class="ak-footer-col ak-footer-contact">
+        <h4>संपर्क करें</h4>
+        <a href="tel:+916265071588"><i class="fa-solid fa-phone"></i> +91 626 507 1588</a>
+        <a href="mailto:hemantkachhi2002@gmail.com"><i class="fa-solid fa-envelope"></i> hemantkachhi2002@gmail.com</a>
+        <span><i class="fa-solid fa-location-dot"></i> इंदौर, मध्य प्रदेश</span>
+        <a href="https://wa.me/916265071588" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp करें</a>
+      </div>
+    </div>
+    <div class="ak-footer-bottom">
+      <span>© 2025 अपना किसान. सर्वाधिकार सुरक्षित। मध्य प्रदेश, भारत।</span>
+      <div class="ak-footer-legal">
+        <a href="privacy.html">गोपनीयता नीति</a>
+        <a href="term.html">नियम एवं शर्तें</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── FLOATING ACTIONS ───────────────────────────────────── -->
+<div class="ak-float-actions" aria-label="त्वरित संपर्क">
+  <a class="ak-float-btn ak-float-phone" href="tel:+916265071588" aria-label="फोन करें"><i class="fa-solid fa-phone"></i></a>
+  <a class="ak-float-btn ak-float-whatsapp" href="https://wa.me/916265071588" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- API config — proxy on Vercel, direct fallback handled in bhav-api.js -->
+<script>
+  window.APNA_KISAAN_VEG_API = "/api/vegetable-price";
+</script>
+
+<!-- Shared nav toggle (no Bootstrap collapse needed) -->
+<script>
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var menu   = document.getElementById('akMainMenu');
+  if(toggle && menu){
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.querySelector('i').className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+  }
+  document.querySelectorAll('.dropdown .dropbtn').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      if(window.innerWidth < 992){
+        e.preventDefault();
+        this.closest('.dropdown').classList.toggle('is-open');
+      }
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.dropdown')){
+      document.querySelectorAll('.dropdown.is-open').forEach(function(d){ d.classList.remove('is-open'); });
+    }
+  });
+})();
+</script>
+
+<script src="assets/js/bhav-api.js"></script>
+<script src="assets/js/vegetable-price.js"></script>
+</body>
+</html>

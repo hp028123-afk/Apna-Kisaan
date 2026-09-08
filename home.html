@@ -1,397 +1,2301 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hi">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="अपना किसान: मध्य प्रदेश के किसानों के लिए सब्जी बाजार, परिवहन और भुगतान की जानकारी।"
+      content="अपना किसान — मध्य प्रदेश के किसानों के लिए सब्जी मंडी भाव, लाइव फसल भाव, कृषि जानकारी और परिवहन सहायता। 12+ जिलों में सेवा।"
     />
-    <title>अपना किसान | किसान और सब्जी बाजार का भरोसेमंद साथी</title>
+    <meta
+      name="keywords"
+      content="अपना किसान, सब्जी मंडी, मंडी भाव, किसान, मध्य प्रदेश, कृषि जानकारी, फसल भाव, सब्जी भाव, mandi bhav, apna kisaan"
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="अपना किसान" />
+    <link rel="canonical" href="https://apna-kisaan.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="अपना किसान — मंडी भाव, सब्जी बाजार और कृषि जानकारी"
+    />
+    <meta
+      property="og:description"
+      content="मध्य प्रदेश के किसानों के लिए लाइव मंडी भाव, सब्जी भाव, फसल भाव और कृषि जानकारी।"
+    />
+    <meta property="og:url" content="https://apna-kisaan.vercel.app/" />
+    <meta property="og:image" content="assets/images/अपना.किसान.png" />
+    <meta property="og:site_name" content="अपना किसान" />
+    <meta property="og:locale" content="hi_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="अपना किसान — मंडी भाव और कृषि जानकारी"
+    />
+    <meta
+      name="twitter:description"
+      content="मध्य प्रदेश के किसानों के लिए लाइव मंडी भाव और कृषि जानकारी।"
+    />
+    <title>
+      अपना किसान — मंडी भाव, सब्जी बाजार और कृषि जानकारी | मध्य प्रदेश
+    </title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Karla:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="assets/css/home.css" />
-    <link rel="stylesheet" href="assets/css/responsive.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css"
-    />
+    <link rel="stylesheet" href="assets/css/ak-design.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "अपना किसान",
+        "url": "https://apna-kisaan.vercel.app/",
+        "logo": "https://apna-kisaan.vercel.app/assets/images/ChatGPT Image Sep 8, 2026, 11_23_02 PM.png",
+        "description": "मध्य प्रदेश के किसानों के लिए सब्जी बाजार, मंडी भाव और कृषि जानकारी का मंच।",
+        "telephone": "+91-626-507-1588",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "इंदौर",
+          "addressRegion": "मध्य प्रदेश",
+          "addressCountry": "IN"
+        }
+      }
+    </script>
+
+    <style>
+      /* ============================================================
+     HOME PAGE — BANNER SLIDER + SECTION STYLES
+     All ak-design.css tokens available.
+     ============================================================ */
+
+      /* ── Slider ─────────────────────────────────────────────── */
+      .ak-slider-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: var(--ak-green-dark);
+        /* Reserve height so page doesn't jump while images load */
+        min-height: 320px;
+      }
+      .ak-slider-track {
+        display: flex;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+      }
+      .ak-slide {
+        min-width: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+      .ak-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        /* Prevent layout shift on tall images */
+        max-height: 75vh;
+      }
+
+      /* ── Slider nav arrows ───────────────────────────────────── */
+      .ak-slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 46px;
+        height: 46px;
+        background: rgba(255, 255, 255, 0.92);
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: var(--ak-green);
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+        transition:
+          background 0.2s,
+          color 0.2s,
+          transform 0.2s;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .ak-slider-arrow:hover {
+        background: var(--ak-green);
+        color: #fff;
+      }
+      .ak-slider-arrow:focus-visible {
+        outline: 3px solid var(--ak-green-bright);
+        outline-offset: 2px;
+      }
+      .ak-slider-prev {
+        left: 14px;
+      }
+      .ak-slider-next {
+        right: 14px;
+      }
+
+      /* ── Slider dots ─────────────────────────────────────────── */
+      .ak-slider-dots {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 20;
+      }
+      .ak-slider-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .ak-slider-dot.active {
+        background: var(--ak-green-bright);
+        transform: scale(1.3);
+      }
+
+      /* ── Slider badge (live indicator) ──────────────────────── */
+      .ak-slider-live {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background: rgba(26, 92, 42, 0.88);
+        color: #fff;
+        font: 700 11px var(--ak-font-en);
+        padding: 5px 12px;
+        border-radius: 20px;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        backdrop-filter: blur(4px);
+      }
+      .ak-slider-live-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--ak-green-bright);
+        border-radius: 50%;
+        animation: ak-pulse-dot 1.4s ease-in-out infinite;
+      }
+      @keyframes ak-pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.7);
+        }
+      }
+
+      /* ── Slide counter ───────────────────────────────────────── */
+      .ak-slider-counter {
+        position: absolute;
+        bottom: 14px;
+        right: 14px;
+        background: rgba(0, 0, 0, 0.45);
+        color: rgba(255, 255, 255, 0.9);
+        font: 700 12px var(--ak-font-en);
+        padding: 4px 10px;
+        border-radius: 20px;
+        z-index: 20;
+        backdrop-filter: blur(4px);
+      }
+
+      /* ── Price ticker ────────────────────────────────────────── */
+      .ak-ticker-wrap {
+        background: var(--ak-green-dark);
+        padding: 11px 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .ak-ticker-inner {
+        display: inline-flex;
+        gap: 0;
+        animation: ak-ticker 35s linear infinite;
+      }
+      .ak-ticker-wrap:hover .ak-ticker-inner {
+        animation-play-state: paused;
+      }
+      .ak-ticker-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 26px;
+        border-right: 1px solid rgba(255, 255, 255, 0.14);
+        font: 600 13px var(--ak-font-hi);
+        color: #fff;
+      }
+      .ak-ticker-item i {
+        color: var(--ak-lime);
+        font-size: 12px;
+      }
+      .ak-ticker-up {
+        color: var(--ak-green-bright);
+        font-size: 11px;
+      }
+      .ak-ticker-down {
+        color: #f87171;
+        font-size: 11px;
+      }
+      @keyframes ak-ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ── District card grid ──────────────────────────────────── */
+      .ak-district-img-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .ak-district-img-card {
+        position: relative;
+        border-radius: var(--ak-r-lg);
+        overflow: hidden;
+        box-shadow: var(--ak-shadow-card);
+        aspect-ratio: 4/3;
+        transition:
+          transform var(--ak-transition),
+          box-shadow var(--ak-transition);
+        display: block;
+        text-decoration: none;
+      }
+      .ak-district-img-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--ak-shadow-lg);
+      }
+      .ak-district-img-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .ak-district-img-card:hover img {
+        transform: scale(1.06);
+      }
+      .ak-district-img-label {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(15, 61, 27, 0.85));
+        color: #fff;
+        font: 700 13px var(--ak-font-hi);
+        padding: 24px 12px 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .ak-district-img-label i {
+        color: var(--ak-lime);
+        font-size: 11px;
+      }
+
+      /* ── Team cards ──────────────────────────────────────────── */
+      .ak-team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      .ak-team-card {
+        background: var(--ak-white);
+        border: 1.5px solid var(--ak-border);
+        border-radius: var(--ak-r-xl);
+        overflow: hidden;
+        box-shadow: var(--ak-shadow-card);
+        transition: all var(--ak-transition);
+        text-align: center;
+      }
+      .ak-team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--ak-shadow-lg);
+      }
+      .ak-team-card-img {
+        width: 100%;
+        aspect-ratio: 3/3.2;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+      .ak-team-card-body {
+        padding: 18px 16px 20px;
+      }
+      .ak-team-card-body strong {
+        display: block;
+        font: 700 16px var(--ak-font-hi);
+        color: var(--ak-text);
+        margin-bottom: 4px;
+      }
+      .ak-team-card-body span {
+        font: 500 12px var(--ak-font-hi);
+        color: var(--ak-green);
+        display: block;
+        margin-bottom: 8px;
+      }
+      .ak-team-card-body p {
+        font: 400 12px/1.7 var(--ak-font-hi);
+        color: var(--ak-text-muted);
+      }
+
+      /* ── About image block ───────────────────────────────────── */
+      .ak-about-img-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .ak-about-img-grid img {
+        width: 100%;
+        border-radius: var(--ak-r-lg);
+        object-fit: cover;
+        box-shadow: var(--ak-shadow);
+      }
+      .ak-about-img-grid img:first-child {
+        grid-row: span 2;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ── MP Map section ──────────────────────────────────────── */
+      .ak-mp-map-wrap {
+        border-radius: var(--ak-r-xl);
+        overflow: hidden;
+        box-shadow: var(--ak-shadow-lg);
+        border: 3px solid var(--ak-green-light);
+      }
+      .ak-mp-map-wrap img {
+        width: 100%;
+        display: block;
+      }
+
+      /* ── Gallery strip ───────────────────────────────────────── */
+      .ak-gallery-strip {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+      }
+      .ak-gallery-item {
+        border-radius: var(--ak-r);
+        overflow: hidden;
+        aspect-ratio: 16/9;
+        box-shadow: var(--ak-shadow-sm);
+        transition: transform var(--ak-transition);
+      }
+      .ak-gallery-item:hover {
+        transform: scale(1.04);
+        box-shadow: 0 8px 24px rgba(15, 62, 27, 0.15);
+      }
+      .ak-gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ── Responsive overrides ────────────────────────────────── */
+      @media (max-width: 1024px) {
+        .ak-district-img-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .ak-slide img {
+          max-height: 60vw;
+        }
+        .ak-slider-arrow {
+          width: 36px;
+          height: 36px;
+          font-size: 14px;
+        }
+        .ak-district-img-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-team-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ak-about-img-grid {
+          grid-template-columns: 1fr;
+        }
+        .ak-about-img-grid img:first-child {
+          grid-row: auto;
+          height: 240px;
+        }
+      }
+      @media (max-width: 480px) {
+        .ak-slide img {
+          max-height: 56vw;
+        }
+        .ak-slider-arrow {
+          display: none;
+        }
+        .ak-district-img-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px;
+        }
+        .ak-team-grid {
+          grid-template-columns: 1fr;
+        }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
   </head>
-  <body class="ak-home">
+  <body>
+    <!-- ── TOP BAR ─────────────────────────────────────────────── -->
     <div class="ak-topbar">
       <div class="ak-shell ak-topbar-inner">
-        <span
-          ><i class="fa-solid fa-phone"></i>
-          <a href="tel:+916265071588">+91 626 507 1588</a></span
-        ><span
-          ><i class="fa-solid fa-envelope"></i>
-          <a href="mailto:hemantkachhi2002@gmail.com"
-            >hemantkachhi2002@gmail.com</a
-          ></span
-        ><span class="ak-topbar-note">किसानों के साथ, हर मौसम में</span>
+        <a href="tel:+916265071588"
+          ><i class="fa-solid fa-phone"></i> +91 626 507 1588</a
+        >
+        <a href="mailto:hemantkachhi2002@gmail.com"
+          ><i class="fa-solid fa-envelope"></i> hemantkachhi2002@gmail.com</a
+        >
+        <span class="ak-topbar-note"
+          ><i class="fa-solid fa-seedling"></i> किसानों के साथ, हर मौसम
+          में</span
+        >
       </div>
     </div>
-    
+
+    <!-- ── HEADER / NAV ─────────────────────────────────────────── -->
     <header class="ak-header">
-      <nav
-        class="navbar navbar-expand-lg ak-shell ak-nav"
-        aria-label="मुख्य नेविगेशन"
-      >
+      <nav class="ak-shell ak-nav" aria-label="मुख्य नेविगेशन">
         <a
-          class="navbar-brand ak-brand"
+          class="ak-brand"
           href="home.html"
-          aria-label="अपना किसान होम"
-          ><img
-            src="assets/images/stock - Copy.png"
-            alt="अपना किसान लोगो"
-          /><span
-            ><strong>अपना किसान</strong><small>किसान का अपना बाजार</small></span
-          ></a
+          aria-label="अपना किसान — मुख्य पृष्ठ"
         >
+          <img
+            src="assets/images/ChatGPT Image Sep 8, 2026, 11_23_02 PM.png"
+            alt="अपना किसान लोगो"
+            width="52"
+            height="52"
+          />
+          <span
+            ><strong>अपना किसान</strong
+            ><small>ग्रामीण सब्जी — शहरी वितरण</small></span
+          >
+        </a>
         <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#akMenu"
-          aria-controls="akMenu"
-          aria-expanded="false"
+          class="navbar-toggler ak-toggler"
+          id="navToggle"
           aria-label="मेनू खोलें"
+          aria-expanded="false"
+          aria-controls="akMainMenu"
         >
           <i class="fa-solid fa-bars"></i>
         </button>
-        <div class="collapse navbar-collapse" id="akMenu">
-          <ul class="navbar-nav ml-auto align-items-lg-center ak-links">
-            <li class="nav-item">
-              <a class="nav-link active" href="home.html">होम</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropbtn" href="service.html"
-                >सब्जी बाजार <i class="fa-solid fa-chevron-down"></i
-              ></a>
-              <div class="dropdown-content">
-                <a href="service1.html">दमोह</a><a href="service2.html">पन्ना</a
-                ><a href="service3.html">छतरपुर</a
-                ><a href="services4.html">भोपाल</a
-                ><a href="internship.html">राजगढ़</a
-                ><a href="service5.html">सागर</a
-                ><a href="service6.html">नरसिंहपुर</a
-                ><a href="service7.html">जबलपुर</a
-                ><a href="service8.html">ग्वालियर</a
-                ><a href="service9.html">बालाघाट</a
-                ><a href="service10.html">रीवा</a
-                ><a href="service11.html">टीकमगढ़</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">हमारे बारे में</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="information.html">जानकारी</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="market-price.html">आज का भाव</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contactus.html">संपर्क करें</a>
-            </li>
-            <li class="nav-item ml-lg-3">
-              <a class="ak-button ak-button-small" href="contactus.html"
-                ><i class="fa-solid fa-arrow-right"></i> जुड़ें</a
+        <ul class="ak-links" id="akMainMenu" role="menubar">
+          <li role="none">
+            <a
+              class="nav-link active"
+              href="home.html"
+              role="menuitem"
+              aria-current="page"
+              >होम</a
+            >
+          </li>
+          <li class="dropdown" role="none">
+            <a
+              class="nav-link dropbtn"
+              href="service.html"
+              role="menuitem"
+              aria-haspopup="true"
+            >
+              सब्जी बाजार <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-content" role="menu">
+              <a href="service1.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> दमोह</a
               >
-            </li>
-          </ul>
-        </div>
+              <a href="service2.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> पन्ना</a
+              >
+              <a href="service3.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> छतरपुर</a
+              >
+              <a href="services4.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> भोपाल</a
+              >
+              <a href="internship.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> राजगढ़</a
+              >
+              <a href="service5.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> सागर</a
+              >
+              <a href="service6.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> नरसिंहपुर</a
+              >
+              <a href="service7.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> जबलपुर</a
+              >
+              <a href="service8.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> ग्वालियर</a
+              >
+              <a href="service9.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> बालाघाट</a
+              >
+              <a href="service10.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> रीवा</a
+              >
+              <a href="service11.html" role="menuitem"
+                ><i class="fa-solid fa-location-dot"></i> टीकमगढ़</a
+              >
+            </div>
+          </li>
+          <li role="none">
+            <a class="nav-link" href="about.html" role="menuitem"
+              >हमारे बारे में</a
+            >
+          </li>
+          <li role="none">
+            <a class="nav-link" href="information.html" role="menuitem"
+              >कृषि जानकारी</a
+            >
+          </li>
+          <li class="dropdown ak-bhav-dropdown" role="none">
+            <a
+              class="nav-link dropbtn"
+              href="market-price.html"
+              role="menuitem"
+              aria-haspopup="true"
+            >
+              आज का भाव <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <div class="dropdown-content ak-bhav-menu" role="menu">
+              <a href="market-price.html" role="menuitem"
+                ><i class="fa-solid fa-store"></i> बाजार भाव</a
+              >
+              <a href="vegetable-price.html" role="menuitem"
+                ><i class="fa-solid fa-leaf"></i> सब्जी भाव</a
+              >
+              <a href="crop-price.html" role="menuitem"
+                ><i class="fa-solid fa-wheat-awn"></i> फसल भाव</a
+              >
+            </div>
+          </li>
+          <li role="none">
+            <a class="nav-link" href="contactus.html" role="menuitem"
+              >संपर्क करें</a
+            >
+          </li>
+          <li role="none">
+            <a class="ak-nav-cta" href="contactus.html"
+              ><i class="fa-solid fa-arrow-right"></i> जुड़ें</a
+            >
+          </li>
+        </ul>
       </nav>
     </header>
-    <main>
-      <section class="ak-hero">
-        <div class="ak-shell ak-hero-grid">
-          <div class="ak-hero-copy" data-aos="fade-up">
-            <p class="ak-kicker"><span></span> मध्य प्रदेश का किसान नेटवर्क</p>
-            <h1>आपकी फसल,<br /><em>आपका सही बाजार।</em></h1>
-            <p class="ak-hero-text">
-              अपना किसान किसानों को सब्जी बाजार की जानकारी, भरोसेमंद परिवहन और
-              समय पर भुगतान से जोड़ने का प्रयास है। बेहतर दाम के लिए सही जानकारी
-              से शुरुआत करें।
-            </p>
-            <div class="ak-actions">
-              <a class="ak-button" href="service.html"
-                >सब्जी बाजार देखें <i class="fa-solid fa-arrow-right"></i></a
-              ><a class="ak-text-link" href="information.html"
-                >जानिए कैसे काम करता है <i class="fa-solid fa-play"></i
-              ></a>
-            </div>
-            <div class="ak-hero-proof">
-              <div><strong>12+</strong><span>जिले जुड़े</span></div>
-              <div><strong>100%</strong><span>पारदर्शी जानकारी</span></div>
-              <div><strong>365</strong><span>दिन सहयोग</span></div>
-            </div>
-          </div>
-          <div class="ak-hero-visual" data-aos="fade-left" data-aos-delay="100">
-            <div class="ak-image-frame">
+
+    <main id="main-content">
+      <!-- ══════════════════════════════════════════════════════════
+     HERO BANNER SLIDER
+     10 slides · auto-play 4500ms · touch/swipe · arrows · dots
+     ══════════════════════════════════════════════════════════ -->
+      <section
+        class="ak-slider-section"
+        id="akHeroSlider"
+        aria-label="मुख्य बैनर स्लाइडर"
+      >
+        <!-- Live badge -->
+        <div class="ak-slider-live" aria-hidden="true">
+          <span class="ak-slider-live-dot"></span> लाइव भाव
+        </div>
+
+        <!-- Slide counter -->
+        <div class="ak-slider-counter" id="sliderCounter" aria-hidden="true">
+          1 / 10
+        </div>
+
+        <!-- Track -->
+        <div class="ak-slider-track" id="sliderTrack">
+          <div class="ak-slide">
+            <a href="about.html">
               <img
-                src="assets/images/internatinal coffee Day.png"
-                alt="किसानों के लिए परिवहन और सब्जी बाजार सेवा"
-                loading="eager"
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
               />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="service.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_56_46 PM.png"
+                alt="किसानों के लिए एक ही प्लेटफॉर्म | अपना किसान"
+                loading="lazy"
+              />
+            </a>
+          </div>
+
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+        <!-- /.ak-slider-track -->
+
+        <!-- Prev / Next arrows -->
+        <button
+          class="ak-slider-arrow ak-slider-prev"
+          id="sliderPrev"
+          aria-label="पिछला स्लाइड"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button
+          class="ak-slider-arrow ak-slider-next"
+          id="sliderNext"
+          aria-label="अगला स्लाइड"
+        >
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <!-- Dot navigation -->
+        <div
+          class="ak-slider-dots"
+          role="tablist"
+          aria-label="स्लाइड नेविगेशन"
+          id="sliderDots"
+        >
+          <button
+            class="ak-slider-dot active"
+            role="tab"
+            aria-label="स्लाइड 1"
+            aria-selected="true"
+            data-index="0"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 2"
+            aria-selected="false"
+            data-index="1"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 3"
+            aria-selected="false"
+            data-index="2"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 4"
+            aria-selected="false"
+            data-index="3"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 5"
+            aria-selected="false"
+            data-index="4"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 6"
+            aria-selected="false"
+            data-index="5"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 7"
+            aria-selected="false"
+            data-index="6"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 8"
+            aria-selected="false"
+            data-index="7"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 9"
+            aria-selected="false"
+            data-index="8"
+          ></button>
+          <button
+            class="ak-slider-dot"
+            role="tab"
+            aria-label="स्लाइड 10"
+            aria-selected="false"
+            data-index="9"
+          ></button>
+        </div>
+      </section>
+      <!-- /#akHeroSlider -->
+
+      <!-- ── PRICE TICKER ──────────────────────────────────────────── -->
+      <div class="ak-ticker-wrap" aria-label="लाइव सब्जी भाव">
+        <div class="ak-ticker-inner" id="priceTicker">
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-leaf"></i> टमाटर &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,500/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-circle-half-stroke"></i> प्याज &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-egg"></i> आलू &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹1,600/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-wheat-awn"></i> गेहूं &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-circle-dot"></i> चना &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹5,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-seedling"></i> सोयाबीन &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹4,900/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-pepper-hot"></i> हरी मिर्च &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹4,200/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-carrot"></i> गाजर &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,900/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-leaf"></i> सरसों &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹5,700/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-seedling"></i> मक्का &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹2,100/क्वि.</span
+            ></span
+          >
+          <!-- Duplicate for seamless loop -->
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-leaf"></i> टमाटर &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,500/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-circle-half-stroke"></i> प्याज &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-egg"></i> आलू &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹1,600/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-wheat-awn"></i> गेहूं &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-circle-dot"></i> चना &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹5,400/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-seedling"></i> सोयाबीन &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹4,900/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-pepper-hot"></i> हरी मिर्च &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹4,200/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-carrot"></i> गाजर &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹2,900/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-leaf"></i> सरसों &nbsp;<span
+              class="ak-ticker-up"
+              >▲ ₹5,700/क्वि.</span
+            ></span
+          >
+          <span class="ak-ticker-item"
+            ><i class="fa-solid fa-seedling"></i> मक्का &nbsp;<span
+              class="ak-ticker-down"
+              >▼ ₹2,100/क्वि.</span
+            ></span
+          >
+        </div>
+      </div>
+
+      <!-- ── STATS STRIP ─────────────────────────────────────────── -->
+      <div class="ak-stats-strip">
+        <div class="ak-shell">
+          <div class="ak-stats-grid">
+            <div class="ak-stat-item">
+              <div class="ak-stat-icon green">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div class="ak-stat-text">
+                <strong>12+</strong><span>जिले कवर</span>
+              </div>
             </div>
-            <div class="ak-floating-card">
-              <span class="ak-icon"><i class="fa-solid fa-truck-fast"></i></span
-              ><span
-                ><strong>फसल की सुरक्षित ढुलाई</strong
-                ><small>घर से बाजार तक सहयोग</small></span
-              >
+            <div class="ak-stat-item">
+              <div class="ak-stat-icon orange">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="ak-stat-text">
+                <strong>50+</strong><span>सब्जी मंडियां</span>
+              </div>
+            </div>
+            <div class="ak-stat-item">
+              <div class="ak-stat-icon yellow">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div class="ak-stat-text">
+                <strong>लाइव</strong><span>मंडी भाव</span>
+              </div>
+            </div>
+            <div class="ak-stat-item">
+              <div class="ak-stat-icon teal">
+                <i class="fa-solid fa-handshake"></i>
+              </div>
+              <div class="ak-stat-text">
+                <strong>100%</strong><span>मुफ़्त सेवा</span>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <section class="ak-strip">
-        <div class="ak-shell ak-strip-grid">
-          <div>
-            <i class="fa-solid fa-seedling"></i
-            ><span
-              ><strong>किसान पहले</strong
-              ><small>आपकी जरूरत, हमारी प्राथमिकता</small></span
-            >
-          </div>
-          <div>
-            <i class="fa-solid fa-chart-line"></i
-            ><span
-              ><strong>बाजार की समझ</strong
-              ><small>मांग और कीमत की जानकारी</small></span
-            >
-          </div>
-          <div>
-            <i class="fa-solid fa-hand-holding-heart"></i
-            ><span
-              ><strong>भरोसे का साथ</strong
-              ><small>साफ जानकारी, सरल संपर्क</small></span
-            >
-          </div>
-        </div>
-      </section>
-      <section class="ak-section ak-services">
+      </div>
+
+      <!-- ── QUICK ACCESS ────────────────────────────────────────── -->
+      <section class="ak-section" aria-labelledby="quick-h2">
         <div class="ak-shell">
           <div class="ak-section-heading">
             <div>
-              <p class="ak-kicker"><span></span> हमारी सेवाएं</p>
-              <h2>खेती से बाजार तक,<br /><em>हर कदम पर साथ।</em></h2>
+              <p class="ak-kicker">त्वरित जानकारी</p>
+              <h2 id="quick-h2">आज की जरूरी<br /><em>कृषि जानकारी।</em></h2>
             </div>
-            <p>
+            <p class="ak-section-desc">
+              किसानों के लिए सबसे जरूरी जानकारी — तेज़, सटीक और बिल्कुल मुफ़्त।
+            </p>
+          </div>
+          <div class="ak-quick-grid">
+            <a class="ak-quick-card" href="market-price.html">
+              <div class="ak-quick-icon green" style="--ak-color: #22c55e">
+                <i class="fa-solid fa-store"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>आज का मंडी भाव</h3>
+                <p>सब्जियों और फसलों के ताज़ा बाजार मूल्य देखें।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a class="ak-quick-card" href="vegetable-price.html">
+              <div class="ak-quick-icon green" style="--ak-color: #22c55e">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>सब्जी भाव</h3>
+                <p>टमाटर, प्याज, आलू सहित सभी सब्जियों के भाव।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a class="ak-quick-card" href="crop-price.html">
+              <div class="ak-quick-icon yellow" style="--ak-color: #f59e0b">
+                <i class="fa-solid fa-wheat-awn"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>फसल भाव</h3>
+                <p>गेहूं, सोयाबीन, मक्का सहित MP की प्रमुख फसलें।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a class="ak-quick-card" href="information.html">
+              <div class="ak-quick-icon orange" style="--ak-color: #f97316">
+                <i class="fa-solid fa-book-open"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>कृषि जानकारी</h3>
+                <p>खेती की सलाह, मंडी समझ और सही बिक्री के तरीके।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a class="ak-quick-card" href="service.html">
+              <div class="ak-quick-icon blue" style="--ak-color: #2563eb">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>जिला बाजार</h3>
+                <p>अपने जिले की सब्जी मंडी और बाजार की जानकारी।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a class="ak-quick-card" href="contactus.html">
+              <div class="ak-quick-icon teal" style="--ak-color: #0d9488">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="ak-quick-card-body">
+                <h3>विशेषज्ञ सहायता</h3>
+                <p>परिवहन, भुगतान या सहायता के लिए संपर्क करें।</p>
+              </div>
+              <span class="ak-quick-arrow"
+                ><i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── ABOUT / INTRO SECTION ──────────────────────────────── -->
+      <section class="ak-section ak-section-alt" aria-labelledby="about-h2">
+        <div class="ak-shell">
+          <div class="ak-process-grid">
+            <!-- Left: About images grid -->
+            <div class="ak-about-img-grid">
+              <img
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_23_27 PM.png"
+                alt="अपना किसान — किसान और खेत"
+                loading="lazy"
+              />
+              <img
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_56_46 PM.png"
+                alt="अपना किसान — सब्जी बाजार"
+                loading="lazy"
+              />
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_25_22 AM.png"
+                alt="अपना किसान — मंडी"
+                loading="lazy"
+              />
+            </div>
+
+            <!-- Right: About text -->
+            <div>
+              <p class="ak-kicker">हमारे बारे में</p>
+              <h2 id="about-h2">
+                मध्य प्रदेश के किसानों का<br /><em>भरोसेमंद साथी।</em>
+              </h2>
+              <p class="ak-muted" style="margin-bottom: 16px">
+                अपना किसान मध्य प्रदेश के ग्रामीण किसानों को शहरी बाजार से
+                जोड़ने का एक भरोसेमंद मंच है। हम किसानों को सब्जी बाजार की सटीक
+                जानकारी, लाइव मंडी भाव, सुरक्षित परिवहन और कृषि मार्गदर्शन देते
+                हैं — बिल्कुल मुफ़्त।
+              </p>
+              <div class="ak-steps">
+                <div class="ak-step">
+                  <div class="ak-step-num">01</div>
+                  <div class="ak-step-body">
+                    <strong>सही जानकारी, सही समय</strong>
+                    <span
+                      >लाइव मंडी भाव और बाजार की जानकारी — हर रोज़ अपडेट।</span
+                    >
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">02</div>
+                  <div class="ak-step-body">
+                    <strong>12+ जिलों में नेटवर्क</strong>
+                    <span
+                      >दमोह, पन्ना, छतरपुर से जबलपुर, इंदौर तक — हर जिले में
+                      उपस्थिति।</span
+                    >
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">03</div>
+                  <div class="ak-step-body">
+                    <strong>भरोसेमंद परिवहन</strong>
+                    <span
+                      >फसल को सुरक्षित बाजार तक पहुंचाने की बेहतर
+                      व्यवस्था।</span
+                    >
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">04</div>
+                  <div class="ak-step-body">
+                    <strong>100% मुफ़्त सेवा</strong>
+                    <span
+                      >किसानों के लिए सभी जानकारी और सहायता बिल्कुल
+                      मुफ़्त।</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                style="
+                  margin-top: 28px;
+                  display: flex;
+                  gap: 12px;
+                  flex-wrap: wrap;
+                "
+              >
+                <a class="ak-btn-primary" href="about.html"
+                  ><i class="fa-solid fa-circle-info"></i> और जानें</a
+                >
+                <a
+                  class="ak-btn-outline-white"
+                  style="
+                    color: var(--ak-green);
+                    border-color: var(--ak-green-bright);
+                    background: var(--ak-green-xlight);
+                  "
+                  href="contactus.html"
+                  ><i class="fa-solid fa-phone"></i> संपर्क करें</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CATEGORY CHIPS ────────────────────────────────────────── -->
+      <section class="ak-section" aria-labelledby="cat-h2">
+        <div class="ak-shell">
+          <div class="ak-section-heading">
+            <div>
+              <p class="ak-kicker">फसल श्रेणियां</p>
+              <h2 id="cat-h2">अपनी फसल की<br /><em>श्रेणी चुनें।</em></h2>
+            </div>
+            <a class="ak-see-all" href="market-price.html"
+              >सभी भाव देखें <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="ak-category-grid">
+            <a class="ak-category-card" href="vegetable-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #dcfce7; color: #15803d"
+              >
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+              <h3>सब्जियां</h3>
+              <span>टमाटर, प्याज, आलू</span>
+            </a>
+            <a class="ak-category-card" href="crop-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #fef9c3; color: #ca8a04"
+              >
+                <i class="fa-solid fa-wheat-awn"></i>
+              </div>
+              <h3>अनाज</h3>
+              <span>गेहूं, धान, मक्का</span>
+            </a>
+            <a class="ak-category-card" href="crop-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #fff7ed; color: #ea580c"
+              >
+                <i class="fa-solid fa-circle-dot"></i>
+              </div>
+              <h3>दलहन</h3>
+              <span>चना, अरहर, मूंग</span>
+            </a>
+            <a class="ak-category-card" href="crop-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #fef3c7; color: #b45309"
+              >
+                <i class="fa-solid fa-droplet"></i>
+              </div>
+              <h3>तिलहन</h3>
+              <span>सोयाबीन, सरसों, तिल</span>
+            </a>
+            <a class="ak-category-card" href="vegetable-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #f0fdf4; color: #16a34a"
+              >
+                <i class="fa-solid fa-pepper-hot"></i>
+              </div>
+              <h3>मसाले</h3>
+              <span>मिर्च, अदरक, लहसुन</span>
+            </a>
+            <a class="ak-category-card" href="crop-price.html">
+              <div
+                class="ak-cat-icon"
+                style="background: #f0f9ff; color: #0369a1"
+              >
+                <i class="fa-solid fa-cloud-rain"></i>
+              </div>
+              <h3>नकदी फसल</h3>
+              <span>कपास, गन्ना, जूट</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MANDI BHAV PREVIEW ─────────────────────────────────────── -->
+      <section class="ak-section ak-section-alt" aria-labelledby="mandi-h2">
+        <div class="ak-shell">
+          <div class="ak-section-heading">
+            <div>
+              <p class="ak-kicker">लाइव भाव</p>
+              <h2 id="mandi-h2">आज का<br /><em>मंडी भाव।</em></h2>
+            </div>
+            <a class="ak-see-all" href="market-price.html"
+              >पूरा भाव देखें <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="ak-notice ak-notice-info" style="margin-bottom: 20px">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+              <strong>डेटा स्रोत:</strong> नीचे उदाहरण भाव दिखाए गए हैं।
+              <a
+                href="market-price.html"
+                style="color: #1e40af; font-weight: 700"
+                >यहाँ क्लिक करें</a
+              >
+              लाइव farmer.in API से ताज़ा भाव देखने के लिए।
+            </div>
+          </div>
+          <div class="ak-mandi-grid">
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">टमाटर<small>Tomato</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fee2e2; color: #dc2626"
+                >
+                  <i class="fa-solid fa-circle"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹2,500 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹1,400</span>
+                <span class="ak-mandi-range-max">अधि: ₹3,500</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-same"
+                ><i class="fa-solid fa-equals"></i> स्थिर</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">प्याज<small>Onion</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fce7f3; color: #be185d"
+                >
+                  <i class="fa-solid fa-circle-half-stroke"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹2,400 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹1,800</span>
+                <span class="ak-mandi-range-max">अधि: ₹3,200</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-up"
+                ><i class="fa-solid fa-arrow-trend-up"></i> बढ़त</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">आलू<small>Potato</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fef9c3; color: #ca8a04"
+                >
+                  <i class="fa-solid fa-egg"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹1,600 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹1,200</span>
+                <span class="ak-mandi-range-max">अधि: ₹2,100</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-down"
+                ><i class="fa-solid fa-arrow-trend-down"></i> गिरावट</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">गेहूं<small>Wheat</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fef9c3; color: #b45309"
+                >
+                  <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹2,400 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹2,200</span>
+                <span class="ak-mandi-range-max">अधि: ₹2,600</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-up"
+                ><i class="fa-solid fa-arrow-trend-up"></i> बढ़त</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">चना<small>Chickpea</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fef3c7; color: #d97706"
+                >
+                  <i class="fa-solid fa-circle-dot"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹5,400 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹5,000</span>
+                <span class="ak-mandi-range-max">अधि: ₹5,800</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-up"
+                ><i class="fa-solid fa-arrow-trend-up"></i> बढ़त</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">
+                  सोयाबीन<small>Soybean</small>
+                </div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #d1fae5; color: #059669"
+                >
+                  <i class="fa-solid fa-circle"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹4,900 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹4,500</span>
+                <span class="ak-mandi-range-max">अधि: ₹5,200</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-down"
+                ><i class="fa-solid fa-arrow-trend-down"></i> गिरावट</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">सरसों<small>Mustard</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #fef9c3; color: #ca8a04"
+                >
+                  <i class="fa-solid fa-seedling"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹5,700 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹5,200</span>
+                <span class="ak-mandi-range-max">अधि: ₹6,100</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-up"
+                ><i class="fa-solid fa-arrow-trend-up"></i> बढ़त</span
+              >
+            </div>
+            <div class="ak-mandi-card">
+              <div class="ak-mandi-card-head">
+                <div class="ak-mandi-vegname">लहसुन<small>Garlic</small></div>
+                <div
+                  class="ak-mandi-icon"
+                  style="background: #ede9fe; color: #7c3aed"
+                >
+                  <i class="fa-solid fa-circle-dot"></i>
+                </div>
+              </div>
+              <div class="ak-mandi-price">₹7,800 <small>/ क्विंटल</small></div>
+              <div class="ak-mandi-range">
+                <span class="ak-mandi-range-min">न्यू: ₹6,000</span>
+                <span class="ak-mandi-range-max">अधि: ₹10,000</span>
+              </div>
+              <span class="ak-mandi-trend ak-trend-down"
+                ><i class="fa-solid fa-arrow-trend-down"></i> गिरावट</span
+              >
+            </div>
+          </div>
+          <div style="text-align: center; margin-top: 28px">
+            <a class="ak-btn-primary" href="market-price.html"
+              ><i class="fa-solid fa-chart-line"></i> सभी लाइव भाव देखें</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ── SERVICES ──────────────────────────────────────────────── -->
+      <section class="ak-section" aria-labelledby="serv-h2">
+        <div class="ak-shell">
+          <div class="ak-section-heading">
+            <div>
+              <p class="ak-kicker">हमारी सेवाएं</p>
+              <h2 id="serv-h2">
+                खेती से बाजार तक,<br /><em>हर कदम पर साथ।</em>
+              </h2>
+            </div>
+            <p class="ak-section-desc">
               किसानों को अपनी फसल के लिए सही निर्णय लेने में मदद करने वाली
-              उपयोगी जानकारी और सेवाएं।
+              सेवाएं।
             </p>
           </div>
           <div class="ak-service-grid">
             <a
-              class="ak-service-card ak-service-card-featured"
+              class="ak-service-card"
               href="service.html"
-              ><span class="ak-card-number">01</span
-              ><i class="fa-solid fa-shop"></i>
-              <h3>सब्जी बाजार की जानकारी</h3>
-              <p>अपने जिले के बाजार, मांग और बिक्री से जुड़ी जानकारी समझें।</p>
-              <span class="ak-card-link"
-                >बाजार देखें <i class="fa-solid fa-arrow-right"></i></span></a
-            ><a class="ak-service-card" href="information.html"
-              ><span class="ak-card-number">02</span
-              ><i class="fa-solid fa-truck-moving"></i>
-              <h3>सुरक्षित परिवहन</h3>
-              <p>
-                सब्जियों को एक स्थान से दूसरे स्थान तक पहुंचाने की बेहतर
-                व्यवस्था।
-              </p>
-              <span class="ak-card-link"
-                >पूरी जानकारी <i class="fa-solid fa-arrow-right"></i></span></a
-            ><a class="ak-service-card" href="contactus.html"
-              ><span class="ak-card-number">03</span
-              ><i class="fa-solid fa-wallet"></i>
-              <h3>भुगतान और संपर्क</h3>
-              <p>आपकी जरूरत समझने और सही जानकारी देने के लिए हमसे जुड़ें।</p>
-              <span class="ak-card-link"
-                >हमसे जुड़ें <i class="fa-solid fa-arrow-right"></i></span
-            ></a>
-          </div>
-        </div>
-      </section>
-      <section class="ak-section ak-process">
-        <div class="ak-shell ak-process-grid">
-          <div class="ak-process-image">
-            <img
-              src="assets/images/hemantpic2.png"
-              alt="किसान और सब्जी बाजार"
-              loading="lazy"
-            /><span class="ak-image-label"
-              ><i class="fa-solid fa-location-dot"></i> इंदौर, मध्य प्रदेश</span
+              style="--ak-stripe: #22c55e"
             >
-          </div>
-          <div>
-            <p class="ak-kicker"><span></span> हमारा तरीका</p>
-            <h2>जानकारी से निर्णय तक,<br /><em>सरल और स्पष्ट।</em></h2>
-            <p class="ak-muted">
-              किसान को सही बाजार तक पहुंचने के लिए भरोसेमंद जानकारी और समय पर
-              सहयोग मिलना जरूरी है। अपना किसान इसी उद्देश्य से स्थानीय बाजारों
-              और किसानों को एक साथ लाने का प्रयास करता है।
-            </p>
-            <ol class="ak-steps">
-              <li>
-                <b>01</b
-                ><span
-                  ><strong>अपना जिला चुनें</strong
-                  ><small>अपने क्षेत्र की बाजार जानकारी देखें।</small></span
-                >
-              </li>
-              <li>
-                <b>02</b
-                ><span
-                  ><strong>मांग और कीमत समझें</strong
-                  ><small>फसल के लिए बेहतर समय और विकल्प जानें।</small></span
-                >
-              </li>
-              <li>
-                <b>03</b
-                ><span
-                  ><strong>हमसे संपर्क करें</strong
-                  ><small>परिवहन या अन्य सहायता के लिए बात करें।</small></span
-                >
-              </li>
-            </ol>
+              <span class="ak-service-num">01</span>
+              <div
+                class="ak-service-icon-wrap"
+                style="background: #dcfce7; color: #15803d"
+              >
+                <i class="fa-solid fa-shop"></i>
+              </div>
+              <h3>सब्जी बाजार की जानकारी</h3>
+              <p>
+                मध्य प्रदेश के 12 जिलों की सब्जी मंडी और बाजार की सटीक जानकारी।
+                सही समय पर सही बाजार चुनें।
+              </p>
+              <span class="ak-service-link"
+                >बाजार देखें <i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a
+              class="ak-service-card"
+              href="market-price.html"
+              style="--ak-stripe: #f59e0b"
+            >
+              <span class="ak-service-num">02</span>
+              <div
+                class="ak-service-icon-wrap"
+                style="background: #fef9c3; color: #ca8a04"
+              >
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <h3>लाइव मंडी भाव</h3>
+              <p>
+                farmer.in API से प्राप्त ताज़ा मंडी भाव — सब्जी और फसल दोनों।
+                न्यूनतम, अधिकतम और मोडल मूल्य।
+              </p>
+              <span class="ak-service-link"
+                >भाव देखें <i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
+            <a
+              class="ak-service-card"
+              href="contactus.html"
+              style="--ak-stripe: #f97316"
+            >
+              <span class="ak-service-num">03</span>
+              <div
+                class="ak-service-icon-wrap"
+                style="background: #fff7ed; color: #ea580c"
+              >
+                <i class="fa-solid fa-truck-moving"></i>
+              </div>
+              <h3>परिवहन सहायता</h3>
+              <p>
+                सब्जियों को एक स्थान से दूसरे स्थान पर सुरक्षित पहुंचाने की
+                बेहतर व्यवस्था। समय पर भुगतान।
+              </p>
+              <span class="ak-service-link"
+                >संपर्क करें <i class="fa-solid fa-arrow-right"></i
+              ></span>
+            </a>
           </div>
         </div>
       </section>
-      <section class="ak-section ak-districts">
+
+      <!-- ── HOW IT WORKS ───────────────────────────────────────────── -->
+      <section class="ak-section ak-section-alt" aria-labelledby="how-h2">
+        <div class="ak-shell">
+          <div class="ak-process-grid">
+            <div class="ak-process-img-wrap">
+              <img
+                src="assets/images/ChatGPT Image Sep 8, 2026, 11_31_14 PM.png"
+                alt="अपना किसान — इंदौर, मध्य प्रदेश"
+                loading="lazy"
+              />
+              <span class="ak-process-img-label">
+                <i class="fa-solid fa-location-dot"></i> इंदौर, मध्य प्रदेश
+              </span>
+            </div>
+            <div>
+              <p class="ak-kicker">हमारा तरीका</p>
+              <h2 id="how-h2">
+                जानकारी से निर्णय तक,<br /><em>सरल और स्पष्ट।</em>
+              </h2>
+              <p class="ak-muted" style="margin-bottom: 4px">
+                किसान को सही बाजार तक पहुंचने के लिए भरोसेमंद जानकारी और समय पर
+                सहयोग मिलना जरूरी है। अपना किसान इसी उद्देश्य से काम करता है।
+              </p>
+              <div class="ak-steps">
+                <div class="ak-step">
+                  <div class="ak-step-num">01</div>
+                  <div class="ak-step-body">
+                    <strong>आज का भाव देखें</strong>
+                    <span>लाइव मंडी भाव से अपनी फसल का सही दाम जानें।</span>
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">02</div>
+                  <div class="ak-step-body">
+                    <strong>अपना जिला चुनें</strong>
+                    <span>अपने क्षेत्र की बाजार जानकारी और मांग समझें।</span>
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">03</div>
+                  <div class="ak-step-body">
+                    <strong>बेहतर दाम पाएं</strong>
+                    <span
+                      >सही जानकारी और सही बाजार से उचित मूल्य प्राप्त
+                      करें।</span
+                    >
+                  </div>
+                </div>
+                <div class="ak-step">
+                  <div class="ak-step-num">04</div>
+                  <div class="ak-step-body">
+                    <strong>हमसे संपर्क करें</strong>
+                    <span>परिवहन या किसी भी सहायता के लिए हमेशा तैयार।</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top: 28px">
+                <a class="ak-btn-primary" href="information.html"
+                  ><i class="fa-solid fa-book-open"></i> कृषि जानकारी पढ़ें</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DISTRICT IMAGE GRID ───────────────────────────────────── -->
+      <section class="ak-section" aria-labelledby="dist-h2">
         <div class="ak-shell">
           <div class="ak-section-heading">
             <div>
-              <p class="ak-kicker"><span></span> जिले के अनुसार</p>
-              <h2>अपने नजदीकी<br /><em>बाजार को खोजें।</em></h2>
+              <p class="ak-kicker">जिले के अनुसार</p>
+              <h2 id="dist-h2">अपने नजदीकी<br /><em>बाजार को खोजें।</em></h2>
             </div>
-            <div class="ak-search">
-              <i class="fa-solid fa-magnifying-glass"></i
-              ><input
-                id="districtSearch"
+            <div class="ak-district-search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
                 type="search"
-                placeholder="जिले का नाम खोजें"
+                id="districtSearch"
+                placeholder="जिले का नाम खोजें…"
                 aria-label="जिले का नाम खोजें"
               />
             </div>
           </div>
-          <div class="ak-district-grid" id="districtGrid">
-            <a href="service1.html"
-              >दमोह <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service2.html"
-              >पन्ना <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service3.html"
-              >छतरपुर <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="services4.html"
-              >भोपाल <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="internship.html"
-              >राजगढ़ <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service5.html"
-              >सागर <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service6.html"
-              >नरसिंहपुर
-              <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service7.html"
-              >जबलपुर <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service8.html"
-              >ग्वालियर
-              <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service9.html"
-              >बालाघाट <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service10.html"
-              >रीवा <i class="fa-solid fa-arrow-up-right-from-square"></i></a
-            ><a href="service11.html"
-              >टीकमगढ़ <i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></a>
+
+          <!-- Image card grid — service1..12 images -->
+          <div class="ak-district-img-grid" id="districtGrid">
+            <a class="ak-district-img-card" href="service1.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="दमोह — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> दमोह
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service2.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="पन्ना — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> पन्ना
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service3.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="छतरपुर — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> छतरपुर
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="services4.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="भोपाल — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> भोपाल
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="internship.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="राजगढ़ — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> राजगढ़
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service5.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="सागर — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> सागर
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service6.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="नरसिंहपुर — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> नरसिंहपुर
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service7.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="जबलपुर — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> जबलपुर
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service8.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="ग्वालियर — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> ग्वालियर
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service9.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="बालाघाट — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> बालाघाट
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service10.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="रीवा — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> रीवा
+              </div>
+            </a>
+            <a class="ak-district-img-card" href="service11.html">
+              <img
+                src="assets/images/contactlocation.png"
+                alt="टीकमगढ़ — सब्जी मंडी"
+                loading="lazy"
+              />
+              <div class="ak-district-img-label">
+                <i class="fa-solid fa-store"></i> टीकमगढ़
+              </div>
+            </a>
           </div>
-          <p class="ak-empty" id="districtEmpty" hidden>
-            इस नाम का जिला अभी नहीं मिला।
+          <p
+            class="ak-district-empty hidden"
+            id="districtEmpty"
+            aria-live="polite"
+          >
+            इस नाम का जिला नहीं मिला।
           </p>
         </div>
       </section>
-      <section class="ak-cta">
+
+      <!-- ── TEAM SECTION ───────────────────────────────────────────── -->
+      <section class="ak-section ak-section-alt" aria-labelledby="team-h2">
+        <div class="ak-shell">
+          <div class="ak-section-heading">
+            <div>
+              <p class="ak-kicker">हमारी टीम</p>
+              <h2 id="team-h2">किसानों के लिए<br /><em>हमारा समर्पण।</em></h2>
+            </div>
+            <a class="ak-see-all" href="about.html"
+              >हमारे बारे में <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="ak-team-grid">
+            <div class="ak-team-card">
+              <img
+                class="ak-team-card-img"
+                src="assets/images/hemantpic1.png"
+                alt="हेमंत कच्छी — संस्थापक, अपना किसान"
+                loading="lazy"
+              />
+              <div class="ak-team-card-body">
+                <strong>हेमंत कच्छी</strong>
+                <span>संस्थापक एवं CEO</span>
+                <p>
+                  मध्य प्रदेश के किसानों को सही जानकारी और बाजार से जोड़ने का
+                  सपना लेकर अपना किसान की शुरुआत की।
+                </p>
+              </div>
+            </div>
+            <div class="ak-team-card">
+              <img
+                class="ak-team-card-img"
+                src="assets/images/hemantpic2.png"
+                alt="अपना किसान टीम — मध्य प्रदेश"
+                loading="lazy"
+              />
+              <div class="ak-team-card-body">
+                <strong>कृषि विशेषज्ञ</strong>
+                <span>बाजार एवं फसल सलाहकार</span>
+                <p>
+                  12+ जिलों में बाजार अनुसंधान और किसानों को मंडी की सटीक
+                  जानकारी देना हमारी प्राथमिकता है।
+                </p>
+              </div>
+            </div>
+            <div class="ak-team-card">
+              <img
+                class="ak-team-card-img"
+                src="assets/images/hemantpic3.png"
+                alt="अपना किसान टीम"
+                loading="lazy"
+              />
+              <div class="ak-team-card-body">
+                <strong>परिवहन टीम</strong>
+                <span>लॉजिस्टिक्स एवं ढुलाई</span>
+                <p>
+                  फसल को खेत से बाजार तक सुरक्षित पहुंचाने और समय पर भुगतान
+                  सुनिश्चित करने में हमारी भूमिका।
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MP MAP + REGIONAL INFO ────────────────────────────────── -->
+      <section class="ak-section" aria-labelledby="mp-h2">
+        <div class="ak-shell">
+          <div class="ak-process-grid">
+            <div>
+              <p class="ak-kicker">मध्य प्रदेश</p>
+              <h2 id="mp-h2">12+ जिलों में<br /><em>सक्रिय नेटवर्क।</em></h2>
+              <p class="ak-muted" style="margin-bottom: 24px">
+                अपना किसान मध्य प्रदेश के दमोह, पन्ना, छतरपुर, भोपाल, सागर,
+                जबलपुर, ग्वालियर सहित 12 से अधिक जिलों में किसानों को सीधे बाजार
+                से जोड़ रहा है।
+              </p>
+              <div
+                class="ak-content-grid"
+                style="grid-template-columns: repeat(2, 1fr); gap: 14px"
+              >
+                <div class="ak-content-card">
+                  <div
+                    class="ak-content-card-icon"
+                    style="background: #dcfce7; color: #15803d"
+                  >
+                    <i class="fa-solid fa-map-location-dot"></i>
+                  </div>
+                  <h3>विंध्य क्षेत्र</h3>
+                  <p>दमोह, पन्ना, छतरपुर, सागर, रीवा, टीकमगढ़</p>
+                </div>
+                <div class="ak-content-card">
+                  <div
+                    class="ak-content-card-icon"
+                    style="background: #fef9c3; color: #ca8a04"
+                  >
+                    <i class="fa-solid fa-wheat-awn"></i>
+                  </div>
+                  <h3>मालवा क्षेत्र</h3>
+                  <p>भोपाल, राजगढ़, इंदौर और आसपास के जिले</p>
+                </div>
+                <div class="ak-content-card">
+                  <div
+                    class="ak-content-card-icon"
+                    style="background: #eff6ff; color: #2563eb"
+                  >
+                    <i class="fa-solid fa-water"></i>
+                  </div>
+                  <h3>महाकौशल</h3>
+                  <p>जबलपुर, नरसिंहपुर, बालाघाट</p>
+                </div>
+                <div class="ak-content-card">
+                  <div
+                    class="ak-content-card-icon"
+                    style="background: #fff7ed; color: #ea580c"
+                  >
+                    <i class="fa-solid fa-tractor"></i>
+                  </div>
+                  <h3>चंबल क्षेत्र</h3>
+                  <p>ग्वालियर और आसपास के जिले</p>
+                </div>
+              </div>
+              <div style="margin-top: 24px">
+                <a class="ak-btn-primary" href="service.html"
+                  ><i class="fa-solid fa-map-location-dot"></i> अपना जिला
+                  खोजें</a
+                >
+              </div>
+            </div>
+            <div class="ak-mp-map-wrap">
+              <img
+                src="assets/images/mp naksha.jpg"
+                alt="मध्य प्रदेश नक्शा — अपना किसान कवरेज"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── BANNER STRIP (additional promotional banners) ─────────── -->
+      <section
+        class="ak-section ak-section-alt"
+        aria-labelledby="promo-h2"
+        style="padding: 40px 0"
+      >
+        <div class="ak-shell">
+          <div class="ak-section-heading" style="margin-bottom: 20px">
+            <div>
+              <p class="ak-kicker">अपना किसान</p>
+              <h2 id="promo-h2">किसानों का<br /><em>सच्चा साथी।</em></h2>
+            </div>
+          </div>
+          <div class="ak-gallery-strip">
+            <div class="ak-gallery-item">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_42 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </div>
+            <div class="ak-gallery-item">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_22_32 AM.png"
+                alt="अपना किसान — किसान मंडी, आज की कृषि जानकारी"
+                loading="lazy"
+              />
+            </div>
+            <div class="ak-gallery-item">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_25_22 AM.png"
+                alt="अपना किसान — हमारी सेवाएं"
+                loading="lazy"
+              />
+            </div>
+            <div class="ak-gallery-item">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_27_30 AM.png"
+                alt="अपना किसान — आज ही जुड़ें"
+                loading="lazy"
+              />
+            </div>
+            
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- ── CTA SECTION ───────────────────────────────────────────── -->
+      <section class="ak-cta-section" aria-labelledby="cta-h2">
         <div class="ak-shell ak-cta-inner">
           <div>
-            <p class="ak-kicker"><span></span> आज ही शुरुआत करें</p>
-            <h2>आपकी फसल का बेहतर<br /><em>कल, आज की जानकारी से।</em></h2>
+            <p class="ak-kicker">आज ही शुरुआत करें</p>
+            <h2 id="cta-h2">
+              आपकी फसल का बेहतर कल,<br /><em>आज की जानकारी से।</em>
+            </h2>
+            <p>
+              अभी हमसे जुड़ें और मध्य प्रदेश के हजारों किसानों की तरह सही बाजार
+              की जानकारी पाएं।
+            </p>
           </div>
-          <a class="ak-button ak-button-light" href="contactus.html"
-            >संपर्क करें <i class="fa-solid fa-arrow-right"></i
-          ></a>
+          <div class="ak-cta-actions">
+            <a class="ak-btn-white" href="contactus.html"
+              ><i class="fa-solid fa-phone"></i> संपर्क करें</a
+            >
+            <a class="ak-btn-outline-light" href="market-price.html"
+              ><i class="fa-solid fa-chart-line"></i> मंडी भाव देखें</a
+            >
+          </div>
         </div>
       </section>
     </main>
-    <footer class="ak-footer">
-      <div class="ak-shell ak-footer-grid">
-        <div>
-          <a class="ak-brand ak-brand-footer" href="home.html"
-            ><img
-              src="assets/images/stock - Copy.png"
+
+    <!-- ── FOOTER ─────────────────────────────────────────────── -->
+    <footer class="ak-footer" role="contentinfo">
+      <div class="ak-shell">
+        <div class="ak-footer-grid">
+          <div class="ak-footer-brand">
+            <img
+              src="assets/images/ChatGPT Image Sep 8, 2026, 11_23_02 PM.png"
               alt="अपना किसान लोगो"
-            /><span
-              ><strong>अपना किसान</strong
-              ><small>किसान का अपना बाजार</small></span
-            ></a
-          >
-          <p>
-            मध्य प्रदेश के किसानों के लिए बाजार और परिवहन की उपयोगी जानकारी।
-          </p>
+            />
+            <strong>अपना किसान</strong>
+            <small>ग्रामीण सब्जी — शहरी वितरण</small>
+            <p>
+              मध्य प्रदेश के किसानों के लिए सब्जी बाजार, मंडी भाव, कृषि जानकारी
+              और परिवहन सहायता का विश्वसनीय मंच।
+            </p>
+          </div>
+          <div class="ak-footer-col">
+            <h4>उपयोगी लिंक</h4>
+            <a href="home.html"
+              ><i class="fa-solid fa-house"></i> मुख्य पृष्ठ</a
+            >
+            <a href="about.html"
+              ><i class="fa-solid fa-circle-info"></i> हमारे बारे में</a
+            >
+            <a href="service.html"
+              ><i class="fa-solid fa-shop"></i> सब्जी बाजार</a
+            >
+            <a href="information.html"
+              ><i class="fa-solid fa-book-open"></i> कृषि जानकारी</a
+            >
+            <a href="contactus.html"
+              ><i class="fa-solid fa-envelope"></i> संपर्क करें</a
+            >
+          </div>
+          <div class="ak-footer-col">
+            <h4>मंडी भाव</h4>
+            <a href="market-price.html"
+              ><i class="fa-solid fa-store"></i> बाजार भाव</a
+            >
+            <a href="vegetable-price.html"
+              ><i class="fa-solid fa-leaf"></i> सब्जी भाव</a
+            >
+            <a href="crop-price.html"
+              ><i class="fa-solid fa-wheat-awn"></i> फसल भाव</a
+            >
+            <a href="privacy.html"
+              ><i class="fa-solid fa-shield"></i> गोपनीयता नीति</a
+            >
+            <a href="term.html"
+              ><i class="fa-solid fa-file-lines"></i> नियम एवं शर्तें</a
+            >
+          </div>
+          <div class="ak-footer-col ak-footer-contact">
+            <h4>संपर्क करें</h4>
+            <a href="tel:+916265071588"
+              ><i class="fa-solid fa-phone"></i> +91 626 507 1588</a
+            >
+            <a href="mailto:hemantkachhi2002@gmail.com"
+              ><i class="fa-solid fa-envelope"></i>
+              hemantkachhi2002@gmail.com</a
+            >
+            <span
+              ><i class="fa-solid fa-location-dot"></i> इंदौर, मध्य प्रदेश</span
+            >
+            <a href="https://wa.me/916265071588" target="_blank" rel="noopener"
+              ><i class="fa-brands fa-whatsapp"></i> WhatsApp करें</a
+            >
+          </div>
         </div>
-        <div>
-          <h3>त्वरित लिंक</h3>
-          <a href="about.html">हमारे बारे में</a
-          ><a href="service.html">सब्जी बाजार</a
-          ><a href="information.html">जानकारी</a>
-        </div>
-        <div>
-          <h3>संपर्क करें</h3>
-          <a href="tel:+916265071588"
-            ><i class="fa-solid fa-phone"></i> +91 626 507 1588</a
-          ><a href="mailto:hemantkachhi2002@gmail.com"
-            ><i class="fa-solid fa-envelope"></i> hemantkachhi2002@gmail.com</a
-          ><span
-            ><i class="fa-solid fa-location-dot"></i> इंदौर, मध्य प्रदेश</span
+        <div class="ak-footer-bottom">
+          <span
+            >© 2025 अपना किसान. सर्वाधिकार सुरक्षित। मध्य प्रदेश, भारत।</span
           >
-        </div>
-      </div>
-      <div class="ak-footer-bottom">
-        <div class="ak-shell">
-          <span>© 2024 अपना किसान. सर्वाधिकार सुरक्षित।</span
-          ><span
-            ><a href="privacy.html">गोपनीयता</a>
-            <a href="term.html">नियम और शर्तें</a></span
-          >
+          <div class="ak-footer-legal">
+            <a href="privacy.html">गोपनीयता नीति</a>
+            <a href="term.html">नियम एवं शर्तें</a>
+          </div>
         </div>
       </div>
     </footer>
-    +
-    <div class="nav-icon-whatapp">
-      <a href="tel:+916265071588" aria-label="फोन करें"
-        ><i class="fa-solid fa-phone"></i></a
-      ><a href="https://wa.me/916265071588" aria-label="WhatsApp पर संपर्क करें"
-        ><i class="fa-brands fa-whatsapp"></i></a
-      ><a href="mailto:hemantkachhi2002@gmail.com" aria-label="ईमेल भेजें"
-        ><i class="fa-solid fa-envelope"></i
+
+    <!-- ── FLOATING CTA ───────────────────────────────────────────── -->
+    <div class="ak-float-actions" aria-label="त्वरित संपर्क">
+      <a
+        class="ak-float-btn ak-float-phone"
+        href="tel:+916265071588"
+        aria-label="फोन करें"
+        ><i class="fa-solid fa-phone"></i
+      ></a>
+      <a
+        class="ak-float-btn ak-float-whatsapp"
+        href="https://wa.me/916265071588"
+        target="_blank"
+        rel="noopener"
+        aria-label="WhatsApp"
+        ><i class="fa-brands fa-whatsapp"></i
       ></a>
     </div>
-    +
+
+    <!-- ── SCRIPTS ────────────────────────────────────────────────── -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
-    <script src="assets/js/home.js"></script>
-    +
+
+    <script>
+      (function () {
+        "use strict";
+
+        /* ─────────────────────────────────────────────────────────
+     HERO SLIDER
+     - 10 slides
+     - Auto-play: 4500 ms
+     - Touch / swipe support
+     - Keyboard arrow keys
+     - Pause on hover / focus
+     - Dot + counter sync
+     - Respects prefers-reduced-motion
+  ───────────────────────────────────────────────────────── */
+        var SLIDE_COUNT = 10;
+        var INTERVAL_MS = 4500;
+        var SWIPE_MIN_PX = 40;
+
+        var track = document.getElementById("sliderTrack");
+        var dots = document.querySelectorAll(".ak-slider-dot");
+        var counter = document.getElementById("sliderCounter");
+        var prevBtn = document.getElementById("sliderPrev");
+        var nextBtn = document.getElementById("sliderNext");
+        var section = document.getElementById("akHeroSlider");
+
+        var current = 0;
+        var timer = null;
+        var paused = false;
+        var reduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        function goTo(index) {
+          current = (index + SLIDE_COUNT) % SLIDE_COUNT;
+          track.style.transform = "translateX(-" + current * 100 + "%)";
+          dots.forEach(function (d, i) {
+            d.classList.toggle("active", i === current);
+            d.setAttribute("aria-selected", String(i === current));
+          });
+          if (counter) counter.textContent = current + 1 + " / " + SLIDE_COUNT;
+        }
+
+        function next() {
+          goTo(current + 1);
+        }
+        function prev() {
+          goTo(current - 1);
+        }
+
+        function startAuto() {
+          if (reduced) return;
+          stopAuto();
+          timer = setInterval(next, INTERVAL_MS);
+        }
+        function stopAuto() {
+          clearInterval(timer);
+        }
+
+        function pause() {
+          paused = true;
+          stopAuto();
+        }
+        function resume() {
+          paused = false;
+          startAuto();
+        }
+
+        /* Arrow buttons */
+        if (prevBtn)
+          prevBtn.addEventListener("click", function () {
+            prev();
+            stopAuto();
+            startAuto();
+          });
+        if (nextBtn)
+          nextBtn.addEventListener("click", function () {
+            next();
+            stopAuto();
+            startAuto();
+          });
+
+        /* Dot buttons */
+        dots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            goTo(parseInt(this.getAttribute("data-index"), 10));
+            stopAuto();
+            startAuto();
+          });
+        });
+
+        /* Keyboard */
+        if (section) {
+          section.setAttribute("tabindex", "0");
+          section.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowLeft") {
+              prev();
+              stopAuto();
+              startAuto();
+            }
+            if (e.key === "ArrowRight") {
+              next();
+              stopAuto();
+              startAuto();
+            }
+          });
+        }
+
+        /* Pause on hover */
+        if (section) {
+          section.addEventListener("mouseenter", pause);
+          section.addEventListener("mouseleave", resume);
+          section.addEventListener("focusin", pause);
+          section.addEventListener("focusout", function (e) {
+            if (!section.contains(e.relatedTarget)) resume();
+          });
+        }
+
+        /* Touch / swipe */
+        var touchStartX = 0;
+        var touchStartY = 0;
+        if (track) {
+          track.addEventListener(
+            "touchstart",
+            function (e) {
+              touchStartX = e.touches[0].clientX;
+              touchStartY = e.touches[0].clientY;
+            },
+            { passive: true },
+          );
+
+          track.addEventListener(
+            "touchend",
+            function (e) {
+              var dx = e.changedTouches[0].clientX - touchStartX;
+              var dy = e.changedTouches[0].clientY - touchStartY;
+              if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > SWIPE_MIN_PX) {
+                dx < 0 ? next() : prev();
+                stopAuto();
+                startAuto();
+              }
+            },
+            { passive: true },
+          );
+        }
+
+        /* Pause when tab is hidden */
+        document.addEventListener("visibilitychange", function () {
+          document.hidden ? pause() : !paused && resume();
+        });
+
+        /* Init */
+        goTo(0);
+        startAuto();
+
+        /* ─────────────────────────────────────────────────────────
+     NAVBAR TOGGLE (mobile)
+  ───────────────────────────────────────────────────────── */
+        var navToggle = document.getElementById("navToggle");
+        var navMenu = document.getElementById("akMainMenu");
+        if (navToggle && navMenu) {
+          navToggle.addEventListener("click", function () {
+            var open = navMenu.classList.toggle("open");
+            navToggle.setAttribute("aria-expanded", String(open));
+            navToggle.querySelector("i").className = open
+              ? "fa-solid fa-xmark"
+              : "fa-solid fa-bars";
+          });
+        }
+
+        /* Dropdown toggle on mobile */
+        document.querySelectorAll(".dropdown .dropbtn").forEach(function (btn) {
+          btn.addEventListener("click", function (e) {
+            if (window.innerWidth < 992) {
+              e.preventDefault();
+              this.closest(".dropdown").classList.toggle("is-open");
+            }
+          });
+        });
+        document.addEventListener("click", function (e) {
+          if (!e.target.closest(".dropdown")) {
+            document
+              .querySelectorAll(".dropdown.is-open")
+              .forEach(function (d) {
+                d.classList.remove("is-open");
+              });
+          }
+        });
+
+        /* ─────────────────────────────────────────────────────────
+     DISTRICT SEARCH FILTER
+  ───────────────────────────────────────────────────────── */
+        var dSearch = document.getElementById("districtSearch");
+        var dGrid = document.getElementById("districtGrid");
+        var dEmpty = document.getElementById("districtEmpty");
+
+        if (dSearch && dGrid) {
+          dSearch.addEventListener("input", function () {
+            var q = this.value.trim().toLowerCase();
+            var visible = 0;
+            dGrid.querySelectorAll("a").forEach(function (card) {
+              var label = card.querySelector(".ak-district-img-label");
+              var text = label
+                ? label.textContent.toLowerCase()
+                : card.textContent.toLowerCase();
+              var match = !q || text.indexOf(q) !== -1;
+              card.style.display = match ? "" : "none";
+              if (match) visible++;
+            });
+            if (dEmpty) dEmpty.classList.toggle("hidden", visible > 0);
+          });
+        }
+      })();
+    </script>
   </body>
-  +
 </html>

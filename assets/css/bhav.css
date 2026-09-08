@@ -1,0 +1,759 @@
+/* =============================================================
+   bhav.css — Shared styles for vegetable-price.html and crop-price.html
+   Extends market-price.css patterns; imports home.css design tokens.
+   ============================================================= */
+
+/* ── Page shell ─────────────────────────────────────────────── */
+.ak-bhav-page {
+  background: #f7faf4;
+}
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.bhav-hero {
+  background: linear-gradient(118deg, #0b4c35 0%, #176b45 60%, #1e8055 100%);
+  color: #fff;
+  padding: 60px 0 52px;
+  position: relative;
+  overflow: hidden;
+}
+.bhav-hero::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: rgba(199, 232, 107, 0.08);
+  pointer-events: none;
+}
+.bhav-hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.bhav-hero-copy {
+  max-width: 680px;
+}
+.bhav-hero h1 {
+  margin: 0;
+  color: #fff;
+  font: 800 clamp(32px, 5vw, 56px) / 1.2 "Noto Sans Devanagari", sans-serif;
+}
+.bhav-hero h1 em {
+  color: #c7e86b;
+  font-style: normal;
+}
+.bhav-hero-sub {
+  max-width: 620px;
+  margin: 16px 0 0;
+  color: #d0e8d6;
+  font: 14px / 1.85 "Noto Sans Devanagari", sans-serif;
+}
+.bhav-hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+.bhav-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e6f4df;
+  font: 700 12px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-badge i {
+  color: #c7e86b;
+  font-size: 11px;
+}
+.bhav-hero-stat {
+  display: grid;
+  min-width: 175px;
+  padding: 22px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.07);
+  text-align: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.bhav-hero-stat i {
+  font-size: 30px;
+  color: #c7e86b;
+  margin-bottom: 6px;
+}
+.bhav-hero-stat strong {
+  font: 700 15px "Noto Sans Devanagari", sans-serif;
+  color: #fff;
+}
+.bhav-hero-stat small {
+  color: #b0cebc;
+  font: 11px "Noto Sans Devanagari", sans-serif;
+}
+
+/* ── Shell wrapper ───────────────────────────────────────────── */
+.bhav-content {
+  padding: 40px 0 80px;
+}
+
+/* ── Dashboard summary strip ────────────────────────────────── */
+.bhav-dashboard {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 26px;
+}
+.bhav-dash-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 16px 10px 14px;
+  background: #fff;
+  border: 1px solid #e0eadd;
+  border-radius: 11px;
+  box-shadow: 0 4px 14px rgba(22, 69, 45, 0.04);
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+.bhav-dash-card:hover {
+  box-shadow: 0 6px 20px rgba(22, 69, 45, 0.09);
+}
+.bhav-dash-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  font-size: 16px;
+}
+.bhav-dash-icon.green  { background: #e6f2d6; color: #176b45; }
+.bhav-dash-icon.orange { background: #fff0e7; color: #e8753d; }
+.bhav-dash-icon.red    { background: #fdecea; color: #c0392b; }
+.bhav-dash-icon.blue   { background: #e7f0f7; color: #3a7cbf; }
+.bhav-dash-icon.lime   { background: #f2f9df; color: #5e8f1a; }
+.bhav-dash-icon.teal   { background: #e3f5f0; color: #1a7f6e; }
+.bhav-dash-value {
+  font: 700 18px "Karla", sans-serif;
+  color: #194530;
+  line-height: 1;
+}
+.bhav-dash-label {
+  font: 10px "Noto Sans Devanagari", sans-serif;
+  color: #7b8c80;
+  line-height: 1.3;
+}
+
+/* ── Toolbar (search + filters) ─────────────────────────────── */
+.bhav-toolbar {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr auto;
+  align-items: end;
+  gap: 12px;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e0eadd;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(22, 69, 45, 0.05);
+  margin-bottom: 22px;
+}
+.bhav-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bhav-field label {
+  color: #426052;
+  font: 700 11px "Noto Sans Devanagari", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.bhav-field-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 11px;
+  border: 1px solid #d8e4d5;
+  border-radius: 8px;
+  background: #fbfdf9;
+  transition: border-color 0.15s;
+}
+.bhav-field-wrap:focus-within {
+  border-color: #176b45;
+  box-shadow: 0 0 0 3px rgba(23, 107, 69, 0.1);
+}
+.bhav-field-wrap i {
+  color: #e8753d;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.bhav-field-wrap input,
+.bhav-field-wrap select {
+  width: 100%;
+  margin-left: 8px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #315343;
+  font: 13px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-toolbar-actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+.bhav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid #176b45;
+  background: #176b45;
+  color: #fff;
+  font: 700 13px "Noto Sans Devanagari", sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+.bhav-btn:hover {
+  background: #0f5234;
+  box-shadow: 0 3px 10px rgba(23, 107, 69, 0.25);
+}
+.bhav-btn-ghost {
+  background: #fff;
+  color: #176b45;
+  border-color: #c4d8c0;
+}
+.bhav-btn-ghost:hover {
+  background: #edf5e8;
+  box-shadow: none;
+}
+.bhav-btn i { font-size: 12px; }
+
+/* ── State banners (loading / error / demo) ─────────────────── */
+.bhav-state {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0;
+  padding: 15px 18px;
+  border-radius: 10px;
+  background: #fff;
+  font: 13px "Noto Sans Devanagari", sans-serif;
+  color: #176b45;
+}
+.bhav-state i { font-size: 20px; flex-shrink: 0; }
+.bhav-state-body { flex: 1; }
+.bhav-state-body strong {
+  display: block;
+  font: 700 14px "Noto Sans Devanagari", sans-serif;
+  margin-bottom: 3px;
+}
+.bhav-state-body p { margin: 0; font-size: 12px; color: #5a7060; }
+
+.bhav-state-error {
+  border: 1px solid #f0c5b3;
+  background: #fff7f3;
+  color: #b64d2b;
+}
+.bhav-state-error i { color: #e8753d; }
+
+.bhav-state-demo {
+  border: 1px solid #d8e7b5;
+  background: #f8fbe9;
+  color: #647d35;
+}
+.bhav-state-demo i { color: #8aa832; }
+
+.bhav-state-loading {
+  border: 1px solid #d8e4d5;
+  color: #426052;
+}
+.bhav-state-loading i { color: #176b45; }
+
+.bhav-retry {
+  margin-left: auto;
+  padding: 8px 14px;
+  border: 1px solid #e8753d;
+  border-radius: 7px;
+  background: #fff;
+  color: #c65c31;
+  cursor: pointer;
+  font: 700 12px "Noto Sans Devanagari", sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.bhav-retry:hover { background: #fff7f3; }
+
+/* ── Loading skeleton ────────────────────────────────────────── */
+.bhav-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 4px;
+}
+.bhav-skeleton-card {
+  padding: 18px;
+  background: #fff;
+  border: 1px solid #e4ece1;
+  border-radius: 10px;
+  animation: bhav-pulse 1.4s ease-in-out infinite;
+}
+.bhav-skel-line {
+  height: 12px;
+  border-radius: 6px;
+  background: #e8ede6;
+  margin-bottom: 10px;
+}
+.bhav-skel-line.short { width: 55%; }
+.bhav-skel-line.med   { width: 75%; }
+.bhav-skel-line.long  { width: 100%; }
+.bhav-skel-line.xl    { height: 28px; width: 45%; }
+@keyframes bhav-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
+/* ── Vegetable / Commodity cards ────────────────────────────── */
+.bhav-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 14px;
+}
+.bhav-card {
+  background: #fff;
+  border: 1px solid #e4ece1;
+  border-radius: 12px;
+  padding: 18px 16px 14px;
+  box-shadow: 0 4px 14px rgba(22, 69, 45, 0.04);
+  transition: box-shadow 0.2s, transform 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.bhav-card:hover {
+  box-shadow: 0 8px 24px rgba(22, 69, 45, 0.10);
+  transform: translateY(-2px);
+}
+.bhav-card-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+.bhav-card-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #e6f2d6;
+  color: #176b45;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.bhav-card-icon.veg   { background: #e6f2d6; color: #176b45; }
+.bhav-card-icon.crop  { background: #fff4e0; color: #c47a1a; }
+.bhav-card-icon.mp    { background: #e7f0f7; color: #3a7cbf; }
+.bhav-card-names { flex: 1; min-width: 0; }
+.bhav-card-name-hi {
+  font: 700 15px "Noto Sans Devanagari", sans-serif;
+  color: #194530;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bhav-card-name-en {
+  font: 12px "Karla", sans-serif;
+  color: #7a8c80;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bhav-card-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font: 700 11px "Karla", sans-serif;
+  flex-shrink: 0;
+}
+.bhav-card-trend.up   { background: #edfaf2; color: #1e9155; }
+.bhav-card-trend.down { background: #fdecea; color: #c0392b; }
+.bhav-card-trend.same { background: #f2f3f0; color: #75847a; }
+
+.bhav-card-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin: 6px 0 10px;
+}
+.bhav-card-modal {
+  font: 800 22px "Karla", sans-serif;
+  color: #176b45;
+}
+.bhav-card-unit {
+  font: 11px "Noto Sans Devanagari", sans-serif;
+  color: #7a8c80;
+}
+
+.bhav-card-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 6px;
+  padding: 10px;
+  background: #f7faf4;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.bhav-card-range-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.bhav-card-range-item span:first-child {
+  font: 700 11px "Karla", sans-serif;
+  color: #194530;
+}
+.bhav-card-range-item span:last-child {
+  font: 10px "Noto Sans Devanagari", sans-serif;
+  color: #7a8c80;
+}
+.bhav-range-min span:first-child { color: #3a7cbf; }
+.bhav-range-max span:first-child { color: #e8753d; }
+.bhav-range-change span:first-child { color: #1e9155; }
+
+.bhav-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid #edf1eb;
+  font: 10px "Noto Sans Devanagari", sans-serif;
+  color: #91a098;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.bhav-card-meta i { color: #c7e86b; margin-right: 3px; }
+.bhav-card-mp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  background: #e7f0f7;
+  color: #3a7cbf;
+  font: 700 9px "Noto Sans Devanagari", sans-serif;
+}
+
+/* ── Main grid (table panel + chart panel) ──────────────────── */
+.bhav-main-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.75fr;
+  gap: 16px;
+  margin-top: 22px;
+}
+.bhav-panel {
+  background: #fff;
+  border: 1px solid #e0eadd;
+  border-radius: 13px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(22, 69, 45, 0.05);
+  min-width: 0;
+}
+.bhav-panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.bhav-panel-heading .ak-kicker { margin-bottom: 6px; }
+.bhav-panel-heading h2 {
+  margin: 0;
+  color: #194530;
+  font: 800 22px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-live-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #edf7e4;
+  color: #176b45;
+  font: 700 11px "Noto Sans Devanagari", sans-serif;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.bhav-live-badge i {
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #43a35e;
+  vertical-align: middle;
+}
+.bhav-demo-badge {
+  background: #f8fbe9;
+  color: #647d35;
+}
+.bhav-demo-badge i { background: #8aa832; }
+
+/* Table */
+.bhav-table-wrap { overflow-x: auto; }
+.bhav-table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+.bhav-table th {
+  padding: 10px 10px;
+  text-align: left;
+  background: #f2f7ee;
+  color: #617568;
+  font: 700 11px "Noto Sans Devanagari", sans-serif;
+  position: sticky;
+  top: 0;
+}
+.bhav-table td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #edf1eb;
+  color: #365747;
+  font: 13px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-table tr:last-child td { border-bottom: 0; }
+.bhav-table tr:hover td { background: #fafdf7; }
+.bhav-table .bhav-td-name strong { color: #194530; font-size: 13px; }
+.bhav-table .bhav-td-name small  { display: block; color: #91a098; font-size: 10px; font-family: "Karla", sans-serif; }
+.bhav-td-modal { color: #176b45; font-weight: 700; }
+.bhav-td-max   { color: #e8753d; font-weight: 700; }
+.bhav-td-min   { color: #3a7cbf; font-weight: 700; }
+.bhav-td-up   { color: #1e9155; font-weight: 700; }
+.bhav-td-down { color: #c0392b; font-weight: 700; }
+.bhav-td-same { color: #75847a; }
+
+/* Empty state */
+.bhav-empty {
+  display: grid;
+  place-items: center;
+  gap: 7px;
+  padding: 55px 12px;
+  text-align: center;
+  color: #7c8d81;
+}
+.bhav-empty i { color: #a4c46a; font-size: 32px; }
+.bhav-empty strong { color: #365747; font: 700 15px "Noto Sans Devanagari", sans-serif; }
+.bhav-empty span   { font: 12px "Noto Sans Devanagari", sans-serif; }
+
+/* ── Chart panels ────────────────────────────────────────────── */
+.bhav-chart-wrap { height: 300px; position: relative; }
+.bhav-chart-note {
+  margin: 12px 0 0;
+  color: #7a8a80;
+  font: 11px / 1.7 "Noto Sans Devanagari", sans-serif;
+}
+.bhav-trend-chart-wrap { height: 210px; position: relative; margin-top: 22px; }
+.bhav-trend-label {
+  font: 700 13px "Noto Sans Devanagari", sans-serif;
+  color: #194530;
+  margin: 18px 0 8px;
+}
+
+/* ── Tabs (for switching card/table view) ───────────────────── */
+.bhav-view-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.bhav-view-tab {
+  padding: 7px 15px;
+  border-radius: 8px;
+  border: 1px solid #d8e4d5;
+  background: #fff;
+  color: #426052;
+  font: 700 12px "Noto Sans Devanagari", sans-serif;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.bhav-view-tab.active {
+  background: #176b45;
+  color: #fff;
+  border-color: #176b45;
+}
+.bhav-view-tab i { font-size: 11px; }
+
+/* ── Sort result count ───────────────────────────────────────── */
+.bhav-result-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bhav-result-count {
+  font: 700 13px "Noto Sans Devanagari", sans-serif;
+  color: #426052;
+}
+.bhav-result-count span { color: #176b45; }
+
+/* ── MP section highlight (crop page) ───────────────────────── */
+.bhav-mp-section {
+  margin-bottom: 28px;
+  padding: 22px;
+  background: linear-gradient(135deg, #e7f0f7 0%, #f0f6fb 100%);
+  border: 1px solid #c5ddef;
+  border-radius: 13px;
+}
+.bhav-mp-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.bhav-mp-heading-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: #3a7cbf;
+  color: #fff;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.bhav-mp-heading div h3 {
+  margin: 0;
+  color: #1b4e82;
+  font: 800 18px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-mp-heading div small {
+  color: #4a7bad;
+  font: 12px "Noto Sans Devanagari", sans-serif;
+}
+.bhav-mp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px;
+}
+.bhav-mp-card {
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #c5ddef;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(58, 124, 191, 0.07);
+}
+.bhav-mp-card-name {
+  font: 700 14px "Noto Sans Devanagari", sans-serif;
+  color: #1b4e82;
+  margin-bottom: 3px;
+}
+.bhav-mp-card-en {
+  font: 11px "Karla", sans-serif;
+  color: #6e93b8;
+  margin-bottom: 8px;
+}
+.bhav-mp-card-price {
+  font: 800 18px "Karla", sans-serif;
+  color: #176b45;
+}
+.bhav-mp-card-range {
+  font: 11px "Karla", sans-serif;
+  color: #7a8c80;
+  margin-top: 4px;
+}
+.bhav-mp-card-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  font: 700 11px "Karla", sans-serif;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+.bhav-mp-card-change.up   { background: #edfaf2; color: #1e9155; }
+.bhav-mp-card-change.down { background: #fdecea; color: #c0392b; }
+.bhav-mp-card-change.same { background: #f2f3f0; color: #75847a; }
+
+/* ── Disclaimer note ─────────────────────────────────────────── */
+.bhav-note {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 15px 18px;
+  background: #edf5e5;
+  border-radius: 10px;
+  color: #466352;
+}
+.bhav-note i { margin-top: 3px; color: #6e9c48; flex-shrink: 0; }
+.bhav-note p { margin: 0; font: 12px / 1.8 "Noto Sans Devanagari", sans-serif; }
+.bhav-note strong { color: #176b45; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .bhav-dashboard { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .bhav-hero { padding: 48px 0 40px; }
+  .bhav-hero-inner { flex-direction: column; align-items: flex-start; }
+  .bhav-hero-stat { width: 100%; min-width: 0; display: flex; flex-direction: row; align-items: center; text-align: left; gap: 14px; }
+  .bhav-hero-stat i { font-size: 22px; margin-bottom: 0; }
+  .bhav-toolbar { grid-template-columns: 1fr 1fr; }
+  .bhav-toolbar-actions { grid-column: 1 / -1; }
+  .bhav-main-grid { grid-template-columns: 1fr; }
+  .bhav-chart-wrap { height: 260px; }
+}
+@media (max-width: 700px) {
+  .bhav-dashboard { grid-template-columns: repeat(2, 1fr); }
+  .bhav-cards-grid { grid-template-columns: 1fr; }
+  .bhav-mp-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .bhav-toolbar { grid-template-columns: 1fr; padding: 14px; }
+  .bhav-dashboard { grid-template-columns: 1fr 1fr; gap: 8px; }
+  /* Table → card layout on small screens */
+  .bhav-table-wrap { overflow: visible; }
+  .bhav-table,
+  .bhav-table thead,
+  .bhav-table tbody,
+  .bhav-table tr,
+  .bhav-table td { display: block; width: 100%; }
+  .bhav-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .bhav-table tbody { display: grid; gap: 10px; }
+  .bhav-table tr { padding: 12px; border: 1px solid #e4ece1; border-radius: 9px; background: #fbfdf9; }
+  .bhav-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    border: 0;
+    text-align: right;
+    white-space: normal;
+    font-size: 12px;
+  }
+  .bhav-table td::before { content: attr(data-label); color: #789080; font-size: 10px; font-weight: 700; text-align: left; flex-shrink: 0; }
+  .bhav-table td:first-child { padding-top: 0; }
+  .bhav-table td:last-child  { padding-bottom: 0; }
+  .bhav-hero h1 { font-size: 32px; }
+}
+@media (max-width: 480px) {
+  .bhav-content { padding: 24px 0 55px; }
+  .bhav-panel { padding: 16px; }
+  .bhav-panel-heading h2 { font-size: 18px; }
+  .bhav-dash-value { font-size: 15px; }
+  .bhav-chart-wrap { height: 220px; }
+  .bhav-trend-chart-wrap { height: 170px; }
+}
