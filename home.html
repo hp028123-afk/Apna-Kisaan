@@ -104,7 +104,7 @@
         display: block;
         object-fit: cover;
         /* Prevent layout shift on tall images */
-        max-height: 75vh;
+        max-height: 68vh;
       }
 
       /* ── Slider nav arrows ───────────────────────────────────── */
@@ -286,7 +286,9 @@
         overflow: hidden;
         box-shadow: var(--ak-shadow-card);
         text-decoration: none;
-        transition: transform var(--ak-transition), box-shadow var(--ak-transition);
+        transition:
+          transform var(--ak-transition),
+          box-shadow var(--ak-transition);
         position: relative;
         min-height: 160px;
         background: var(--ak-white);
@@ -311,15 +313,15 @@
       }
       /* Subtle radial glow behind icon */
       .ak-dist-card-top::before {
-        content: '';
+        content: "";
         position: absolute;
         width: 90px;
         height: 90px;
         border-radius: 50%;
-        background: rgba(255,255,255,0.18);
+        background: rgba(255, 255, 255, 0.18);
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         pointer-events: none;
       }
       .ak-dist-card-top i {
@@ -327,7 +329,7 @@
         color: #fff;
         position: relative;
         z-index: 1;
-        filter: drop-shadow(0 3px 8px rgba(0,0,0,0.22));
+        filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.22));
         transition: transform 0.3s ease;
       }
       .ak-dist-card:hover .ak-dist-card-top i {
@@ -349,7 +351,9 @@
         margin-bottom: 2px;
         transition: color var(--ak-transition);
       }
-      .ak-dist-card:hover .ak-dist-card-name { color: var(--ak-green); }
+      .ak-dist-card:hover .ak-dist-card-name {
+        color: var(--ak-green);
+      }
       .ak-dist-card-region {
         display: block;
         font: 400 11px var(--ak-font-hi);
@@ -357,18 +361,42 @@
       }
 
       /* Per-card gradient colours */
-      .ak-dist-g1  { background: linear-gradient(145deg,#0f3d1c,#1a5c2a); }
-      .ak-dist-g2  { background: linear-gradient(145deg,#1a3a5c,#2563a8); }
-      .ak-dist-g3  { background: linear-gradient(145deg,#5c1a1a,#b91c1c); }
-      .ak-dist-g4  { background: linear-gradient(145deg,#1a3c1a,#16a34a); }
-      .ak-dist-g5  { background: linear-gradient(145deg,#3c2c1a,#c47a1a); }
-      .ak-dist-g6  { background: linear-gradient(145deg,#1a2c3c,#0d9488); }
-      .ak-dist-g7  { background: linear-gradient(145deg,#1a1a3c,#7c3aed); }
-      .ak-dist-g8  { background: linear-gradient(145deg,#1c3a2a,#15803d); }
-      .ak-dist-g9  { background: linear-gradient(145deg,#3c1a1a,#dc2626); }
-      .ak-dist-g10 { background: linear-gradient(145deg,#1a3c3a,#059669); }
-      .ak-dist-g11 { background: linear-gradient(145deg,#3c2c1a,#f97316); }
-      .ak-dist-g12 { background: linear-gradient(145deg,#1a2c3c,#2563eb); }
+      .ak-dist-g1 {
+        background: linear-gradient(145deg, #0f3d1c, #1a5c2a);
+      }
+      .ak-dist-g2 {
+        background: linear-gradient(145deg, #1a3a5c, #2563a8);
+      }
+      .ak-dist-g3 {
+        background: linear-gradient(145deg, #5c1a1a, #b91c1c);
+      }
+      .ak-dist-g4 {
+        background: linear-gradient(145deg, #1a3c1a, #16a34a);
+      }
+      .ak-dist-g5 {
+        background: linear-gradient(145deg, #3c2c1a, #c47a1a);
+      }
+      .ak-dist-g6 {
+        background: linear-gradient(145deg, #1a2c3c, #0d9488);
+      }
+      .ak-dist-g7 {
+        background: linear-gradient(145deg, #1a1a3c, #7c3aed);
+      }
+      .ak-dist-g8 {
+        background: linear-gradient(145deg, #1c3a2a, #15803d);
+      }
+      .ak-dist-g9 {
+        background: linear-gradient(145deg, #3c1a1a, #dc2626);
+      }
+      .ak-dist-g10 {
+        background: linear-gradient(145deg, #1a3c3a, #059669);
+      }
+      .ak-dist-g11 {
+        background: linear-gradient(145deg, #3c2c1a, #f97316);
+      }
+      .ak-dist-g12 {
+        background: linear-gradient(145deg, #1a2c3c, #2563eb);
+      }
 
       /* ── Team cards ──────────────────────────────────────────── */
       .ak-team-grid {
@@ -476,12 +504,24 @@
 
       /* ── Tablet / small laptop ≤ 1024px ───────────────────── */
       @media (max-width: 1024px) {
-        .ak-district-img-grid   { grid-template-columns: repeat(3,1fr); }
-        .ak-gallery-strip       { grid-template-columns: repeat(4,1fr); }
-        .ak-quick-grid          { grid-template-columns: repeat(2,1fr); }
-        .ak-stats-grid          { grid-template-columns: repeat(2,1fr); }
-        .ak-mandi-grid          { grid-template-columns: repeat(3,1fr); }
-        .ak-service-grid        { grid-template-columns: repeat(2,1fr); }
+        .ak-district-img-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .ak-quick-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-mandi-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .ak-service-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       /* ── Tablet portrait ≤ 900px ───────────────────────────── */
@@ -493,156 +533,354 @@
         .ak-about-img-grid {
           grid-template-columns: 1fr 1fr;
         }
-        .ak-about-img-grid img:first-child { grid-row: auto; height: 200px; }
-        .ak-content-grid        { grid-template-columns: repeat(2,1fr); }
-        .ak-section-heading     { flex-direction: column; align-items: flex-start; gap: 12px; }
-        .ak-cta-inner           { flex-direction: column; text-align: center; }
-        .ak-cta-inner p         { margin-inline: auto; }
-        .ak-cta-actions         { justify-content: center; }
-        .ak-mp-map-wrap         { margin-top: 4px; }
+        .ak-about-img-grid img:first-child {
+          grid-row: auto;
+          height: 200px;
+        }
+        .ak-content-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-section-heading {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .ak-cta-inner {
+          flex-direction: column;
+          text-align: center;
+        }
+        .ak-cta-inner p {
+          margin-inline: auto;
+        }
+        .ak-cta-actions {
+          justify-content: center;
+        }
+        .ak-mp-map-wrap {
+          margin-top: 4px;
+        }
       }
 
       /* ── Mobile landscape / large phone ≤ 768px ────────────── */
       @media (max-width: 768px) {
         /* Slider */
-        .ak-slider-section      { min-height: 0; }
-        .ak-slide img           { max-height: none; height: auto; }
-        .ak-slider-arrow        { width: 36px; height: 36px; font-size: 14px; }
-        .ak-slider-live         { top: 8px; right: 8px; font-size: 10px; padding: 4px 8px; }
-        .ak-slider-counter      { display: none; }
-        .ak-slider-dots         { bottom: 8px; gap: 6px; }
-        .ak-slider-dot          { width: 8px; height: 8px; }
+        .ak-slider-section {
+          min-height: 0;
+        }
+        .ak-slide img {
+          max-height: none;
+          height: auto;
+        }
+        .ak-slider-arrow {
+          width: 36px;
+          height: 36px;
+          font-size: 14px;
+        }
+        .ak-slider-live {
+          top: 8px;
+          right: 8px;
+          font-size: 10px;
+          padding: 4px 8px;
+        }
+        .ak-slider-counter {
+          display: none;
+        }
+        .ak-slider-dots {
+          bottom: 8px;
+          gap: 6px;
+        }
+        .ak-slider-dot {
+          width: 8px;
+          height: 8px;
+        }
 
         /* Stats strip — 2×2 grid */
-        .ak-stats-grid          { grid-template-columns: repeat(2,1fr); gap: 0; }
-        .ak-stat-item           { border-right: none; border-bottom: 1px solid var(--ak-border); padding: 16px; }
-        .ak-stat-item:nth-child(odd)  { border-right: 1px solid var(--ak-border); }
+        .ak-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0;
+        }
+        .ak-stat-item {
+          border-right: none;
+          border-bottom: 1px solid var(--ak-border);
+          padding: 16px;
+        }
+        .ak-stat-item:nth-child(odd) {
+          border-right: 1px solid var(--ak-border);
+        }
         .ak-stat-item:last-child,
-        .ak-stat-item:nth-last-child(2) { border-bottom: none; }
+        .ak-stat-item:nth-last-child(2) {
+          border-bottom: none;
+        }
 
         /* Quick access — 2 col */
-        .ak-quick-grid          { grid-template-columns: repeat(2,1fr); gap: 12px; }
-        .ak-quick-card          { padding: 14px 12px; }
-        .ak-quick-icon          { width: 42px; height: 42px; font-size: 18px; }
-        .ak-quick-card-body h3  { font-size: 13px; }
-        .ak-quick-card-body p   { font-size: 11px; }
+        .ak-quick-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+        .ak-quick-card {
+          padding: 14px 12px;
+        }
+        .ak-quick-icon {
+          width: 42px;
+          height: 42px;
+          font-size: 18px;
+        }
+        .ak-quick-card-body h3 {
+          font-size: 13px;
+        }
+        .ak-quick-card-body p {
+          font-size: 11px;
+        }
 
         /* About image */
-        .ak-about-img-grid      { grid-template-columns: 1fr; gap: 8px; }
-        .ak-about-img-grid img:first-child { grid-row: auto; height: 180px; }
-        .ak-about-img-grid img  { height: 140px; }
+        .ak-about-img-grid {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .ak-about-img-grid img:first-child {
+          grid-row: auto;
+          height: 180px;
+        }
+        .ak-about-img-grid img {
+          height: 140px;
+        }
 
         /* Categories — 3 col */
-        .ak-category-grid       { grid-template-columns: repeat(3,1fr); }
+        .ak-category-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
 
         /* Mandi cards — 2 col */
-        .ak-mandi-grid          { grid-template-columns: repeat(2,1fr); }
+        .ak-mandi-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
 
         /* Services — 1 col */
-        .ak-service-grid        { grid-template-columns: 1fr; }
+        .ak-service-grid {
+          grid-template-columns: 1fr;
+        }
 
         /* District grid — 2 col */
-        .ak-district-img-grid   { grid-template-columns: repeat(2,1fr); gap: 10px; }
-        .ak-dist-card           { min-height: 130px; }
-        .ak-dist-card-top       { padding: 14px 8px 10px; }
-        .ak-dist-card-top i     { font-size: 32px; }
-        .ak-dist-card-name      { font-size: 13px; }
+        .ak-district-img-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        .ak-dist-card {
+          min-height: 130px;
+        }
+        .ak-dist-card-top {
+          padding: 14px 8px 10px;
+        }
+        .ak-dist-card-top i {
+          font-size: 32px;
+        }
+        .ak-dist-card-name {
+          font-size: 13px;
+        }
 
         /* Team — 2 col */
-        .ak-team-grid           { grid-template-columns: repeat(2,1fr); gap: 14px; }
+        .ak-team-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 14px;
+        }
 
         /* MP map content grid */
-        .ak-content-grid        { grid-template-columns: repeat(2,1fr); gap: 12px; }
+        .ak-content-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
 
         /* Gallery */
-        .ak-gallery-strip       { grid-template-columns: repeat(3,1fr); }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(3, 1fr);
+        }
 
         /* General section padding */
-        .ak-section             { padding: 36px 0; }
-        .ak-section-heading h2  { font-size: clamp(22px,5vw,30px); }
+        .ak-section {
+          padding: 36px 0;
+        }
+        .ak-section-heading h2 {
+          font-size: clamp(22px, 5vw, 30px);
+        }
 
         /* Process grid */
-        .ak-process-grid        { grid-template-columns: 1fr; gap: 24px; }
+        .ak-process-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
 
         /* CTA */
-        .ak-cta-section         { padding: 44px 0; }
-        .ak-cta-inner           { flex-direction: column; text-align: center; gap: 20px; }
-        .ak-cta-actions         { justify-content: center; flex-wrap: wrap; }
+        .ak-cta-section {
+          padding: 44px 0;
+        }
+        .ak-cta-inner {
+          flex-direction: column;
+          text-align: center;
+          gap: 20px;
+        }
+        .ak-cta-actions {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
         .ak-btn-white,
-        .ak-btn-outline-light   { width: 100%; justify-content: center; }
+        .ak-btn-outline-light {
+          width: 100%;
+          justify-content: center;
+        }
 
         /* Footer grid */
-        .ak-footer-grid         { grid-template-columns: 1fr 1fr; gap: 24px; }
-        .ak-footer-brand        { grid-column: 1 / -1; }
+        .ak-footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
+        }
+        .ak-footer-brand {
+          grid-column: 1 / -1;
+        }
       }
 
       /* ── Mobile portrait ≤ 480px ───────────────────────────── */
       @media (max-width: 480px) {
         /* Slider — hide arrows on very small screens */
-        .ak-slider-arrow        { display: none; }
+        .ak-slider-arrow {
+          display: none;
+        }
 
         /* Stats strip — keep 2×2 */
-        .ak-stats-grid          { grid-template-columns: repeat(2,1fr); }
-        .ak-stat-text strong    { font-size: 18px; }
+        .ak-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-stat-text strong {
+          font-size: 18px;
+        }
 
         /* Quick access — 1 col */
-        .ak-quick-grid          { grid-template-columns: 1fr; gap: 10px; }
-        .ak-quick-card          { flex-direction: row; align-items: center; }
+        .ak-quick-grid {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+        .ak-quick-card {
+          flex-direction: row;
+          align-items: center;
+        }
 
         /* Categories — 2 col */
-        .ak-category-grid       { grid-template-columns: repeat(2,1fr); gap: 10px; }
+        .ak-category-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
 
         /* Mandi — 1 col */
-        .ak-mandi-grid          { grid-template-columns: 1fr; }
+        .ak-mandi-grid {
+          grid-template-columns: 1fr;
+        }
 
         /* District — 2 col tight */
-        .ak-district-img-grid   { grid-template-columns: repeat(2,1fr); gap: 8px; }
-        .ak-dist-card           { min-height: 110px; }
-        .ak-dist-card-top       { padding: 10px 6px 8px; }
-        .ak-dist-card-top i     { font-size: 26px; }
-        .ak-dist-card-name      { font-size: 12px; }
-        .ak-dist-card-region    { display: none; }
-        .ak-dist-card-bottom    { padding: 7px 8px 9px; }
+        .ak-district-img-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        .ak-dist-card {
+          min-height: 110px;
+        }
+        .ak-dist-card-top {
+          padding: 10px 6px 8px;
+        }
+        .ak-dist-card-top i {
+          font-size: 26px;
+        }
+        .ak-dist-card-name {
+          font-size: 12px;
+        }
+        .ak-dist-card-region {
+          display: none;
+        }
+        .ak-dist-card-bottom {
+          padding: 7px 8px 9px;
+        }
 
         /* Team — 1 col */
-        .ak-team-grid           { grid-template-columns: 1fr; gap: 14px; }
+        .ak-team-grid {
+          grid-template-columns: 1fr;
+          gap: 14px;
+        }
 
         /* Content grid — 1 col */
-        .ak-content-grid        { grid-template-columns: 1fr; }
+        .ak-content-grid {
+          grid-template-columns: 1fr;
+        }
 
         /* Gallery — 2 col */
-        .ak-gallery-strip       { grid-template-columns: repeat(2,1fr); }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
 
         /* Footer — 1 col */
-        .ak-footer-grid         { grid-template-columns: 1fr; gap: 20px; }
-        .ak-footer-brand        { grid-column: auto; }
-        .ak-topbar-note         { display: none; }
-        .ak-float-actions       { display: none; }
+        .ak-footer-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .ak-footer-brand {
+          grid-column: auto;
+        }
+        .ak-topbar-note {
+          display: none;
+        }
+        .ak-float-actions {
+          display: none;
+        }
 
         /* Section headings stack */
-        .ak-section-heading     { flex-direction: column; gap: 10px; }
+        .ak-section-heading {
+          flex-direction: column;
+          gap: 10px;
+        }
         .ak-section-heading .ak-see-all,
-        .ak-section-heading .ak-section-desc { align-self: flex-start; }
+        .ak-section-heading .ak-section-desc {
+          align-self: flex-start;
+        }
 
         /* District search full width */
-        .ak-district-search-bar { max-width: 100%; }
+        .ak-district-search-bar {
+          max-width: 100%;
+        }
 
         /* Buttons full width */
-        .ak-btn-primary         { width: 100%; justify-content: center; }
+        .ak-btn-primary {
+          width: 100%;
+          justify-content: center;
+        }
         .ak-cta-actions .ak-btn-white,
-        .ak-cta-actions .ak-btn-outline-light { max-width: 280px; }
+        .ak-cta-actions .ak-btn-outline-light {
+          max-width: 280px;
+        }
       }
 
       /* ── Tiny phone ≤ 375px ─────────────────────────────────── */
       @media (max-width: 375px) {
-        .ak-stats-grid          { grid-template-columns: repeat(2,1fr); }
-        .ak-mandi-grid          { grid-template-columns: 1fr; }
-        .ak-district-img-grid   { grid-template-columns: repeat(2,1fr); gap: 6px; }
-        .ak-dist-card           { min-height: 95px; }
-        .ak-dist-card-top i     { font-size: 22px; }
-        .ak-gallery-strip       { grid-template-columns: repeat(2,1fr); }
-        .ak-section             { padding: 28px 0; }
-        .ak-section-heading h2  { font-size: 20px; }
+        .ak-stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-mandi-grid {
+          grid-template-columns: 1fr;
+        }
+        .ak-district-img-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 6px;
+        }
+        .ak-dist-card {
+          min-height: 95px;
+        }
+        .ak-dist-card-top i {
+          font-size: 22px;
+        }
+        .ak-gallery-strip {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ak-section {
+          padding: 28px 0;
+        }
+        .ak-section-heading h2 {
+          font-size: 20px;
+        }
       }
     </style>
   </head>
@@ -816,27 +1054,15 @@
 
         <!-- Track -->
         <div class="ak-slider-track" id="sliderTrack">
-
-
-           <div class="ak-slide">
+          <div class="ak-slide">
             <a href="service.html">
               <img
-                src="assets/images/ChatGPT Image Sep 8, 2026, 11_56_46 PM.png"
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_42 AM.png"
                 alt="किसानों के लिए एक ही प्लेटफॉर्म | अपना किसान"
                 loading="lazy"
               />
             </a>
           </div>
-          
-          <div class="ak-slide">
-            <a href="about.html">
-              <img
-                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
-                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
-                loading="lazy"
-              />
-            </a>
-          </div>
 
           <div class="ak-slide">
             <a href="about.html">
@@ -908,7 +1134,15 @@
             </a>
           </div>
 
-         
+          <div class="ak-slide">
+            <a href="about.html">
+              <img
+                src="assets/images/ChatGPT Image Sep 9, 2026, 12_15_07 AM.png"
+                alt="मध्य प्रदेश का अपना किसान — आपकी फसल, आपका सही बाजार"
+                loading="lazy"
+              />
+            </a>
+          </div>
 
           <div class="ak-slide">
             <a href="about.html">
@@ -1813,103 +2047,173 @@
 
           <!-- District cards — CSS-only, no images needed -->
           <div class="ak-district-img-grid" id="districtGrid">
-
-            <a class="ak-dist-card" href="service1.html" aria-label="दमोह — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g1"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service1.html"
+              aria-label="दमोह — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g1">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">दमोह</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service2.html" aria-label="पन्ना — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g2"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service2.html"
+              aria-label="पन्ना — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g2">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">पन्ना</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service3.html" aria-label="छतरपुर — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g3"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service3.html"
+              aria-label="छतरपुर — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g3">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">छतरपुर</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="services4.html" aria-label="भोपाल — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g4"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="services4.html"
+              aria-label="भोपाल — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g4">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">भोपाल</span>
                 <span class="ak-dist-card-region">राजधानी · मालवा</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="internship.html" aria-label="राजगढ़ — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g5"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="internship.html"
+              aria-label="राजगढ़ — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g5">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">राजगढ़</span>
                 <span class="ak-dist-card-region">मालवा क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service5.html" aria-label="सागर — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g6"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service5.html"
+              aria-label="सागर — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g6">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">सागर</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service6.html" aria-label="नरसिंहपुर — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g7"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service6.html"
+              aria-label="नरसिंहपुर — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g7">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">नरसिंहपुर</span>
                 <span class="ak-dist-card-region">महाकौशल</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service7.html" aria-label="जबलपुर — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g8"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service7.html"
+              aria-label="जबलपुर — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g8">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">जबलपुर</span>
                 <span class="ak-dist-card-region">महाकौशल</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service8.html" aria-label="ग्वालियर — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g9"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service8.html"
+              aria-label="ग्वालियर — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g9">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">ग्वालियर</span>
                 <span class="ak-dist-card-region">चंबल क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service9.html" aria-label="बालाघाट — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g10"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service9.html"
+              aria-label="बालाघाट — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g10">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">बालाघाट</span>
                 <span class="ak-dist-card-region">महाकौशल</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service10.html" aria-label="रीवा — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g11"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service10.html"
+              aria-label="रीवा — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g11">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">रीवा</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
 
-            <a class="ak-dist-card" href="service11.html" aria-label="टीकमगढ़ — सब्जी मंडी">
-              <div class="ak-dist-card-top ak-dist-g12"><i class="fa-solid fa-location-dot"></i></div>
+            <a
+              class="ak-dist-card"
+              href="service11.html"
+              aria-label="टीकमगढ़ — सब्जी मंडी"
+            >
+              <div class="ak-dist-card-top ak-dist-g12">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
               <div class="ak-dist-card-bottom">
                 <span class="ak-dist-card-name">टीकमगढ़</span>
                 <span class="ak-dist-card-region">विंध्य क्षेत्र</span>
               </div>
             </a>
-
           </div>
           <p
             class="ak-district-empty hidden"
@@ -2103,8 +2407,6 @@
                 loading="lazy"
               />
             </div>
-            
-            
           </div>
         </div>
       </section>
