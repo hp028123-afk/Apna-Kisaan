@@ -9,19 +9,19 @@
 /* ── CSS Custom Properties (Design Tokens) ─────────────────── */
 :root {
   /* Brand greens from logo */
-  --ak-green:        #1a5c2a;
-  --ak-green-dark:   #0f3d1c;
-  --ak-green-mid:    #2d8a47;
-  --ak-green-bright: #22c55e;
-  --ak-green-light:  #dcfce7;
+  --ak-green:        #08783B;
+  --ak-green-dark:   #075B2A;
+  --ak-green-mid:    #35A936;
+  --ak-green-bright: #35A936;
+  --ak-green-light:  #EAF7E8;
   --ak-green-xlight: #f0fdf4;
   --ak-lime:         #86efac;
 
   /* Accent colors — vegetables/harvest theme */
   --ak-orange:       #f97316;
   --ak-orange-light: #fff7ed;
-  --ak-yellow:       #f59e0b;
-  --ak-yellow-light: #fef9c3;
+  --ak-yellow:       #FFC800;
+  --ak-yellow-light: #FFF4BF;
   --ak-red:          #dc2626;
   --ak-red-light:    #fef2f2;
   --ak-blue:         #2563eb;
@@ -34,14 +34,14 @@
   --ak-brown-light:  #fef3c7;
 
   /* Neutrals */
-  --ak-white:        #ffffff;
+  --ak-white:        #FFFFFF;
   --ak-bg:           #f8fdf9;
   --ak-bg-alt:       #f1f8f3;
   --ak-border:       #d1fae5;
   --ak-border-mid:   #bbf7d0;
-  --ak-text:         #0f2217;
-  --ak-text-mid:     #1e4d2e;
-  --ak-text-muted:   #4b7a5b;
+  --ak-text:         #17351F;
+  --ak-text-mid:     #17351F;
+  --ak-text-muted:   #52635A;
   --ak-text-light:   #86a892;
 
   /* Shadows */
@@ -141,11 +141,12 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   flex-shrink: 0;
 }
 .ak-brand img {
-  width: 52px !important;
-  height: 52px;
+  width: 56px !important;
+  height: 56px;
   object-fit: contain;
-  border-radius: 50%;
-  border: 2px solid var(--ak-green-light);
+  border-radius: 8px;
+  border: -4px solid var(--ak-green-light);
+  background: #fff;
 }
 .ak-brand span { display: grid; line-height: 1.2; }
 .ak-brand strong {
@@ -1539,3 +1540,333 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   transition: background var(--ak-transition), width var(--ak-transition);
 }
 .ak-language-toggle:hover { background: var(--ak-green-mid); }
+
+
+/* ================================================================
+   ADDITIONS v4  |  New nav classes, back-to-top, footer extras,
+   responsive fixes, scroll-shadow, hamburger animation
+   ================================================================ */
+
+/* ── Language toggle button (home.js legacy) ─────────────────── */
+.ak-language-toggle {
+  position: fixed;
+  bottom: 80px;
+  left: 0;
+  z-index: 950;
+  background: var(--ak-green);
+  color: #fff;
+  border: none;
+  border-radius: 0 var(--ak-r-sm) var(--ak-r-sm) 0;
+  padding: 7px 12px;
+  font: 700 11px var(--ak-font-en);
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0,0,0,.18);
+}
+.ak-language-toggle:hover { background: var(--ak-green-mid); }
+
+/* ── Back-to-top button ─────────────────────────────────────── */
+.ak-back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 980;
+  width: 44px;
+  height: 44px;
+  background: var(--ak-green);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 4px 16px rgba(8,120,59,.35);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .28s ease, transform .28s ease, background .2s;
+  pointer-events: none;
+}
+.ak-back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.ak-back-to-top:hover { background: var(--ak-green-mid); }
+@media (max-width: 480px) {
+  .ak-back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 14px; }
+}
+
+/* ── Scroll shadow on sticky header ─────────────────────────── */
+.ak-header.ak-scrolled {
+  box-shadow: 0 3px 20px rgba(8,120,59,.16);
+  border-bottom-color: var(--ak-green-light);
+}
+
+/* ── Hamburger animated icon ────────────────────────────────── */
+.ak-ham {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 20px;
+}
+.ak-ham span {
+  display: block;
+  height: 2px;
+  background: var(--ak-green);
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .3s ease, width .3s ease;
+}
+.ak-toggler.is-open .ak-ham span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ak-toggler.is-open .ak-ham span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.ak-toggler.is-open .ak-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── New dropdown classes (ak-dd-*) ─────────────────────────── */
+.ak-dd-wrap { position: relative; }
+
+.ak-dd-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 200px;
+  background: var(--ak-white);
+  border: 1.5px solid var(--ak-green-light);
+  border-radius: var(--ak-r);
+  box-shadow: var(--ak-shadow-lg);
+  padding: 8px;
+  z-index: 1100;
+}
+/* Districts dropdown wider */
+.ak-dd-districts { min-width: 260px; max-height: 420px; overflow-y: auto; }
+.ak-dd-title {
+  padding: 6px 10px 8px;
+  font: 700 11px var(--ak-font-en);
+  color: var(--ak-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  border-bottom: 1px solid var(--ak-border);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ak-dd-menu a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  font: 600 13px var(--ak-font-hi);
+  color: var(--ak-text-mid);
+  border-radius: var(--ak-r-sm);
+  transition: background var(--ak-transition), color var(--ak-transition);
+}
+.ak-dd-menu a:hover { background: var(--ak-green-xlight); color: var(--ak-green); }
+.ak-dd-menu a i { color: var(--ak-green-bright); font-size: 12px; flex-shrink: 0; }
+.ak-dd-label { flex: 1; }
+.ak-dd-sub {
+  font: 400 10px var(--ak-font-en);
+  color: var(--ak-text-light);
+  background: var(--ak-bg-alt);
+  padding: 1px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* Show dropdown on hover (desktop) */
+@media (min-width: 992px) {
+  .ak-dd-wrap:hover .ak-dd-menu,
+  .ak-dd-wrap.is-open .ak-dd-menu { display: block; }
+}
+
+/* ── Nav button (CTA) ────────────────────────────────────────── */
+.ak-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--ak-yellow) !important;
+  color: var(--ak-green-dark) !important;
+  font: 700 13px var(--ak-font-hi) !important;
+  padding: 9px 16px !important;
+  border-radius: var(--ak-r-full) !important;
+  transition: background var(--ak-transition), transform var(--ak-transition), box-shadow var(--ak-transition) !important;
+  box-shadow: 0 3px 10px rgba(255,200,0,.35);
+  white-space: nowrap;
+  border: none;
+}
+.ak-nav-cta i { font-size: 11px; }
+.ak-nav-cta:hover {
+  background: #e6b400 !important;
+  color: var(--ak-green-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255,200,0,.45) !important;
+}
+
+/* ── Mobile nav open state ──────────────────────────────────── */
+@media (max-width: 991px) {
+  .ak-links {
+    display: none;
+    position: fixed;
+    inset: 0 0 0 0;
+    top: 70px; /* below sticky header */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--ak-white);
+    border-top: 2px solid var(--ak-green-light);
+    padding: 12px 16px 24px;
+    box-shadow: 0 8px 32px rgba(8,120,59,.12);
+    z-index: 9999;
+    overflow-y: auto;
+    max-height: calc(100vh - 70px);
+    /* Slide-in animation */
+    transform: translateX(100%);
+    transition: transform .32s cubic-bezier(.4,0,.2,1);
+  }
+  .ak-links.open {
+    display: flex;
+    transform: translateX(0);
+  }
+  .ak-links .nav-link { padding: 13px 12px !important; border-bottom: 1px solid var(--ak-bg-alt); font-size: 15px !important; }
+  .ak-links .nav-link:last-of-type { border-bottom: none; }
+
+  /* Dropdown accordion on mobile */
+  .ak-dd-menu {
+    position: static;
+    box-shadow: none;
+    border: 0;
+    background: var(--ak-bg-alt);
+    border-radius: var(--ak-r-sm);
+    margin: 4px 0 8px 12px;
+    padding: 4px;
+    display: none;
+    max-height: none;
+    overflow: visible;
+  }
+  .ak-dd-wrap.is-open .ak-dd-menu { display: block; }
+  .ak-dd-title { font-size: 10px; }
+  .ak-nav-cta { margin-top: 12px; justify-content: center; width: 100%; }
+  .ak-dd-sub { display: none; }
+}
+
+/* ── Footer social icons ────────────────────────────────────── */
+.ak-footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+.ak-footer-social a {
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c6f6d5;
+  font-size: 15px;
+  transition: background var(--ak-transition), color var(--ak-transition);
+}
+.ak-footer-social a:hover { background: var(--ak-green-bright); color: var(--ak-green-dark); }
+
+/* ── Footer hours ───────────────────────────────────────────── */
+.ak-footer-hours {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 400 12px var(--ak-font-en);
+  color: rgba(255,255,255,.55);
+  margin-top: 6px;
+}
+
+/* ── Home-page: stats strip 2×2 on mobile ──────────────────── */
+@media (max-width: 768px) {
+  /* Stats strip — always 2×2 on mobile */
+  .ak-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0;
+  }
+  .ak-stat-item {
+    border-right: none;
+    border-bottom: 1px solid var(--ak-border);
+    padding: 16px;
+  }
+  .ak-stat-item:nth-child(odd) { border-right: 1px solid var(--ak-border); }
+  .ak-stat-item:last-child,
+  .ak-stat-item:nth-last-child(2) { border-bottom: none; }
+
+  /* Quick access — 2 col */
+  .ak-quick-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
+  .ak-quick-card { padding: 14px 12px; }
+  .ak-quick-icon { width: 42px; height: 42px; font-size: 18px; }
+  .ak-quick-card-body h3 { font-size: 13px; }
+  .ak-quick-card-body p  { font-size: 11px; }
+
+  /* Section padding */
+  .ak-section { padding: 36px 0; }
+  .ak-section-heading h2 { font-size: clamp(22px, 5vw, 30px); }
+  .ak-section-heading { flex-direction: column; align-items: flex-start; gap: 10px; }
+
+  /* Process grid — stack */
+  .ak-process-grid { grid-template-columns: 1fr !important; gap: 24px; }
+
+  /* Service grid */
+  .ak-service-grid { grid-template-columns: 1fr !important; }
+
+  /* Content grid */
+  .ak-content-grid { grid-template-columns: 1fr !important; }
+
+  /* Mandi grid — 2 col */
+  .ak-mandi-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Category grid — 3 col */
+  .ak-category-grid { grid-template-columns: repeat(3, 1fr) !important; }
+
+  /* Footer */
+  .ak-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px; }
+  .ak-footer-brand { grid-column: 1 / -1; }
+
+  /* CTA */
+  .ak-cta-section { padding: 44px 0; }
+  .ak-cta-inner { flex-direction: column; text-align: center; gap: 20px; }
+  .ak-cta-actions { justify-content: center; flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  /* Stats — keep 2 col */
+  .ak-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Quick access — 1 col on very small */
+  .ak-quick-grid { grid-template-columns: 1fr !important; }
+  .ak-quick-card { flex-direction: row; align-items: center; }
+
+  /* Category — 2 col */
+  .ak-category-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* Mandi — 1 col */
+  .ak-mandi-grid { grid-template-columns: 1fr !important; }
+
+  /* Footer — 1 col */
+  .ak-footer-grid { grid-template-columns: 1fr !important; }
+  .ak-footer-brand { grid-column: auto; }
+
+  /* Section headings */
+  .ak-section-heading { flex-direction: column; gap: 8px; }
+  .ak-section-heading .ak-see-all { align-self: flex-start; }
+
+  /* Buttons */
+  .ak-btn-primary, .ak-btn-white { width: 100%; justify-content: center; }
+  .ak-cta-actions .ak-btn-white,
+  .ak-cta-actions .ak-btn-outline-light { max-width: 280px; }
+
+  /* Float actions — hide on smallest */
+  .ak-float-actions { display: none; }
+  .ak-topbar-note   { display: none; }
+}
+
+@media (max-width: 375px) {
+  .ak-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .ak-category-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .ak-section { padding: 28px 0; }
+  .ak-section-heading h2 { font-size: 20px; }
+}

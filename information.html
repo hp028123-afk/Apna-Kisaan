@@ -19,8 +19,8 @@
   <link rel="stylesheet" href="assets/css/ak-design.css"/>
 </head>
 <body>
-<div class="main-top-nav"></div>
-<section class="nav-sec"></section>
+<div id="akTopbar"></div>
+<header id="akHeader"></header>
 <main id="main-content">
 
 <!-- ── PAGE HERO ─────────────────────────────────────────── -->
@@ -345,10 +345,11 @@
 </section>
 
 </main>
-<footer class="sion-top-footer"></footer>
+<footer id="akFooter"></footer>
+<div id="akFloatActions"></div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/home.js"></script>
+<script src="assets/js/components.js"></script>
 <script>
 document.querySelectorAll('.ak-faq-q').forEach(function(b){
   b.addEventListener('click',function(){

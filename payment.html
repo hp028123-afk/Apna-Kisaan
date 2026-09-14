@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="अपना किसान भुगतान स्थिति ट्रैकिंग।"/>
+  <title>भुगतान स्थिति — अपना किसान</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/ak-design.css"/>
+  
+  <style>
+    .payment-search-card {
+      background: #fff;
+      border: 1.5px solid var(--ak-border);
+      border-radius: var(--ak-r-lg);
+      padding: 30px;
+      box-shadow: var(--ak-shadow-card);
+    }
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: var(--ak-r-full);
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .status-success { background: var(--ak-green-light); color: var(--ak-green-dark); }
+    .status-process { background: var(--ak-yellow-light); color: #854d0e; }
+    .status-pending { background: var(--ak-orange-light); color: var(--ak-orange); }
+    .status-failed { background: var(--ak-red-light); color: var(--ak-red); }
+    
+    .ak-notice {
+      background: var(--ak-blue-light);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--ak-r);
+      padding: 15px;
+      color: #1e3a8a;
+      font-weight: 500;
+    }
+    .table-container {
+      background: #fff;
+      border-radius: var(--ak-r);
+      overflow: hidden;
+      border: 1px solid var(--ak-border);
+    }
+    .table th { background: var(--ak-green-xlight); }
+  </style>
+</head>
+<body>
+
+<div id="akTopbar"></div>
+<header id="akHeader"></header>
+
+<main class="ak-shell mt-4 mb-5">
+  <section class="ak-page-hero text-center mb-4">
+    <nav class="ak-breadcrumb mb-3 justify-content-center">
+      <a href="index.html">मुख्य पृष्ठ</a> <i class="fa-solid fa-chevron-right mx-2 text-muted"></i> <span aria-current="page">भुगतान स्थिति</span>
+    </nav>
+    <p class="ak-kicker">पारदर्शी लेनदेन</p>
+    <h1>भुगतान स्थिति ट्रैक करें</h1>
+  </section>
+
+  <div class="ak-notice text-center mb-5">
+    <i class="fa-solid fa-circle-info"></i> यह केवल डेमो डेटा है। वास्तविक स्थिति के लिए अपना सही विवरण दर्ज करें।
+  </div>
+
+  <section class="row mb-5">
+    <div class="col-lg-6 mx-auto">
+      <div class="payment-search-card">
+        <h3 class="mb-3">स्थिति खोजें</h3>
+        <form onsubmit="event.preventDefault(); alert('यह सुविधा अभी डेमो मोड में है।');">
+          <div class="form-group">
+            <label>किसान ID / ऑर्डर ID / मोबाइल नंबर</label>
+            <input type="text" class="form-control mt-2" placeholder="अपना विवरण दर्ज करें">
+          </div>
+          <button type="submit" class="btn w-100 mt-2 text-white" style="background: var(--ak-green); border-radius: var(--ak-r-full);">खोजें</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-5">
+    <h3 class="mb-4">हाल ही के भुगतान (डेमो)</h3>
+    <div class="table-container table-responsive">
+      <table class="table mb-0 text-center">
+        <thead>
+          <tr>
+            <th>ऑर्डर ID</th>
+            <th>दिनांक</th>
+            <th>राशि (₹)</th>
+            <th>स्थिति</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ORD-1001</td>
+            <td>10-Sep-2026</td>
+            <td>12,500</td>
+            <td><span class="status-badge status-success"><i class="fa-solid fa-check"></i> भुगतान हो गया</span></td>
+          </tr>
+          <tr>
+            <td>ORD-1002</td>
+            <td>09-Sep-2026</td>
+            <td>8,200</td>
+            <td><span class="status-badge status-process"><i class="fa-solid fa-hourglass-half"></i> प्रक्रिया में</span></td>
+          </tr>
+          <tr>
+            <td>ORD-1003</td>
+            <td>08-Sep-2026</td>
+            <td>15,000</td>
+            <td><span class="status-badge status-pending"><i class="fa-solid fa-triangle-exclamation"></i> लंबित</span></td>
+          </tr>
+          <tr>
+            <td>ORD-1004</td>
+            <td>08-Sep-2026</td>
+            <td>5,400</td>
+            <td><span class="status-badge status-failed"><i class="fa-solid fa-xmark"></i> असफल</span></td>
+          </tr>
+          <tr>
+            <td>ORD-1005</td>
+            <td>07-Sep-2026</td>
+            <td>21,000</td>
+            <td><span class="status-badge status-success"><i class="fa-solid fa-check"></i> भुगतान हो गया</span></td>
+          </tr>
+          <tr>
+            <td>ORD-1006</td>
+            <td>06-Sep-2026</td>
+            <td>9,100</td>
+            <td><span class="status-badge status-success"><i class="fa-solid fa-check"></i> भुगतान हो गया</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ak-section-alt p-5 rounded mb-5 text-center">
+    <h3 class="mb-3">भुगतान प्रक्रिया की जानकारी</h3>
+    <p class="text-muted">किसान की फसल मंडी में बिकने के 24 से 48 घंटे के भीतर सीधे उनके बैंक खाते में भुगतान कर दिया जाता है। किसी भी समस्या के लिए कृपया सपोर्ट से संपर्क करें।</p>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="h3 mb-4 text-center">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+    <div class="border rounded p-3 mb-3 bg-white">
+      <h4 class="h6 mb-2 text-success">प्रश्न: भुगतान 'लंबित' क्यों दिख रहा है?</h4>
+      <p class="text-muted text-sm mb-0">उत्तर: कभी-कभी बैंक सर्वर में देरी के कारण भुगतान लंबित हो सकता है। कृपया 24 घंटे प्रतीक्षा करें।</p>
+    </div>
+    <div class="border rounded p-3 mb-3 bg-white">
+      <h4 class="h6 mb-2 text-success">प्रश्न: 'असफल' भुगतान का क्या होगा?</h4>
+      <p class="text-muted text-sm mb-0">उत्तर: असफल होने पर राशि हमारी तरफ वापस आ जाती है। हम 1-2 कार्य दिवसों में इसे फिर से भेजते हैं।</p>
+    </div>
+  </section>
+
+</main>
+
+<footer id="akFooter"></footer>
+<div id="akFloatActions"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/components.js"></script>
+</body>
+</html>

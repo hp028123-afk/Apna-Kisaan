@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <meta name="description" content="अपना किसान परिवहन सेवा - सुरक्षित और समय पर फसल की ढुलाई।"/>
+  <meta name="keywords" content="अपना किसान, परिवहन, ट्रांसपोर्ट, मंडी, फसल"/>
+  <title>परिवहन सेवा — अपना किसान</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link rel="stylesheet" href="assets/css/ak-design.css"/>
+  
+  <style>
+    .transport-form-card {
+      background: #fff;
+      border: 1.5px solid var(--ak-border);
+      border-radius: var(--ak-r-lg);
+      padding: 30px;
+      box-shadow: var(--ak-shadow-card);
+    }
+    .transport-form-card label {
+      font-weight: 600;
+      color: var(--ak-text-mid);
+    }
+    .error-msg {
+      color: var(--ak-red);
+      font-size: 13px;
+      margin-top: 4px;
+      display: none;
+    }
+    .ak-faq-item {
+      background: var(--ak-white);
+      border: 1.5px solid var(--ak-border);
+      border-radius: var(--ak-r);
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+    .ak-faq-item h4 {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      color: var(--ak-green-dark);
+    }
+    .form-control:focus {
+      border-color: var(--ak-green);
+      box-shadow: 0 0 0 0.2rem rgba(34, 197, 94, 0.25);
+    }
+  </style>
+</head>
+<body>
+
+<div id="akTopbar"></div>
+<header id="akHeader"></header>
+
+<main class="ak-shell mt-4 mb-5">
+  <section class="ak-page-hero text-center mb-5" aria-labelledby="transport-title">
+    <nav class="ak-breadcrumb mb-3 justify-content-center" aria-label="ब्रेडक्रम्ब">
+      <a href="index.html">मुख्य पृष्ठ</a> <i class="fa-solid fa-chevron-right mx-2 text-muted"></i> <span aria-current="page">परिवहन सेवा</span>
+    </nav>
+    <p class="ak-kicker">सुरक्षित ढुलाई</p>
+    <h1 id="transport-title">विश्वसनीय परिवहन सेवा</h1>
+    <p class="text-muted mt-2">आपकी फसल को खेत से मंडी तक सुरक्षित पहुँचाना हमारी जिम्मेदारी है।</p>
+  </section>
+
+  <section class="ak-service-grid row mb-5">
+    <div class="col-md-4 mb-4">
+      <div class="ak-service-card p-4 text-center border rounded h-100">
+        <i class="fa-solid fa-truck fs-1 text-success mb-3" style="font-size: 3rem;"></i>
+        <h3 class="h5">ट्रक सेवा</h3>
+        <p class="text-muted text-sm">बड़ी मात्रा में फसल भेजने के लिए उपयुक्त।</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="ak-service-card p-4 text-center border rounded h-100">
+        <i class="fa-solid fa-truck-pickup fs-1 text-warning mb-3" style="font-size: 3rem;"></i>
+        <h3 class="h5">छोटा वाहन (पिकअप)</h3>
+        <p class="text-muted text-sm">कम मात्रा में या नज़दीकी मंडी के लिए बेहतर।</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="ak-service-card p-4 text-center border rounded h-100">
+        <i class="fa-solid fa-snowflake fs-1 text-info mb-3" style="font-size: 3rem;"></i>
+        <h3 class="h5">कोल्ड ट्रांसपोर्ट</h3>
+        <p class="text-muted text-sm">जल्दी खराब होने वाली सब्जियों के लिए सुरक्षित।</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+      <div class="transport-form-card">
+        <h3 class="mb-4 text-center">परिवहन बुकिंग फॉर्म</h3>
+        <form id="transportForm" onsubmit="return validateTransportForm(event)">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label>पिकअप का स्थान (गाँव/शहर) *</label>
+              <input type="text" id="pickup" class="form-control" placeholder="कहाँ से उठाना है?">
+              <div class="error-msg" id="pickupErr">कृपया पिकअप स्थान दर्ज करें।</div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>डिलीवरी का स्थान (मंडी/शहर) *</label>
+              <input type="text" id="delivery" class="form-control" placeholder="कहाँ पहुँचाना है?">
+              <div class="error-msg" id="deliveryErr">कृपया डिलीवरी स्थान दर्ज करें।</div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>वाहन का प्रकार *</label>
+              <select id="vehicleType" class="form-control">
+                <option value="">चुनें...</option>
+                <option value="truck">ट्रक</option>
+                <option value="pickup">छोटा वाहन</option>
+                <option value="cold">कोल्ड ट्रांसपोर्ट</option>
+              </select>
+              <div class="error-msg" id="vehicleErr">कृपया वाहन का प्रकार चुनें।</div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>फसल/सब्जी का नाम *</label>
+              <input type="text" id="crop" class="form-control" placeholder="उदा. प्याज, टमाटर">
+              <div class="error-msg" id="cropErr">कृपया फसल का नाम दर्ज करें।</div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>मात्रा (क्विंटल/टन में) *</label>
+              <input type="number" id="quantity" class="form-control" placeholder="मात्रा दर्ज करें">
+              <div class="error-msg" id="qtyErr">कृपया सही मात्रा दर्ज करें।</div>
+            </div>
+            <div class="col-md-6 form-group">
+              <label>तारीख *</label>
+              <input type="date" id="date" class="form-control">
+              <div class="error-msg" id="dateErr">कृपया तारीख चुनें।</div>
+            </div>
+            <div class="col-md-12 form-group">
+              <label>मोबाइल नंबर *</label>
+              <input type="tel" id="mobile" class="form-control" placeholder="10 अंकों का नंबर">
+              <div class="error-msg" id="mobileErr">कृपया सही 10 अंकों का मोबाइल नंबर दर्ज करें।</div>
+            </div>
+            <div class="col-md-12 text-center mt-3">
+              <button type="submit" class="btn ak-btn-primary w-100" style="background: var(--ak-green); color: white; border-radius: var(--ak-r-full); padding: 10px;">बुक करें</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="ak-section-alt p-5 rounded mb-5">
+    <div class="text-center mb-4">
+      <h2 class="h3">परिवहन कैसे काम करता है?</h2>
+    </div>
+    <div class="row text-center">
+      <div class="col-md-3">
+        <h4 class="h1 text-success">1</h4>
+        <p class="font-weight-bold">फॉर्म भरें</p>
+      </div>
+      <div class="col-md-3">
+        <h4 class="h1 text-success">2</h4>
+        <p class="font-weight-bold">कॉल प्राप्त करें</p>
+      </div>
+      <div class="col-md-3">
+        <h4 class="h1 text-success">3</h4>
+        <p class="font-weight-bold">वाहन पहुँचेगा</p>
+      </div>
+      <div class="col-md-3">
+        <h4 class="h1 text-success">4</h4>
+        <p class="font-weight-bold">सुरक्षित डिलीवरी</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-5">
+    <h2 class="h3 mb-4 text-center">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+    <div class="ak-faq-item">
+      <h4>प्रश्न: क्या बुकिंग के बाद मैं समय बदल सकता हूँ?</h4>
+      <p class="text-muted">उत्तर: हाँ, आप हमें कम से कम 12 घंटे पहले सूचित करके समय बदल सकते हैं।</p>
+    </div>
+    <div class="ak-faq-item">
+      <h4>प्रश्न: किराया कैसे तय होता है?</h4>
+      <p class="text-muted">उत्तर: किराया दूरी, वाहन के प्रकार और फसल की मात्रा के आधार पर तय किया जाता है।</p>
+    </div>
+    <div class="ak-faq-item">
+      <h4>प्रश्न: क्या फसल का बीमा होता है?</h4>
+      <p class="text-muted">उत्तर: हाँ, हम सुरक्षित परिवहन सुनिश्चित करते हैं, बड़े वाहनों के लिए बीमा विकल्प भी उपलब्ध हैं।</p>
+    </div>
+  </section>
+
+  <section class="ak-cta-section text-center p-5 rounded bg-success text-white">
+    <h2 class="mb-3">आज ही परिवहन सेवा बुक करें</h2>
+    <p class="mb-4">किसी भी सहायता के लिए हमारे टोल-फ्री नंबर पर कॉल करें।</p>
+    <a href="tel:+916265071588" class="btn btn-light rounded-pill px-4 py-2 font-weight-bold text-success"><i class="fa-solid fa-phone"></i> कॉल करें</a>
+  </section>
+
+</main>
+
+<footer id="akFooter"></footer>
+<div id="akFloatActions"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/components.js"></script>
+<script>
+  function validateTransportForm(e) {
+    e.preventDefault();
+    let isValid = true;
+    const fields = ['pickup', 'delivery', 'vehicleType', 'crop', 'quantity', 'date'];
+    fields.forEach(f => {
+      const val = document.getElementById(f).value.trim();
+      if(!val) {
+        document.getElementById(f+'Err').style.display = 'block';
+        isValid = false;
+      } else {
+        document.getElementById(f+'Err').style.display = 'none';
+      }
+    });
+
+    const mobile = document.getElementById('mobile').value.trim();
+    if(!mobile.match(/^[0-9]{10}$/)) {
+      document.getElementById('mobileErr').style.display = 'block';
+      isValid = false;
+    } else {
+      document.getElementById('mobileErr').style.display = 'none';
+    }
+
+    if(isValid) {
+      alert("आपकी बुकिंग सफलता पूर्वक दर्ज कर ली गई है! हमारी टीम जल्द ही आपसे संपर्क करेगी।");
+      e.target.reset();
+    }
+    return false;
+  }
+</script>
+</body>
+</html>
