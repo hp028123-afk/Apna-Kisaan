@@ -3,49 +3,389 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <meta name="description" content="अपना किसान मंडी भाव - सभी सब्जियों और फसलों के ताज़ा रेट।"/>
-  <title>मंडी भाव — अपना किसान | ताज़ा बाजार मूल्य</title>
-  
+  <meta name="description" content="मध्य प्रदेश मंडी भाव — आज के ताज़ा बाजार मूल्य। सभी सब्जियों और फसलों के न्यूनतम, अधिकतम और मोडल भाव। MP के सभी जिलों की मंडी जानकारी।"/>
+  <meta name="keywords" content="मंडी भाव MP, मध्य प्रदेश मंडी, आज का भाव, सब्जी भाव, फसल भाव, किसान बाजार"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="https://apna-kisaan.vercel.app/mandi-bhav.html"/>
+  <meta property="og:title" content="मंडी भाव — अपना किसान | ताज़ा बाजार मूल्य"/>
+  <meta property="og:type" content="website"/>
+  <title>मंडी भाव — आज के ताज़ा बाजार मूल्य | अपना किसान</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <link rel="stylesheet" href="assets/css/ak-design.css"/>
-  
+
   <style>
-    .ak-notice {
-      background: var(--ak-green-xlight);
-      border: 1px solid var(--ak-green-light);
-      border-radius: var(--ak-r);
-      padding: 15px;
-      color: var(--ak-green-dark);
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    .mandi-card {
-      background: #fff;
-      border: 1px solid var(--ak-border);
-      border-radius: var(--ak-r);
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: var(--ak-shadow-sm);
-      transition: all 0.3s;
-    }
-    .mandi-card:hover {
-      box-shadow: var(--ak-shadow);
-      transform: translateY(-2px);
-    }
-    .mandi-card h4 {
-      color: var(--ak-text);
-      font-size: 18px;
-    }
-    .price-text {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--ak-green);
-    }
+  /* ── Page specific styles ────────────────────────────── */
+  .mb-page-hero {
+    background: linear-gradient(135deg, var(--ak-green-dark) 0%, var(--ak-green) 100%);
+    padding: 36px 0 32px;
+    color: #fff;
+  }
+  .mb-page-hero h1 { font: 800 clamp(24px,4vw,36px)/1.2 var(--ak-font-hi); color:#fff; margin:8px 0 6px; }
+  .mb-page-hero p  { font: 400 15px var(--ak-font-hi); color:rgba(255,255,255,.82); margin:0; }
+
+  /* Stats bar */
+  .mb-stats-bar {
+    background: var(--ak-white);
+    border-bottom: 1px solid var(--ak-border);
+    padding: 14px 0;
+  }
+  .mb-stats-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .mb-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 20px;
+    border-right: 1px solid var(--ak-border);
+    flex: 1 1 120px;
+  }
+  .mb-stat:last-child { border-right: none; }
+  .mb-stat-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .mb-stat-val { font: 800 18px var(--ak-font-en); color: var(--ak-text); display:block; }
+  .mb-stat-lbl { font: 400 11px var(--ak-font-hi); color: var(--ak-text-muted); display:block; }
+
+  /* Toolbar */
+  .mb-toolbar {
+    background: var(--ak-bg-alt);
+    border-bottom: 1px solid var(--ak-border);
+    padding: 14px 0;
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+  }
+  .mb-toolbar-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    gap: 10px;
+    align-items: center;
+  }
+  .mb-field { position: relative; }
+  .mb-field i {
+    position: absolute; left: 12px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--ak-text-muted); font-size: 13px; pointer-events: none;
+  }
+  .mb-field input,
+  .mb-field select {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1.5px solid var(--ak-border-mid);
+    border-radius: var(--ak-r);
+    font: 400 13px var(--ak-font-hi);
+    color: var(--ak-text);
+    background: var(--ak-white);
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    -webkit-appearance: none;
+  }
+  .mb-field input:focus,
+  .mb-field select:focus {
+    border-color: var(--ak-green);
+    box-shadow: 0 0 0 3px rgba(8,120,59,.12);
+  }
+  .mb-reset-btn {
+    height: 38px;
+    padding: 0 14px;
+    background: var(--ak-red-light);
+    color: var(--ak-red);
+    border: 1.5px solid #fecaca;
+    border-radius: var(--ak-r);
+    font: 600 12px var(--ak-font-hi);
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+    transition: background .2s, color .2s;
+  }
+  .mb-reset-btn:hover { background: var(--ak-red); color:#fff; border-color:var(--ak-red); }
+
+  /* API notice */
+  .mb-notice {
+    background: var(--ak-green-xlight);
+    border: 1px solid var(--ak-green-light);
+    border-radius: var(--ak-r);
+    padding: 10px 16px;
+    font: 500 13px var(--ak-font-hi);
+    color: var(--ak-green-dark);
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .mb-notice i { color: var(--ak-green); flex-shrink: 0; }
+  .mb-notice a { color: var(--ak-green); font-weight: 700; }
+
+  /* Error/loading states */
+  .mb-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ak-text-muted);
+  }
+  .mb-state i { font-size: 40px; margin-bottom: 16px; display: block; }
+  .mb-state strong { display: block; font: 700 18px var(--ak-font-hi); color: var(--ak-text); margin-bottom: 8px; }
+  .mb-state p { font: 400 14px var(--ak-font-hi); }
+  .mb-retry-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: var(--ak-green);
+    color: #fff;
+    border: none;
+    border-radius: var(--ak-r-full);
+    font: 600 13px var(--ak-font-hi);
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .mb-retry-btn:hover { background: var(--ak-green-mid); }
+
+  /* Skeleton */
+  .mb-skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .mb-skeleton-card {
+    background: var(--ak-white);
+    border: 1.5px solid var(--ak-border);
+    border-radius: var(--ak-r-lg);
+    padding: 20px;
+    animation: mb-shimmer 1.6s infinite;
+  }
+  .mb-skel-line {
+    height: 12px; border-radius: 6px;
+    background: linear-gradient(90deg, var(--ak-border) 25%, var(--ak-bg-alt) 50%, var(--ak-border) 75%);
+    background-size: 200% 100%;
+    animation: mb-shimmer 1.6s infinite;
+    margin-bottom: 8px;
+  }
+  .mb-skel-line.lg  { width: 70%; height: 18px; }
+  .mb-skel-line.md  { width: 55%; }
+  .mb-skel-line.sm  { width: 40%; height: 10px; }
+  @keyframes mb-shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+
+  /* Commodity Cards */
+  .mb-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .mb-card {
+    background: var(--ak-white);
+    border: 1.5px solid var(--ak-border);
+    border-radius: var(--ak-r-lg);
+    padding: 18px 16px 14px;
+    box-shadow: var(--ak-shadow-sm);
+    transition: transform var(--ak-transition), box-shadow var(--ak-transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .mb-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .mb-card.mp::before  { background: var(--ak-green); }
+  .mb-card.veg::before { background: var(--ak-orange); }
+  .mb-card.crop::before{ background: var(--ak-yellow); }
+  .mb-card.other::before{ background: var(--ak-blue); }
+  .mb-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ak-shadow-lg);
+    border-color: transparent;
+  }
+  .mb-card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .mb-card-icon {
+    font-size: 28px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+  .mb-card-name {
+    flex: 1;
+    min-width: 0;
+  }
+  .mb-card-name-hi {
+    font: 700 15px var(--ak-font-hi);
+    color: var(--ak-text);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .mb-card-name-en {
+    font: 400 11px var(--ak-font-en);
+    color: var(--ak-text-muted);
+    display: block;
+  }
+  .mb-trend-badge {
+    font: 700 10px var(--ak-font-en);
+    padding: 3px 7px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .mb-trend-up   { background: #dcfce7; color: #15803d; }
+  .mb-trend-down { background: #fee2e2; color: #dc2626; }
+  .mb-trend-same { background: #f1f5f9; color: #64748b; }
+
+  .mb-price-main {
+    font: 800 22px var(--ak-font-en);
+    color: var(--ak-green);
+    margin-bottom: 6px;
+  }
+  .mb-price-unit {
+    font: 400 11px var(--ak-font-hi);
+    color: var(--ak-text-muted);
+  }
+  .mb-price-range {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font: 500 11px var(--ak-font-hi);
+  }
+  .mb-range-min { color: var(--ak-blue); }
+  .mb-range-max { color: var(--ak-orange); }
+  .mb-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--ak-border);
+    font: 400 11px var(--ak-font-hi);
+    color: var(--ak-text-muted);
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .mb-cat-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--ak-bg-alt);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font: 500 10px var(--ak-font-en);
+    color: var(--ak-text-muted);
+  }
+  .mb-mp-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: var(--ak-green-xlight);
+    border-radius: 20px;
+    padding: 2px 8px;
+    font: 600 10px var(--ak-font-hi);
+    color: var(--ak-green);
+  }
+  .mb-change {
+    font: 600 11px var(--ak-font-en);
+  }
+  .mb-change.pos { color: #15803d; }
+  .mb-change.neg { color: #dc2626; }
+  .mb-change.zero { color: var(--ak-text-muted); }
+
+  /* MSP indicator */
+  .mb-msp-bar {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--ak-border);
+    font: 400 11px var(--ak-font-hi);
+    color: var(--ak-text-muted);
+  }
+  .mb-msp-val { font-weight: 700; color: var(--ak-text); }
+
+  /* Results meta */
+  .mb-results-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .mb-results-count {
+    font: 600 14px var(--ak-font-hi);
+    color: var(--ak-text-muted);
+  }
+  .mb-results-count span { color: var(--ak-green); font-weight: 800; }
+  .mb-source-tag {
+    font: 400 11px var(--ak-font-en);
+    color: var(--ak-text-light);
+    display: flex; align-items: center; gap: 5px;
+  }
+  .mb-source-tag a { color: var(--ak-green); }
+
+  /* Empty state */
+  .mb-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px 20px;
+    color: var(--ak-text-muted);
+  }
+  .mb-empty i { font-size: 36px; margin-bottom: 12px; display: block; color: var(--ak-border-mid); }
+  .mb-empty strong { display: block; font: 700 16px var(--ak-font-hi); color: var(--ak-text); margin-bottom: 6px; }
+
+  /* Tips section */
+  .mb-tips {
+    background: var(--ak-green-xlight);
+    border: 1.5px solid var(--ak-green-light);
+    border-radius: var(--ak-r-lg);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .mb-tips h3 { font: 700 16px var(--ak-font-hi); color: var(--ak-green-dark); margin-bottom: 14px; }
+  .mb-tips ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .mb-tips li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font: 400 13px/1.6 var(--ak-font-hi);
+    color: var(--ak-text-mid);
+  }
+  .mb-tips li i { color: var(--ak-green-bright); margin-top: 3px; flex-shrink: 0; font-size: 11px; }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .mb-toolbar-inner { grid-template-columns: 1fr 1fr 1fr; }
+    .mb-reset-btn { grid-column: 1 / -1; justify-content: center; }
+    .mb-cards-grid { grid-template-columns: repeat(3, 1fr); }
+    .mb-skeleton-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .mb-toolbar { position: static; }
+    .mb-toolbar-inner { grid-template-columns: 1fr 1fr; }
+    .mb-cards-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .mb-skeleton-grid { grid-template-columns: repeat(2, 1fr); }
+    .mb-stats-inner { gap: 0; }
+    .mb-stat { padding: 8px 12px; flex: 1 1 50%; }
+    .mb-stat:nth-child(2n) { border-right: none; }
+    .mb-stat:nth-child(-n+2) { border-bottom: 1px solid var(--ak-border); }
+    .mb-price-main { font-size: 18px; }
+  }
+  @media (max-width: 480px) {
+    .mb-toolbar-inner { grid-template-columns: 1fr; }
+    .mb-reset-btn { width: 100%; justify-content: center; }
+    .mb-cards-grid { grid-template-columns: 1fr; gap: 10px; }
+    .mb-skeleton-grid { grid-template-columns: 1fr; }
+    .mb-stat { flex: 1 1 100%; border-right: none; border-bottom: 1px solid var(--ak-border); }
+    .mb-stat:last-child { border-bottom: none; }
+    .mb-card { padding: 14px 12px 12px; }
+  }
   </style>
 </head>
 <body>
@@ -53,124 +393,180 @@
 <div id="akTopbar"></div>
 <header id="akHeader"></header>
 
-<main class="ak-shell mt-4 mb-5">
-  <section class="ak-page-hero text-center mb-4">
-    <nav class="ak-breadcrumb mb-3 justify-content-center">
-      <a href="index.html">मुख्य पृष्ठ</a> <i class="fa-solid fa-chevron-right mx-2 text-muted"></i> <span aria-current="page">मंडी भाव</span>
+<main id="main-content">
+
+<!-- ── PAGE HERO ─────────────────────────────────────── -->
+<section class="mb-page-hero">
+  <div class="ak-shell">
+    <nav class="ak-breadcrumb" style="margin-bottom:12px">
+      <a href="home.html" style="color:rgba(255,255,255,.75)">मुख्य पृष्ठ</a>
+      <i class="fa-solid fa-chevron-right" style="color:rgba(255,255,255,.4);font-size:9px"></i>
+      <span style="color:var(--ak-lime)">मंडी भाव</span>
     </nav>
-    <p class="ak-kicker">ताज़ा बाजार मूल्य</p>
-    <h1>मंडी भाव — सभी जानकारी एक जगह</h1>
-  </section>
-
-  <div class="row mb-5 text-center">
-    <div class="col-md-4 mb-3">
-      <a href="market-price.html" class="d-block p-4 border rounded bg-white h-100 text-decoration-none">
-        <i class="fa-solid fa-chart-bar fs-2 text-success mb-2" style="font-size: 2rem;"></i>
-        <h5 class="text-dark">सभी मंडी भाव</h5>
-      </a>
-    </div>
-    <div class="col-md-4 mb-3">
-      <a href="vegetable-price.html" class="d-block p-4 border rounded bg-white h-100 text-decoration-none">
-        <i class="fa-solid fa-carrot fs-2 text-warning mb-2" style="font-size: 2rem;"></i>
-        <h5 class="text-dark">सब्जी भाव</h5>
-      </a>
-    </div>
-    <div class="col-md-4 mb-3">
-      <a href="crop-price.html" class="d-block p-4 border rounded bg-white h-100 text-decoration-none">
-        <i class="fa-solid fa-wheat-awn fs-2 text-info mb-2" style="font-size: 2rem;"></i>
-        <h5 class="text-dark">फसल भाव</h5>
-      </a>
-    </div>
+    <p class="ak-kicker" style="color:var(--ak-lime)">ताज़ा बाजार मूल्य</p>
+    <h1>मध्य प्रदेश मंडी भाव</h1>
+    <p>farmer.in (Agmarknet) से ताज़ा सब्जी और फसल के बाजार मूल्य। सभी MP जिलों की मंडी जानकारी।</p>
   </div>
+</section>
 
-  <div class="ak-notice">
-    <i class="fa-solid fa-circle-check"></i> सभी भाव <strong>farmer.in</strong> के माध्यम से सरकारी डेटा (Agmarknet) से प्राप्त किए गए हैं।
-  </div>
-
-  <h3 class="mb-4">आज के प्रमुख भाव (प्रीव्यू)</h3>
-  <div class="row mb-5">
-    <!-- 8 Cards -->
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>प्याज</h4>
-        <p class="text-muted mb-1">इंदौर मंडी</p>
-        <div class="price-text">₹ 1500 - ₹ 2000</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+<!-- ── LIVE STATS BAR ─────────────────────────────────── -->
+<div class="mb-stats-bar" id="mbStatsBar" hidden>
+  <div class="ak-shell">
+    <div class="mb-stats-inner">
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:var(--ak-green-xlight);color:var(--ak-green)"><i class="fa-solid fa-list"></i></div>
+        <div><span class="mb-stat-val" id="statTotal">—</span><span class="mb-stat-lbl">कुल वस्तुएं</span></div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>टमाटर</h4>
-        <p class="text-muted mb-1">भोपाल मंडी</p>
-        <div class="price-text">₹ 800 - ₹ 1200</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:#dcfce7;color:#15803d"><i class="fa-solid fa-arrow-trend-up"></i></div>
+        <div><span class="mb-stat-val" id="statUp">—</span><span class="mb-stat-lbl">बढ़त</span></div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>आलू</h4>
-        <p class="text-muted mb-1">दमोह मंडी</p>
-        <div class="price-text">₹ 1200 - ₹ 1600</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:#fee2e2;color:#dc2626"><i class="fa-solid fa-arrow-trend-down"></i></div>
+        <div><span class="mb-stat-val" id="statDown">—</span><span class="mb-stat-lbl">गिरावट</span></div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>गेहूँ</h4>
-        <p class="text-muted mb-1">सागर मंडी</p>
-        <div class="price-text">₹ 2200 - ₹ 2500</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:#f1f5f9;color:#64748b"><i class="fa-solid fa-equals"></i></div>
+        <div><span class="mb-stat-val" id="statSame">—</span><span class="mb-stat-lbl">स्थिर</span></div>
       </div>
-    </div>
-    
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>लहसुन</h4>
-        <p class="text-muted mb-1">जबलपुर मंडी</p>
-        <div class="price-text">₹ 5000 - ₹ 8000</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:var(--ak-green-xlight);color:var(--ak-green-dark)"><i class="fa-solid fa-map-location-dot"></i></div>
+        <div><span class="mb-stat-val" id="statMP">—</span><span class="mb-stat-lbl">MP फसलें</span></div>
       </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>सोयाबीन</h4>
-        <p class="text-muted mb-1">ग्वालियर मंडी</p>
-        <div class="price-text">₹ 4200 - ₹ 4600</div>
-        <small class="text-muted">प्रति क्विंटल</small>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>चना</h4>
-        <p class="text-muted mb-1">पन्ना मंडी</p>
-        <div class="price-text">₹ 5200 - ₹ 5600</div>
-        <small class="text-muted">प्रति क्विंटल</small>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="mandi-card text-center">
-        <h4>मक्का</h4>
-        <p class="text-muted mb-1">छतरपुर मंडी</p>
-        <div class="price-text">₹ 2100 - ₹ 2300</div>
-        <small class="text-muted">प्रति क्विंटल</small>
+      <div class="mb-stat">
+        <div class="mb-stat-icon" style="background:var(--ak-yellow-light);color:#856404"><i class="fa-solid fa-calendar-day"></i></div>
+        <div><span class="mb-stat-val" id="statDate" style="font-size:13px">—</span><span class="mb-stat-lbl">अपडेट</span></div>
       </div>
     </div>
   </div>
+</div>
 
-  <section class="ak-section-alt p-5 rounded mb-5">
-    <h3 class="mb-4">किसानों के लिए बाजार टिप्स</h3>
-    <ul class="text-muted" style="line-height: 1.8;">
-      <li><i class="fa-solid fa-check text-success mr-2"></i> मंडी जाने से पहले हमेशा ऑनलाइन भाव चेक करें।</li>
-      <li><i class="fa-solid fa-check text-success mr-2"></i> अपनी फसल को ग्रेड (A, B, C) में छांटकर बेचें, इससे बेहतर दाम मिलते हैं।</li>
-      <li><i class="fa-solid fa-check text-success mr-2"></i> ज्यादा आवक वाले दिन मंडी में माल ले जाने से बचें।</li>
+<!-- ── TOOLBAR ────────────────────────────────────────── -->
+<div class="mb-toolbar">
+  <div class="ak-shell">
+    <div class="mb-toolbar-inner">
+
+      <div class="mb-field">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" id="mbSearch" placeholder="सब्जी या फसल खोजें… (Hindi/English)"
+               aria-label="खोजें" autocomplete="off"/>
+      </div>
+
+      <div class="mb-field">
+        <i class="fa-solid fa-tag"></i>
+        <select id="mbCategory" aria-label="श्रेणी">
+          <option value="">सभी श्रेणियां</option>
+        </select>
+      </div>
+
+      <div class="mb-field">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <select id="mbDistrict" aria-label="MP जिला">
+          <option value="">सभी MP जिले</option>
+          <option value="mp">मध्य प्रदेश (सभी)</option>
+          <optgroup label="── जिले ──">
+            <option>आगर मालवा</option><option>अलीराजपुर</option><option>अनूपपुर</option>
+            <option>अशोकनगर</option><option>बालाघाट</option><option>बड़वानी</option>
+            <option>बैतूल</option><option>भिंड</option><option>भोपाल</option>
+            <option>बुरहानपुर</option><option>छतरपुर</option><option>छिंदवाड़ा</option>
+            <option>दमोह</option><option>दतिया</option><option>देवास</option>
+            <option>धार</option><option>डिंडौरी</option><option>गुना</option>
+            <option>ग्वालियर</option><option>हरदा</option><option>इंदौर</option>
+            <option>जबलपुर</option><option>झाबुआ</option><option>कटनी</option>
+            <option>खंडवा</option><option>खरगोन</option><option>मैहर</option>
+            <option>मंडला</option><option>मंदसौर</option><option>मऊगंज</option>
+            <option>मुरैना</option><option>नर्मदापुरम</option><option>नरसिंहपुर</option>
+            <option>नीमच</option><option>निवाड़ी</option><option>पांढुर्णा</option>
+            <option>पन्ना</option><option>रायसेन</option><option>राजगढ़</option>
+            <option>रतलाम</option><option>रीवा</option><option>सागर</option>
+            <option>सतना</option><option>सीहोर</option><option>सिवनी</option>
+            <option>शहडोल</option><option>शाजापुर</option><option>श्योपुर</option>
+            <option>शिवपुरी</option><option>सीधी</option><option>सिंगरौली</option>
+            <option>टीकमगढ़</option><option>उज्जैन</option><option>उमरिया</option>
+            <option>विदिशा</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="mb-field">
+        <i class="fa-solid fa-sort"></i>
+        <select id="mbSort" aria-label="क्रमबद्ध">
+          <option value="default">डिफ़ॉल्ट (MP पहले)</option>
+          <option value="price_high">भाव: अधिक से कम</option>
+          <option value="price_low">भाव: कम से अधिक</option>
+          <option value="change_high">बदलाव: सबसे ज़्यादा</option>
+          <option value="change_low">बदलाव: सबसे कम</option>
+          <option value="name_az">नाम A→Z</option>
+        </select>
+      </div>
+
+      <button class="mb-reset-btn" id="mbReset" title="फ़िल्टर हटाएं">
+        <i class="fa-solid fa-xmark"></i> रीसेट
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────── -->
+<div class="ak-shell" style="padding: 28px 0 48px">
+
+  <!-- API notice -->
+  <div class="mb-notice">
+    <i class="fa-solid fa-satellite-dish"></i>
+    <span>सभी भाव <strong>farmer.in</strong> के माध्यम से भारत सरकार के <strong>Agmarknet</strong> कृषि डेटा से ताज़ा लिए जाते हैं।
+    ये राष्ट्रीय स्तर के भाव हैं — स्थानीय मंडी भाव थोड़े भिन्न हो सकते हैं।
+    <a href="https://farmer.in" target="_blank" rel="noopener">farmer.in</a></span>
+  </div>
+
+  <!-- Loading skeleton -->
+  <div id="mbSkeleton">
+    <div class="mb-skeleton-grid">
+      <div class="mb-skeleton-card"><div class="mb-skel-line lg"></div><div class="mb-skel-line md"></div><div class="mb-skel-line"></div><div class="mb-skel-line sm"></div></div>
+      <div class="mb-skeleton-card"><div class="mb-skel-line lg"></div><div class="mb-skel-line md"></div><div class="mb-skel-line"></div><div class="mb-skel-line sm"></div></div>
+      <div class="mb-skeleton-card"><div class="mb-skel-line lg"></div><div class="mb-skel-line md"></div><div class="mb-skel-line"></div><div class="mb-skel-line sm"></div></div>
+      <div class="mb-skeleton-card"><div class="mb-skel-line lg"></div><div class="mb-skel-line md"></div><div class="mb-skel-line"></div><div class="mb-skel-line sm"></div></div>
+    </div>
+  </div>
+
+  <!-- Error state -->
+  <div id="mbError" class="mb-state" hidden>
+    <i class="fa-solid fa-triangle-exclamation" style="color:var(--ak-red)"></i>
+    <strong>भाव प्राप्त नहीं हो सके</strong>
+    <p id="mbErrorText">इंटरनेट कनेक्शन जांचें या कुछ देर बाद फिर प्रयास करें।</p>
+    <button class="mb-retry-btn" id="mbRetry">
+      <i class="fa-solid fa-rotate"></i> फिर प्रयास करें
+    </button>
+  </div>
+
+  <!-- Results meta + cards -->
+  <div id="mbResults" hidden>
+    <div class="mb-results-meta">
+      <div class="mb-results-count">
+        <span id="mbCount">0</span> वस्तुएं मिलीं
+      </div>
+      <div class="mb-source-tag">
+        <i class="fa-solid fa-circle" style="color:#22c55e;font-size:7px"></i>
+        लाइव डेटा · <a href="https://farmer.in" target="_blank" rel="noopener">farmer.in</a>
+        &nbsp;·&nbsp; <span id="mbUpdated"></span>
+      </div>
+    </div>
+    <div class="mb-cards-grid" id="mbCardsGrid"></div>
+  </div>
+
+  <!-- Tips section -->
+  <div class="mb-tips">
+    <h3><i class="fa-solid fa-lightbulb" style="color:var(--ak-yellow);margin-right:8px"></i>किसान टिप्स — बेहतर भाव के लिए</h3>
+    <ul>
+      <li><i class="fa-solid fa-check"></i> बाजार जाने से एक दिन पहले यहाँ भाव देखें और तुलना करें।</li>
+      <li><i class="fa-solid fa-check"></i> मंडी में जाने से पहले अपनी सब्जी/फसल की ग्रेडिंग और छंटाई करें — अच्छी गुणवत्ता पर 15-20% ज़्यादा भाव मिलता है।</li>
+      <li><i class="fa-solid fa-check"></i> ज़्यादा आवक वाले दिन (सोमवार, बड़ी मंडियों के बाद) भाव कम होते हैं — उस दिन न जाएं।</li>
+      <li><i class="fa-solid fa-check"></i> त्योहार और शादी के सीजन में सब्जियों के भाव बढ़ते हैं — उस समय का फायदा उठाएं।</li>
+      <li><i class="fa-solid fa-check"></i> MSP (न्यूनतम समर्थन मूल्य) दिखने पर — अगर बाजार भाव MSP से कम है तो सरकारी खरीद केंद्र पर बेचें।</li>
     </ul>
-  </section>
+  </div>
 
-  <section class="ak-cta-section text-center p-5 rounded bg-success text-white">
-    <h2 class="mb-3">क्या आप अपनी फसल बेचना चाहते हैं?</h2>
-    <p class="mb-4">आज ही पंजीकरण करें और सीधे खरीदारों से जुड़ें।</p>
-    <a href="farmer-connect.html" class="btn btn-light rounded-pill px-4 py-2 font-weight-bold text-success"><i class="fa-solid fa-user-plus"></i> पंजीकरण करें</a>
-  </section>
+</div><!-- /.ak-shell -->
 
 </main>
 
@@ -178,7 +574,330 @@
 <div id="akFloatActions"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/components.js"></script>
+
+<script>
+/* ================================================================
+   mandi-bhav.js — Live API page
+   Fetches https://farmer.in/api/open/prices.json
+   Renders price cards with search, category, district, sort filters.
+   ================================================================ */
+(function () {
+  'use strict';
+
+  var API_URL = 'https://farmer.in/api/open/prices.json';
+
+  /* MP-relevant commodities (major_states includes Madhya Pradesh) */
+  var MP_NAMES = [
+    'madhya pradesh', 'mp'
+  ];
+
+  /* Category icon map */
+  var CAT_ICONS = {
+    'Cereals':     '🌾',
+    'Vegetables':  '🥦',
+    'Pulses':      '🫘',
+    'Oilseeds':    '🌻',
+    'Spices':      '🌶️',
+    'Cash Crops':  '🌿',
+    'Fruits':      '🍎',
+    'Flowers':     '🌸',
+    'Medicinal Crops': '💊'
+  };
+
+  var state = {
+    all:      [],       /* all commodities from API */
+    filtered: [],       /* after filters applied */
+    updated:  '',
+    loading:  true,
+    error:    null
+  };
+
+  /* ── DOM refs ─────────────────────────────────────── */
+  var el = {
+    skeleton:  document.getElementById('mbSkeleton'),
+    error:     document.getElementById('mbError'),
+    errorText: document.getElementById('mbErrorText'),
+    retry:     document.getElementById('mbRetry'),
+    results:   document.getElementById('mbResults'),
+    grid:      document.getElementById('mbCardsGrid'),
+    count:     document.getElementById('mbCount'),
+    updated:   document.getElementById('mbUpdated'),
+    statsBar:  document.getElementById('mbStatsBar'),
+    statTotal: document.getElementById('statTotal'),
+    statUp:    document.getElementById('statUp'),
+    statDown:  document.getElementById('statDown'),
+    statSame:  document.getElementById('statSame'),
+    statMP:    document.getElementById('statMP'),
+    statDate:  document.getElementById('statDate'),
+    search:    document.getElementById('mbSearch'),
+    category:  document.getElementById('mbCategory'),
+    district:  document.getElementById('mbDistrict'),
+    sort:      document.getElementById('mbSort'),
+    reset:     document.getElementById('mbReset')
+  };
+
+  /* ── Helpers ──────────────────────────────────────── */
+  function fmtPrice(v) {
+    if (v === null || v === undefined) return '—';
+    return '₹ ' + Number(v).toLocaleString('hi-IN');
+  }
+  function fmtChange(v) {
+    if (!v) return { str: '0', cls: 'zero' };
+    return { str: (v > 0 ? '+' : '') + Number(v).toLocaleString('hi-IN'), cls: v > 0 ? 'pos' : 'neg' };
+  }
+  function isMPCommodity(item) {
+    var states = (item.major_states || []).map(function (s) { return s.toLowerCase(); });
+    return states.some(function (s) { return s.includes('madhya') || s === 'mp'; });
+  }
+  function trendClass(t) {
+    if (t === 'up')   return 'mb-trend-up';
+    if (t === 'down') return 'mb-trend-down';
+    return 'mb-trend-same';
+  }
+  function trendIcon(t) {
+    if (t === 'up')   return '<i class="fa-solid fa-arrow-trend-up"></i>';
+    if (t === 'down') return '<i class="fa-solid fa-arrow-trend-down"></i>';
+    return '<i class="fa-solid fa-equals"></i>';
+  }
+  function trendLabel(t) {
+    if (t === 'up')   return 'बढ़त';
+    if (t === 'down') return 'गिरावट';
+    return 'स्थिर';
+  }
+  function cardClass(item) {
+    if (isMPCommodity(item)) return 'mp';
+    var cat = (item.category || '').toLowerCase();
+    if (cat.includes('veg')) return 'veg';
+    if (cat.includes('cereal') || cat.includes('pulse') || cat.includes('oil')) return 'crop';
+    return 'other';
+  }
+  function formatDate(d) {
+    if (!d) return '—';
+    try {
+      return new Date(d).toLocaleDateString('hi-IN', { day:'2-digit', month:'short', year:'numeric' });
+    } catch(e) { return d; }
+  }
+
+  /* ── Fetch API ────────────────────────────────────── */
+  function fetchData() {
+    state.loading = true;
+    state.error = null;
+    showSkeleton();
+
+    fetch(API_URL, { headers: { Accept: 'application/json' } })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      })
+      .then(function (data) {
+        var commodities = Array.isArray(data.commodities) ? data.commodities : [];
+        state.all = commodities;
+        state.updated = data.updated || '';
+        state.loading = false;
+        buildCategories();
+        applyFilters();
+        updateStats(commodities);
+        showResults();
+      })
+      .catch(function (err) {
+        state.loading = false;
+        state.error = err.message;
+        showError('API से डेटा लाने में समस्या: ' + err.message);
+      });
+  }
+
+  /* ── Build category dropdown ──────────────────────── */
+  function buildCategories() {
+    var cats = {};
+    state.all.forEach(function (c) { if (c.category) cats[c.category] = true; });
+    var sel = el.category;
+    /* Keep first option */
+    while (sel.options.length > 1) sel.remove(1);
+    Object.keys(cats).sort().forEach(function (cat) {
+      var opt = document.createElement('option');
+      opt.value = cat; opt.textContent = cat;
+      sel.appendChild(opt);
+    });
+  }
+
+  /* ── Stats ────────────────────────────────────────── */
+  function updateStats(data) {
+    var up = 0, down = 0, same = 0, mp = 0;
+    data.forEach(function (c) {
+      if (c.trend === 'up')   up++;
+      else if (c.trend === 'down') down++;
+      else same++;
+      if (isMPCommodity(c)) mp++;
+    });
+    el.statTotal.textContent = data.length;
+    el.statUp.textContent    = up;
+    el.statDown.textContent  = down;
+    el.statSame.textContent  = same;
+    el.statMP.textContent    = mp;
+    el.statDate.textContent  = formatDate(state.updated);
+    el.statsBar.hidden = false;
+  }
+
+  /* ── Apply filters & sort ─────────────────────────── */
+  function applyFilters() {
+    var q        = el.search.value.trim().toLowerCase();
+    var cat      = el.category.value;
+    var district = el.district.value.toLowerCase();
+    var sortBy   = el.sort.value;
+
+    var result = state.all.filter(function (c) {
+      /* Search: Hindi name or English name */
+      var nameHi = (c.hindi  || '').toLowerCase();
+      var nameEn = (c.name   || '').toLowerCase();
+      var matchQ = !q || nameHi.includes(q) || nameEn.includes(q) || (c.id||'').includes(q);
+      if (!matchQ) return false;
+
+      /* Category filter */
+      if (cat && c.category !== cat) return false;
+
+      /* District filter — show items relevant to MP or selected district */
+      if (district) {
+        var mpFlag = isMPCommodity(c);
+        if (district === 'mp') {
+          if (!mpFlag) return false;
+        } else {
+          /* For individual districts: show MP-relevant items
+             In real data there's no district-level breakdown, so
+             we show all MP items (major_states includes MP) */
+          if (!mpFlag) return false;
+        }
+      }
+
+      return true;
+    });
+
+    /* Sort */
+    result = result.slice();
+    if (sortBy === 'price_high') {
+      result.sort(function (a, b) { return (b.price || 0) - (a.price || 0); });
+    } else if (sortBy === 'price_low') {
+      result.sort(function (a, b) { return (a.price || 0) - (b.price || 0); });
+    } else if (sortBy === 'change_high') {
+      result.sort(function (a, b) { return (b.change || 0) - (a.change || 0); });
+    } else if (sortBy === 'change_low') {
+      result.sort(function (a, b) { return (a.change || 0) - (b.change || 0); });
+    } else if (sortBy === 'name_az') {
+      result.sort(function (a, b) { return (a.name || '').localeCompare(b.name || ''); });
+    } else {
+      /* Default: MP items first, then by price desc */
+      result.sort(function (a, b) {
+        var mpA = isMPCommodity(a) ? 1 : 0;
+        var mpB = isMPCommodity(b) ? 1 : 0;
+        if (mpB !== mpA) return mpB - mpA;
+        return (b.price || 0) - (a.price || 0);
+      });
+    }
+
+    state.filtered = result;
+    renderCards(result);
+  }
+
+  /* ── Render cards ─────────────────────────────────── */
+  function renderCards(items) {
+    el.count.textContent = items.length;
+    el.updated.textContent = state.updated ? 'अपडेट: ' + formatDate(state.updated) : '';
+
+    if (!items.length) {
+      el.grid.innerHTML = '<div class="mb-empty">'
+        + '<i class="fa-solid fa-seedling"></i>'
+        + '<strong>कोई वस्तु नहीं मिली</strong>'
+        + '<p>खोज या फ़िल्टर बदलकर देखें।</p>'
+        + '</div>';
+      return;
+    }
+
+    var html = '';
+    items.forEach(function (c) {
+      var mp   = isMPCommodity(c);
+      var icon = c.icon || CAT_ICONS[c.category] || '🌿';
+      var chg  = fmtChange(c.change);
+      var tc   = trendClass(c.trend);
+
+      html += '<div class="mb-card ' + cardClass(c) + '">';
+
+      /* Head: icon + name + trend */
+      html += '<div class="mb-card-head">';
+      html += '<div class="mb-card-icon">' + icon + '</div>';
+      html += '<div class="mb-card-name">';
+      html += '<span class="mb-card-name-hi">' + (c.hindi || c.name) + '</span>';
+      html += '<span class="mb-card-name-en">' + c.name + '</span>';
+      html += '</div>';
+      html += '<span class="mb-trend-badge ' + tc + '">' + trendIcon(c.trend) + ' ' + trendLabel(c.trend) + '</span>';
+      html += '</div>';
+
+      /* Price */
+      html += '<div class="mb-price-main">' + fmtPrice(c.price) + '</div>';
+      html += '<div class="mb-price-unit">प्रति ' + (c.unit === 'quintal' ? 'क्विंटल' : (c.unit || 'क्विंटल')) + '</div>';
+
+      /* Range */
+      html += '<div class="mb-price-range">';
+      html += '<span class="mb-range-min"><i class="fa-solid fa-arrow-down-short-wide"></i> न्यू: ' + fmtPrice(c.min) + '</span>';
+      html += '<span class="mb-range-max"><i class="fa-solid fa-arrow-up-short-wide"></i> अधि: ' + fmtPrice(c.max) + '</span>';
+      html += '</div>';
+
+      /* Meta */
+      html += '<div class="mb-card-meta">';
+      html += '<span class="mb-cat-tag">' + (c.category || '—') + '</span>';
+      if (mp) html += '<span class="mb-mp-badge"><i class="fa-solid fa-map-location-dot"></i> MP</span>';
+      html += '<span class="mb-change ' + chg.cls + '">' + chg.str + '</span>';
+      html += '</div>';
+
+      /* MSP if available */
+      if (c.msp) {
+        html += '<div class="mb-msp-bar">';
+        html += 'MSP: <span class="mb-msp-val">' + fmtPrice(c.msp) + '</span>';
+        if (c.msp_season) html += ' <small>(' + c.msp_season + ')</small>';
+        html += '</div>';
+      }
+
+      html += '</div>'; /* .mb-card */
+    });
+
+    el.grid.innerHTML = html;
+  }
+
+  /* ── UI state helpers ────────────────────────────── */
+  function showSkeleton() {
+    el.skeleton.hidden = false;
+    el.error.hidden    = true;
+    el.results.hidden  = true;
+  }
+  function showResults() {
+    el.skeleton.hidden = true;
+    el.error.hidden    = true;
+    el.results.hidden  = false;
+  }
+  function showError(msg) {
+    el.skeleton.hidden  = true;
+    el.results.hidden   = true;
+    el.error.hidden     = false;
+    el.errorText.textContent = msg || 'कृपया कुछ देर बाद फिर प्रयास करें।';
+  }
+
+  /* ── Event listeners ─────────────────────────────── */
+  el.search.addEventListener('input',   applyFilters);
+  el.category.addEventListener('change', applyFilters);
+  el.district.addEventListener('change', applyFilters);
+  el.sort.addEventListener('change',    applyFilters);
+  el.retry.addEventListener('click',    fetchData);
+  el.reset.addEventListener('click', function () {
+    el.search.value   = '';
+    el.category.value = '';
+    el.district.value = '';
+    el.sort.value     = 'default';
+    applyFilters();
+  });
+
+  /* ── Boot ─────────────────────────────────────────── */
+  fetchData();
+
+})();
+</script>
 </body>
 </html>

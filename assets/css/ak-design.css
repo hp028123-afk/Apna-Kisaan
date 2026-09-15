@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    ak-design.css  |  अपना किसान — Complete Design System
    Logo colors: Dark Green #1a5c2a, Bright Green #22c55e, White
    ================================================================ */
@@ -118,7 +118,7 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
 .ak-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 9100;  /* above drawer (8999) and overlay (8998) */
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -145,7 +145,7 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   height: 56px;
   object-fit: contain;
   border-radius: 8px;
-  border: -4px solid var(--ak-green-light);
+  border: 2px solid var(--ak-green-light);
   background: #fff;
 }
 .ak-brand span { display: grid; line-height: 1.2; }
@@ -180,23 +180,95 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
 }
 .ak-links .nav-link i { font-size: 9px; margin-left: 3px; }
 
-/* Toggler */
+/* ── Toggler button ───────────────────────────────────────── */
 .ak-toggler {
-  background: var(--ak-green-xlight) !important;
-  border: 1.5px solid var(--ak-green-light) !important;
-  border-radius: var(--ak-r-sm) !important;
-  width: 42px;
-  height: 42px;
-  display: flex;
+  display: none;           /* hidden on desktop */
+  background: var(--ak-green-xlight);
+  border: 1.5px solid var(--ak-green-light);
+  border-radius: var(--ak-r-sm);
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
-  padding: 0 !important;
-  box-shadow: none !important;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
 }
-.ak-toggler i { color: var(--ak-green); font-size: 18px; }
 .ak-toggler:focus { outline: 2px solid var(--ak-green-bright); outline-offset: 2px; }
 
-/* Dropdown */
+/* ── NEW dropdown system (.ak-dd-*) ─────────────────────── */
+.ak-dd-wrap { position: relative; }
+
+.ak-dd-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background: var(--ak-white);
+  border: 1.5px solid var(--ak-green-light);
+  border-radius: var(--ak-r);
+  box-shadow: 0 8px 32px rgba(8,120,59,.16);
+  padding: 6px;
+  z-index: 1200;
+}
+/* Prevent right-edge overflow on last dropdowns */
+.ak-dd-wrap:nth-last-child(-n+3) .ak-dd-menu {
+  left: auto; right: 0;
+}
+
+/* Districts mega-dropdown — 3-col scrollable panel */
+.ak-dd-districts {
+  min-width: 540px;
+  max-height: 440px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* display: none inherited from .ak-dd-menu — grid applied only when .is-open */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 6px !important;
+}
+.ak-dd-districts .ak-dd-title {
+  grid-column: 1 / -1;
+  padding: 6px 8px 10px;
+  font: 700 11px var(--ak-font-en);
+  color: var(--ak-text-muted);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  border-bottom: 1px solid var(--ak-border);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ak-dd-districts .ak-dd-title i { color: var(--ak-green-bright); }
+
+.ak-dd-menu a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 10px;
+  font: 600 13px var(--ak-font-hi);
+  color: var(--ak-text-mid);
+  border-radius: var(--ak-r-sm);
+  white-space: nowrap;
+  transition: background var(--ak-transition), color var(--ak-transition);
+}
+.ak-dd-menu a:hover { background: var(--ak-green-xlight); color: var(--ak-green); }
+.ak-dd-menu a i { color: var(--ak-green-bright); font-size: 11px; flex-shrink: 0; }
+
+/* Show dropdown on hover (desktop only) — use JS-controlled .is-open only */
+@media (min-width: 992px) {
+  /* REMOVED: CSS hover trigger — dropdowns open via JS mouseenter/mouseleave only */
+  .ak-dd-wrap.is-open .ak-dd-menu {
+    display: block;
+  }
+  .ak-dd-wrap.is-open .ak-dd-districts {
+    display: grid !important;
+  }
+}
+
+/* ── Legacy dropdown (.dropdown) compat ─────────────────── */
 .dropdown { position: relative; }
 .dropdown-content {
   display: none;
@@ -211,97 +283,264 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   padding: 8px;
   z-index: 999;
 }
-.dropdown:hover .dropdown-content,
+/* Legacy dropdown — JS-controlled only, no CSS hover */
 .dropdown.is-open .dropdown-content { display: block; }
 .dropdown-content a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex; align-items: center; gap: 8px;
   padding: 9px 12px;
   font: 600 13px var(--ak-font-hi);
   color: var(--ak-text-mid);
   border-radius: var(--ak-r-sm);
   transition: background var(--ak-transition), color var(--ak-transition);
 }
-.dropdown-content a:hover {
-  background: var(--ak-green-xlight);
-  color: var(--ak-green);
-}
+.dropdown-content a:hover { background: var(--ak-green-xlight); color: var(--ak-green); }
 .dropdown-content a i { color: var(--ak-green-bright); font-size: 13px; }
-
-/* Bhav submenu */
 .ak-bhav-menu { min-width: 185px; }
 
-/* Nav CTA button */
+/* ── Nav CTA button ─────────────────────────────────────── */
 .ak-nav-cta {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: var(--ak-green);
-  color: #fff !important;
+  background: var(--ak-yellow) !important;
+  color: var(--ak-green-dark) !important;
   font: 700 13px var(--ak-font-hi) !important;
-  padding: 9px 18px !important;
+  padding: 9px 16px !important;
   border-radius: var(--ak-r-full) !important;
   transition: background var(--ak-transition), transform var(--ak-transition), box-shadow var(--ak-transition) !important;
-  box-shadow: 0 3px 12px rgba(26,92,42,.3);
+  box-shadow: 0 3px 10px rgba(255,200,0,.35);
   white-space: nowrap;
 }
+.ak-nav-cta i { font-size: 11px; }
 .ak-nav-cta:hover {
-  background: var(--ak-green-mid) !important;
+  background: #e6b400 !important;
+  color: var(--ak-green-dark) !important;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(26,92,42,.35) !important;
-  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(255,200,0,.45) !important;
 }
 
-/* ── Mobile nav (≤991 px) — custom .open toggle, no Bootstrap ── */
+/* ── Hamburger spans ─────────────────────────────────────── */
+.ak-ham {
+  display: flex; flex-direction: column; gap: 5px; width: 20px;
+  pointer-events: none;
+}
+.ak-ham span {
+  display: block; height: 2px;
+  background: var(--ak-green);
+  border-radius: 2px;
+  transition: transform .28s ease, opacity .28s ease;
+}
+.ak-toggler.is-open .ak-ham span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ak-toggler.is-open .ak-ham span:nth-child(2) { opacity: 0; }
+.ak-toggler.is-open .ak-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE NAV  (≤ 991px)
+   ══════════════════════════════════════════════════════════ */
 @media (max-width: 991px) {
-  /* Hide the menu by default; .open shows it */
+
+  /* Show hamburger */
+  .ak-toggler { display: flex; }
+
+  /* ── Overlay: covers page when drawer is open ─────────── */
+  body.ak-nav-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 8990;
+    animation: ak-fade-in .25s ease;
+  }
+  @keyframes ak-fade-in { from { opacity:0 } to { opacity:1 } }
+
+  /* ── Side drawer — slides in from RIGHT ───────────────── */
   .ak-links {
-    display: none;
+    display: flex;           /* always rendered, hidden by transform */
     flex-direction: column;
     align-items: stretch;
-    gap: 2px;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    gap: 0;
+    position: fixed;
+    top: 0;
     right: 0;
+    bottom: 0;
+    width: min(300px, 85vw);
     background: var(--ak-white);
-    border: 1.5px solid var(--ak-green-light);
-    border-top: none;
-    border-radius: 0 0 var(--ak-r) var(--ak-r);
-    padding: 12px;
-    box-shadow: var(--ak-shadow-lg);
-    z-index: 9998;
-    max-height: calc(100vh - 72px);
+    padding-top: 0;          /* header inside drawer handles top spacing */
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 9000;           /* above overlay (8990), below header (9100) */
+    box-shadow: -6px 0 32px rgba(8,120,59,.18);
+    /* Hidden: slid off-screen to the right */
+    transform: translateX(110%);
+    visibility: hidden;
+    transition: transform .32s cubic-bezier(.4,0,.2,1),
+                visibility .32s;
+  }
+  /* Open state */
+  .ak-links.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  /* ── Drawer inner header ─────────────────────────────── */
+  .ak-links::before {
+    content: '\0905\092a\0928\093e \0915\093f\0938\093e\0928'; /* अपना किसान */
+    display: block;
+    flex-shrink: 0;
+    padding: 18px 20px 14px;
+    font: 700 16px var(--ak-font-hi);
+    color: var(--ak-green);
+    background: var(--ak-green-xlight);
+    border-bottom: 2px solid var(--ak-green-light);
+    letter-spacing: .01em;
+  }
+
+  /* ── Nav links inside drawer ─────────────────────────── */
+  .ak-links > li {
+    border-bottom: 1px solid var(--ak-bg-alt);
+    flex-shrink: 0;
+  }
+  .ak-links .nav-link {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px !important;
+    font: 600 15px var(--ak-font-hi) !important;
+    color: var(--ak-text) !important;
+    white-space: normal;
+    border-radius: 0 !important;
+    width: 100%;
+    min-height: 48px;       /* touch-friendly */
+  }
+  .ak-links .nav-link:active {
+    background: var(--ak-green-xlight);
+    color: var(--ak-green) !important;
+  }
+  .ak-links .nav-link.active {
+    background: var(--ak-green-xlight);
+    color: var(--ak-green) !important;
+    font-weight: 700 !important;
+  }
+  /* Chevron icon pushed to right */
+  .ak-dd-btn i.fa-chevron-down {
+    margin-left: auto !important;
+    font-size: 11px !important;
+    transition: transform .22s ease;
+  }
+  .ak-dd-wrap.is-open .ak-dd-btn i.fa-chevron-down {
+    transform: rotate(180deg);
+  }
+
+  /* ── Dropdown accordion panels ───────────────────────── */
+  .ak-dd-menu {
+    position: static !important;
+    display: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    background: #f9fbf9 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    max-height: 260px;
     overflow-y: auto;
   }
-  .ak-links.open { display: flex; }
+  .ak-dd-districts {
+    display: none !important;
+    background: #f9fbf9 !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    max-height: 260px;
+    overflow-y: auto;
+    position: static !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    border-radius: 0 !important;
+  }
+  .ak-dd-districts .ak-dd-title {
+    grid-column: 1 / -1 !important;
+    padding: 10px 20px !important;
+    background: var(--ak-green-xlight) !important;
+    font: 700 10px var(--ak-font-en) !important;
+    color: var(--ak-green) !important;
+    text-transform: uppercase !important;
+    letter-spacing: .06em !important;
+    border-bottom: 1px solid var(--ak-border) !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+  }
+  .ak-dd-menu a {
+    padding: 12px 20px 12px 32px !important;
+    border-bottom: 1px solid rgba(209,250,229,.5) !important;
+    font: 500 13px var(--ak-font-hi) !important;
+    white-space: normal !important;
+    border-radius: 0 !important;
+    min-height: 44px;
+    display: flex !important;
+    align-items: center;
+    gap: 8px !important;
+  }
+  .ak-dd-districts a {
+    padding: 10px 12px 10px 20px !important;
+    font: 500 12px var(--ak-font-hi) !important;
+    border-bottom: 1px solid rgba(209,250,229,.5) !important;
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex !important;
+    align-items: center;
+    gap: 6px !important;
+    min-height: 40px;
+    border-radius: 0 !important;
+  }
+  .ak-dd-wrap.is-open .ak-dd-menu        { display: block !important; }
+  .ak-dd-wrap.is-open .ak-dd-districts   { display: grid  !important; }
 
-  /* nav container needs relative so absolute menu is positioned correctly */
-  .ak-header { position: sticky; top: 0; }
-  .ak-nav    { flex-wrap: wrap; position: relative; }
-
-  /* Link styles inside mobile menu */
-  .ak-links .nav-link { padding: 10px 12px !important; }
-
-  /* Dropdown submenu — static in mobile menu */
+  /* ── Legacy dropdown inside mobile ───────────────────── */
   .dropdown-content {
     position: static;
     box-shadow: none;
     border: 0;
-    background: var(--ak-green-xlight);
-    border-radius: var(--ak-r-sm);
-    margin: 4px 0 8px;
-    padding: 4px;
+    background: #f9fbf9;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
     display: none;
+    min-width: 0;
   }
   .dropdown.is-open .dropdown-content { display: block; }
 
-  /* Bootstrap .navbar-collapse compat — keep it visible if it's still used */
-  .navbar-collapse.collapse { display: none !important; }
-  .navbar-collapse.collapse.show { display: block !important; }
+  /* ── CTA button ──────────────────────────────────────── */
+  .ak-nav-cta {
+    margin: 16px 16px 8px !important;
+    justify-content: center !important;
+    width: calc(100% - 32px) !important;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+    border-radius: var(--ak-r-full) !important;
+    flex-shrink: 0;
+  }
 
-  .ak-nav-cta { margin-top: 8px; justify-content: center; }
+  /* ── Topbar compact ──────────────────────────────────── */
+  .ak-topbar-note { display: none; }
+  .ak-topbar-inner { gap: 12px; }
+  .ak-topbar a { font-size: 12px; }
+
+  /* ── Header nav hidden on mobile (drawer replaces it) ── */
+  .ak-nav { flex-wrap: nowrap; }
+}
+
+/* Districts dropdown: 2-col on tablet */
+@media (max-width: 1200px) and (min-width: 992px) {
+  .ak-dd-districts {
+    min-width: 380px;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
 }
 
 /* ── HERO ───────────────────────────────────────────────────── */
@@ -1025,11 +1264,13 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   border-bottom: 1px solid rgba(255,255,255,.1);
 }
 .ak-footer-brand img {
-  width: 60px;
-  height: 60px;
+  width: auto;
+  max-width: 140px;
+  height: 52px;
   object-fit: contain;
-  border-radius: 50%;
-  border: 2px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  background: rgba(255,255,255,.08);
+  padding: 4px;
   margin-bottom: 14px;
 }
 .ak-footer-brand strong {
@@ -1505,6 +1746,13 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   .ak-mandi-grid     { grid-template-columns: 1fr; }
   .ak-category-grid  { grid-template-columns: repeat(2, 1fr); }
   .ak-district-grid  { grid-template-columns: repeat(2, 1fr); }
+  /* Topbar — hide email on tiny screens */
+  .ak-topbar-inner a:last-of-type { display: none; }
+  /* Drawer slightly narrower */
+  .ak-links { width: 92vw; }
+  /* Brand smaller */
+  .ak-brand strong { font-size: 14px; }
+  .ak-brand small  { display: none; }
 }
 
 /* ── UTILITIES ──────────────────────────────────────────────── */
@@ -1542,331 +1790,155 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
 .ak-language-toggle:hover { background: var(--ak-green-mid); }
 
 
-/* ================================================================
-   ADDITIONS v4  |  New nav classes, back-to-top, footer extras,
-   responsive fixes, scroll-shadow, hamburger animation
-   ================================================================ */
-
-/* ── Language toggle button (home.js legacy) ─────────────────── */
-.ak-language-toggle {
-  position: fixed;
-  bottom: 80px;
-  left: 0;
-  z-index: 950;
-  background: var(--ak-green);
-  color: #fff;
-  border: none;
-  border-radius: 0 var(--ak-r-sm) var(--ak-r-sm) 0;
-  padding: 7px 12px;
-  font: 700 11px var(--ak-font-en);
-  cursor: pointer;
-  box-shadow: 2px 2px 8px rgba(0,0,0,.18);
-}
-.ak-language-toggle:hover { background: var(--ak-green-mid); }
-
-/* ── Back-to-top button ─────────────────────────────────────── */
+/* â”€â”€ Back-to-top button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ak-back-to-top {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 980;
-  width: 44px;
-  height: 44px;
-  background: var(--ak-green);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed; bottom: 24px; right: 24px; z-index: 980;
+  width: 44px; height: 44px;
+  background: var(--ak-green); color: #fff;
+  border: none; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
   font-size: 16px;
   box-shadow: 0 4px 16px rgba(8,120,59,.35);
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(12px);
+  opacity: 0; transform: translateY(12px);
   transition: opacity .28s ease, transform .28s ease, background .2s;
   pointer-events: none;
 }
-.ak-back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+.ak-back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
 .ak-back-to-top:hover { background: var(--ak-green-mid); }
 @media (max-width: 480px) {
-  .ak-back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; font-size: 14px; }
+  .ak-back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; }
 }
 
-/* ── Scroll shadow on sticky header ─────────────────────────── */
+/* â”€â”€ Header scroll shadow â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ak-header.ak-scrolled {
-  box-shadow: 0 3px 20px rgba(8,120,59,.16);
-  border-bottom-color: var(--ak-green-light);
+  box-shadow: 0 3px 20px rgba(8,120,59,.18);
 }
 
-/* ── Hamburger animated icon ────────────────────────────────── */
-.ak-ham {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 20px;
-}
-.ak-ham span {
-  display: block;
-  height: 2px;
-  background: var(--ak-green);
-  border-radius: 2px;
-  transition: transform .3s ease, opacity .3s ease, width .3s ease;
-}
-.ak-toggler.is-open .ak-ham span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.ak-toggler.is-open .ak-ham span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.ak-toggler.is-open .ak-ham span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* ── New dropdown classes (ak-dd-*) ─────────────────────────── */
-.ak-dd-wrap { position: relative; }
-
-.ak-dd-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  min-width: 200px;
-  background: var(--ak-white);
-  border: 1.5px solid var(--ak-green-light);
-  border-radius: var(--ak-r);
-  box-shadow: var(--ak-shadow-lg);
-  padding: 8px;
-  z-index: 1100;
-}
-/* Districts dropdown wider */
-.ak-dd-districts { min-width: 260px; max-height: 420px; overflow-y: auto; }
-.ak-dd-title {
-  padding: 6px 10px 8px;
-  font: 700 11px var(--ak-font-en);
-  color: var(--ak-text-muted);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  border-bottom: 1px solid var(--ak-border);
-  margin-bottom: 4px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.ak-dd-menu a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 10px;
-  font: 600 13px var(--ak-font-hi);
-  color: var(--ak-text-mid);
-  border-radius: var(--ak-r-sm);
-  transition: background var(--ak-transition), color var(--ak-transition);
-}
-.ak-dd-menu a:hover { background: var(--ak-green-xlight); color: var(--ak-green); }
-.ak-dd-menu a i { color: var(--ak-green-bright); font-size: 12px; flex-shrink: 0; }
-.ak-dd-label { flex: 1; }
-.ak-dd-sub {
-  font: 400 10px var(--ak-font-en);
-  color: var(--ak-text-light);
-  background: var(--ak-bg-alt);
-  padding: 1px 6px;
-  border-radius: 10px;
-  white-space: nowrap;
-}
-
-/* Show dropdown on hover (desktop) */
-@media (min-width: 992px) {
-  .ak-dd-wrap:hover .ak-dd-menu,
-  .ak-dd-wrap.is-open .ak-dd-menu { display: block; }
-}
-
-/* ── Nav button (CTA) ────────────────────────────────────────── */
-.ak-nav-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--ak-yellow) !important;
-  color: var(--ak-green-dark) !important;
-  font: 700 13px var(--ak-font-hi) !important;
-  padding: 9px 16px !important;
-  border-radius: var(--ak-r-full) !important;
-  transition: background var(--ak-transition), transform var(--ak-transition), box-shadow var(--ak-transition) !important;
-  box-shadow: 0 3px 10px rgba(255,200,0,.35);
-  white-space: nowrap;
-  border: none;
-}
-.ak-nav-cta i { font-size: 11px; }
-.ak-nav-cta:hover {
-  background: #e6b400 !important;
-  color: var(--ak-green-dark) !important;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(255,200,0,.45) !important;
-}
-
-/* ── Mobile nav open state ──────────────────────────────────── */
-@media (max-width: 991px) {
-  .ak-links {
-    display: none;
-    position: fixed;
-    inset: 0 0 0 0;
-    top: 70px; /* below sticky header */
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    background: var(--ak-white);
-    border-top: 2px solid var(--ak-green-light);
-    padding: 12px 16px 24px;
-    box-shadow: 0 8px 32px rgba(8,120,59,.12);
-    z-index: 9999;
-    overflow-y: auto;
-    max-height: calc(100vh - 70px);
-    /* Slide-in animation */
-    transform: translateX(100%);
-    transition: transform .32s cubic-bezier(.4,0,.2,1);
-  }
-  .ak-links.open {
-    display: flex;
-    transform: translateX(0);
-  }
-  .ak-links .nav-link { padding: 13px 12px !important; border-bottom: 1px solid var(--ak-bg-alt); font-size: 15px !important; }
-  .ak-links .nav-link:last-of-type { border-bottom: none; }
-
-  /* Dropdown accordion on mobile */
-  .ak-dd-menu {
-    position: static;
-    box-shadow: none;
-    border: 0;
-    background: var(--ak-bg-alt);
-    border-radius: var(--ak-r-sm);
-    margin: 4px 0 8px 12px;
-    padding: 4px;
-    display: none;
-    max-height: none;
-    overflow: visible;
-  }
-  .ak-dd-wrap.is-open .ak-dd-menu { display: block; }
-  .ak-dd-title { font-size: 10px; }
-  .ak-nav-cta { margin-top: 12px; justify-content: center; width: 100%; }
-  .ak-dd-sub { display: none; }
-}
-
-/* ── Footer social icons ────────────────────────────────────── */
+/* â”€â”€ Footer social icons â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ak-footer-social {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
+  display: flex; gap: 10px; margin-top: 14px;
 }
 .ak-footer-social a {
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   background: rgba(255,255,255,.1);
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #c6f6d5;
-  font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  color: #c6f6d5; font-size: 15px;
   transition: background var(--ak-transition), color var(--ak-transition);
 }
 .ak-footer-social a:hover { background: var(--ak-green-bright); color: var(--ak-green-dark); }
 
-/* ── Footer hours ───────────────────────────────────────────── */
+/* â”€â”€ Footer hours â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .ak-footer-hours {
-  display: flex;
-  align-items: center;
-  gap: 7px;
+  display: flex; align-items: center; gap: 7px;
   font: 400 12px var(--ak-font-en);
   color: rgba(255,255,255,.55);
   margin-top: 6px;
 }
 
-/* ── Home-page: stats strip 2×2 on mobile ──────────────────── */
+/* â”€â”€ Responsive â€” keep 2Ã—2 stats on all mobile â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
-  /* Stats strip — always 2×2 on mobile */
-  .ak-stats-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0;
-  }
-  .ak-stat-item {
-    border-right: none;
-    border-bottom: 1px solid var(--ak-border);
-    padding: 16px;
-  }
-  .ak-stat-item:nth-child(odd) { border-right: 1px solid var(--ak-border); }
-  .ak-stat-item:last-child,
-  .ak-stat-item:nth-last-child(2) { border-bottom: none; }
-
-  /* Quick access — 2 col */
-  .ak-quick-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px; }
-  .ak-quick-card { padding: 14px 12px; }
-  .ak-quick-icon { width: 42px; height: 42px; font-size: 18px; }
-  .ak-quick-card-body h3 { font-size: 13px; }
-  .ak-quick-card-body p  { font-size: 11px; }
-
-  /* Section padding */
-  .ak-section { padding: 36px 0; }
-  .ak-section-heading h2 { font-size: clamp(22px, 5vw, 30px); }
-  .ak-section-heading { flex-direction: column; align-items: flex-start; gap: 10px; }
-
-  /* Process grid — stack */
-  .ak-process-grid { grid-template-columns: 1fr !important; gap: 24px; }
-
-  /* Service grid */
+  .ak-stats-grid { grid-template-columns: repeat(2,1fr) !important; gap:0; }
+  .ak-stat-item  { border-right:none; border-bottom:1px solid var(--ak-border); padding:16px; }
+  .ak-stat-item:nth-child(odd) { border-right:1px solid var(--ak-border); }
+  .ak-stat-item:last-child, .ak-stat-item:nth-last-child(2) { border-bottom:none; }
+  .ak-quick-grid { grid-template-columns: repeat(2,1fr) !important; gap:10px; }
+  .ak-mandi-grid { grid-template-columns: repeat(2,1fr) !important; }
+  .ak-category-grid { grid-template-columns: repeat(3,1fr) !important; }
   .ak-service-grid { grid-template-columns: 1fr !important; }
-
-  /* Content grid */
+  .ak-process-grid { grid-template-columns: 1fr !important; gap:24px; }
   .ak-content-grid { grid-template-columns: 1fr !important; }
-
-  /* Mandi grid — 2 col */
-  .ak-mandi-grid { grid-template-columns: repeat(2, 1fr) !important; }
-
-  /* Category grid — 3 col */
-  .ak-category-grid { grid-template-columns: repeat(3, 1fr) !important; }
-
-  /* Footer */
-  .ak-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 24px; }
+  .ak-footer-grid  { grid-template-columns: 1fr 1fr !important; gap:24px; }
   .ak-footer-brand { grid-column: 1 / -1; }
-
-  /* CTA */
-  .ak-cta-section { padding: 44px 0; }
-  .ak-cta-inner { flex-direction: column; text-align: center; gap: 20px; }
-  .ak-cta-actions { justify-content: center; flex-wrap: wrap; }
+  .ak-section      { padding: 36px 0; }
+  .ak-cta-inner    { flex-direction: column; text-align: center; gap: 20px; }
+  .ak-cta-actions  { justify-content: center; flex-wrap: wrap; }
+  .ak-section-heading { flex-direction: column; align-items: flex-start; gap: 10px; }
 }
 
 @media (max-width: 480px) {
-  /* Stats — keep 2 col */
-  .ak-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-
-  /* Quick access — 1 col on very small */
-  .ak-quick-grid { grid-template-columns: 1fr !important; }
-  .ak-quick-card { flex-direction: row; align-items: center; }
-
-  /* Category — 2 col */
-  .ak-category-grid { grid-template-columns: repeat(2, 1fr) !important; }
-
-  /* Mandi — 1 col */
-  .ak-mandi-grid { grid-template-columns: 1fr !important; }
-
-  /* Footer — 1 col */
-  .ak-footer-grid { grid-template-columns: 1fr !important; }
-  .ak-footer-brand { grid-column: auto; }
-
-  /* Section headings */
-  .ak-section-heading { flex-direction: column; gap: 8px; }
-  .ak-section-heading .ak-see-all { align-self: flex-start; }
-
-  /* Buttons */
-  .ak-btn-primary, .ak-btn-white { width: 100%; justify-content: center; }
-  .ak-cta-actions .ak-btn-white,
-  .ak-cta-actions .ak-btn-outline-light { max-width: 280px; }
-
-  /* Float actions — hide on smallest */
-  .ak-float-actions { display: none; }
-  .ak-topbar-note   { display: none; }
+  .ak-stats-grid     { grid-template-columns: repeat(2,1fr) !important; }
+  .ak-quick-grid     { grid-template-columns: 1fr !important; }
+  .ak-quick-card     { flex-direction: row; align-items: center; }
+  .ak-mandi-grid     { grid-template-columns: 1fr !important; }
+  .ak-category-grid  { grid-template-columns: repeat(2,1fr) !important; }
+  .ak-footer-grid    { grid-template-columns: 1fr !important; }
+  .ak-footer-brand   { grid-column: auto; }
+  .ak-float-actions  { display: none; }
+  .ak-topbar-note    { display: none; }
+  .ak-btn-primary    { width: 100%; justify-content: center; }
+  .ak-cta-actions .ak-btn-white, .ak-cta-actions .ak-btn-outline-light { max-width: 280px; }
 }
 
 @media (max-width: 375px) {
-  .ak-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .ak-category-grid { grid-template-columns: repeat(2, 1fr) !important; }
-  .ak-section { padding: 28px 0; }
-  .ak-section-heading h2 { font-size: 20px; }
+  .ak-stats-grid  { grid-template-columns: repeat(2,1fr) !important; }
+  .ak-section     { padding: 28px 0; }
+}
+
+/* â”€â”€ Bootstrap navbar compat â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.navbar-collapse.collapse   { display: none !important; }
+.navbar-collapse.collapse.show { display: block !important; }
+
+/* â”€â”€ prefers-reduced-motion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* ── District service-page card grid ─────────────────────── */
+.ak-dist-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+.ak-dist-svc-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--ak-r);
+  overflow: hidden;
+  box-shadow: var(--ak-shadow-sm);
+  text-decoration: none;
+  border: 1.5px solid var(--ak-border);
+  background: var(--ak-white);
+  transition: transform var(--ak-transition), box-shadow var(--ak-transition);
+}
+.ak-dist-svc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--ak-shadow-lg);
+  border-color: transparent;
+}
+.ak-dist-svc-top {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ak-dist-svc-bottom {
+  padding: 8px 8px 9px;
+  text-align: center;
+}
+.ak-dist-svc-bottom strong {
+  font: 600 12px var(--ak-font-hi);
+  color: var(--ak-text);
+  display: block;
+  transition: color var(--ak-transition);
+}
+.ak-dist-svc-card:hover .ak-dist-svc-bottom strong { color: var(--ak-green); }
+
+@media (max-width: 1100px) { .ak-dist-svc-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (max-width: 900px)  { .ak-dist-svc-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 700px)  { .ak-dist-svc-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 480px)  { .ak-dist-svc-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+
+/* ── Nav overrides: logo sizing ─────────────────────────── */
+.ak-brand img {
+  width: auto !important;
+  max-width: 56px;
+  height: 56px;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 2px solid var(--ak-green-light);
+  background: #fff;
 }

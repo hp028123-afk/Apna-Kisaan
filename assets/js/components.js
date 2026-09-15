@@ -35,21 +35,65 @@
     /* ─── 3. DATA ────────────────────────────────────────── */
     var LOGO  = 'assets/images/ChatGPT Image Sep 8, 2026, 11_23_02 PM.png';
     var PHONE = '+91 626 507 1588';
-    var EMAIL = 'hemantkachhi2002@gmail.com';
+    var EMAIL = 'apnakisaan.mp@gmail.com';
 
+    /* All 55 MP districts */
     var DISTRICTS = [
-      ['\u0926\u092e\u094b\u0939','\u0938\u0947\u0935\u093e','service1.html'],
-      ['\u092a\u0928\u094d\u0928\u093e','\u0938\u0947\u0935\u093e','service2.html'],
-      ['\u091b\u0924\u0930\u092a\u0941\u0930','\u0938\u0947\u0935\u093e','service3.html'],
-      ['\u092d\u094b\u092a\u093e\u0932','\u0930\u093e\u091c\u0927\u093e\u0928\u0940','services4.html'],
-      ['\u0930\u093e\u091c\u0917\u0922\u093c','\u092e\u093e\u0932\u0935\u093e','internship.html'],
-      ['\u0938\u093e\u0917\u0930','\u0938\u0947\u0935\u093e','service5.html'],
-      ['\u0928\u0930\u0938\u093f\u0902\u0939\u092a\u0941\u0930','\u092e\u0939\u093e\u0915\u094c\u0936\u0932','service6.html'],
-      ['\u091c\u092c\u0932\u092a\u0941\u0930','\u092e\u0939\u093e\u0915\u094c\u0936\u0932','service7.html'],
-      ['\u0917\u094d\u0935\u093e\u0932\u093f\u092f\u0930','\u091a\u0902\u092c\u0932','service8.html'],
-      ['\u092c\u093e\u0932\u093e\u0918\u093e\u091f','\u092e\u0939\u093e\u0915\u094c\u0936\u0932','service9.html'],
-      ['\u0930\u0940\u0935\u093e','\u0935\u093f\u0902\u0927\u094d\u092f','service10.html'],
-      ['\u091f\u0940\u0915\u092e\u0917\u0922\u093c','\u0935\u093f\u0902\u0927\u094d\u092f','service11.html']
+      ['\u0906\u0917\u0930 \u092e\u093e\u0932\u0935\u093e', 'service.html'],
+      ['\u0905\u0932\u0940\u0930\u093e\u091c\u092a\u0941\u0930', 'service.html'],
+      ['\u0905\u0928\u0942\u092a\u092a\u0941\u0930', 'service.html'],
+      ['\u0905\u0936\u094b\u0915\u0928\u0917\u0930', 'service.html'],
+      ['\u092c\u093e\u0932\u093e\u0918\u093e\u091f', 'service9.html'],
+      ['\u092c\u0921\u093c\u0935\u093e\u0928\u0940', 'service.html'],
+      ['\u092c\u0948\u0924\u0942\u0932', 'service.html'],
+      ['\u092d\u093f\u0902\u0921', 'service.html'],
+      ['\u092d\u094b\u092a\u093e\u0932', 'services4.html'],
+      ['\u092c\u0941\u0930\u0939\u093e\u0928\u092a\u0941\u0930', 'service.html'],
+      ['\u091b\u0924\u0930\u092a\u0941\u0930', 'service3.html'],
+      ['\u091b\u093f\u0902\u0926\u0935\u093e\u0921\u093c\u093e', 'service.html'],
+      ['\u0926\u092e\u094b\u0939', 'service1.html'],
+      ['\u0926\u0924\u093f\u092f\u093e', 'service.html'],
+      ['\u0926\u0947\u0935\u093e\u0938', 'service.html'],
+      ['\u0927\u093e\u0930', 'service.html'],
+      ['\u0921\u093f\u0902\u0921\u094c\u0930\u0940', 'service.html'],
+      ['\u0917\u0941\u0928\u093e', 'service.html'],
+      ['\u0917\u094d\u0935\u093e\u0932\u093f\u092f\u0930', 'service8.html'],
+      ['\u0939\u0930\u0926\u093e', 'service.html'],
+      ['\u0907\u0902\u0926\u094c\u0930', 'service.html'],
+      ['\u091c\u092c\u0932\u092a\u0941\u0930', 'service7.html'],
+      ['\u091d\u093e\u092c\u0941\u0906', 'service.html'],
+      ['\u0915\u091f\u0928\u0940', 'service.html'],
+      ['\u0916\u0902\u0921\u0935\u093e', 'service.html'],
+      ['\u0916\u0930\u0917\u094b\u0928', 'service.html'],
+      ['\u092e\u0948\u0939\u0930', 'service.html'],
+      ['\u092e\u0902\u0921\u0932\u093e', 'service.html'],
+      ['\u092e\u0902\u0926\u0938\u094c\u0930', 'service.html'],
+      ['\u092e\u090a\u0917\u0902\u091c', 'service.html'],
+      ['\u092e\u0941\u0930\u0948\u0928\u093e', 'service.html'],
+      ['\u0928\u0930\u094d\u092e\u0926\u093e\u092a\u0941\u0930\u092e', 'service.html'],
+      ['\u0928\u0930\u0938\u093f\u0902\u0939\u092a\u0941\u0930', 'service6.html'],
+      ['\u0928\u0940\u092e\u091a', 'service.html'],
+      ['\u0928\u093f\u0935\u093e\u0921\u093c\u0940', 'service.html'],
+      ['\u092a\u093e\u0902\u0922\u0941\u0930\u094d\u0923\u093e', 'service.html'],
+      ['\u092a\u0928\u094d\u0928\u093e', 'service2.html'],
+      ['\u0930\u093e\u092f\u0938\u0947\u0928', 'service.html'],
+      ['\u0930\u093e\u091c\u0917\u0922\u093c', 'internship.html'],
+      ['\u0930\u0924\u0932\u093e\u092e', 'service.html'],
+      ['\u0930\u0940\u0935\u093e', 'service10.html'],
+      ['\u0938\u093e\u0917\u0930', 'service5.html'],
+      ['\u0938\u0924\u0928\u093e', 'service.html'],
+      ['\u0938\u0940\u0939\u094b\u0930', 'service.html'],
+      ['\u0938\u093f\u0935\u0928\u0940', 'service.html'],
+      ['\u0936\u0939\u0921\u094b\u0932', 'service.html'],
+      ['\u0936\u093e\u091c\u093e\u092a\u0941\u0930', 'service.html'],
+      ['\u0936\u094d\u092f\u094b\u092a\u0941\u0930', 'service.html'],
+      ['\u0936\u093f\u0935\u092a\u0941\u0930\u0940', 'service.html'],
+      ['\u0938\u0940\u0927\u0940', 'service.html'],
+      ['\u0938\u093f\u0902\u0917\u0930\u094c\u0932\u0940', 'service.html'],
+      ['\u091f\u0940\u0915\u092e\u0917\u0922\u093c', 'service11.html'],
+      ['\u0909\u091c\u094d\u091c\u0948\u0928', 'service.html'],
+      ['\u0909\u092e\u0930\u093f\u092f\u093e', 'service.html'],
+      ['\u0935\u093f\u0926\u093f\u0936\u093e', 'service.html']
     ];
 
     /* ─── 4. BUILD HTML ──────────────────────────────────── */
@@ -64,10 +108,9 @@
 
     /* District links for dropdown */
     var distItems = DISTRICTS.map(function (d) {
-      return '<a href="' + d[2] + '" role="menuitem">'
+      return '<a href="' + d[1] + '" role="menuitem">'
         + '<i class="fa-solid fa-location-dot"></i>'
         + '<span class="ak-dd-label">' + d[0] + '</span>'
-        + '<small class="ak-dd-sub">' + d[1] + '</small>'
         + '</a>';
     }).join('');
 
@@ -247,67 +290,116 @@
     var toggle  = document.getElementById('akNavToggle');
     var navMenu = document.getElementById('akNavMenu');
 
+    /* Helper — close ALL dropdowns */
+    function closeAllDDs() {
+      if (!navMenu) return;
+      navMenu.querySelectorAll('.ak-dd-wrap.is-open').forEach(function (d) {
+        d.classList.remove('is-open');
+        var b = d.querySelector('.ak-dd-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    /* Helper — close mobile menu */
+    function closeMobileMenu() {
+      if (!navMenu || !toggle) return;
+      navMenu.classList.remove('open');
+      toggle.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('ak-nav-open');
+      document.body.style.overflow = '';
+      closeAllDDs();
+    }
+
     if (toggle && navMenu) {
+
+      /* ── Mobile hamburger ────────────────────────────────── */
       toggle.addEventListener('click', function () {
         var open = navMenu.classList.toggle('open');
         toggle.setAttribute('aria-expanded', String(open));
-        /* Animate hamburger → X */
         toggle.classList.toggle('is-open', open);
+        document.body.classList.toggle('ak-nav-open', open);
         document.body.style.overflow = open ? 'hidden' : '';
+        if (!open) closeAllDDs();
       });
 
-      /* Dropdown accordion on mobile */
-      navMenu.querySelectorAll('.ak-dd-btn').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-          if (window.innerWidth >= 992) return;
-          e.preventDefault();
-          var dd = this.closest('.ak-dd-wrap');
-          var wasOpen = dd.classList.contains('is-open');
-          navMenu.querySelectorAll('.ak-dd-wrap.is-open').forEach(function (d) {
-            d.classList.remove('is-open');
-            d.querySelector('.ak-dd-btn').setAttribute('aria-expanded', 'false');
+      /* ── Dropdown behaviour — DESKTOP: mouseenter/mouseleave with delay ── */
+      var ddTimers = {};
+      navMenu.querySelectorAll('.ak-dd-wrap').forEach(function (wrap, idx) {
+        var btn = wrap.querySelector('.ak-dd-btn');
+
+        /* Desktop hover — open on mouseenter, close on mouseleave with 150ms delay */
+        wrap.addEventListener('mouseenter', function () {
+          if (window.innerWidth < 992) return;
+          clearTimeout(ddTimers[idx]);
+          closeAllDDs();
+          wrap.classList.add('is-open');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        });
+
+        wrap.addEventListener('mouseleave', function () {
+          if (window.innerWidth < 992) return;
+          ddTimers[idx] = setTimeout(function () {
+            wrap.classList.remove('is-open');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+          }, 150);
+        });
+
+        /* Mobile accordion — tap btn to toggle */
+        if (btn) {
+          btn.addEventListener('click', function (e) {
+            if (window.innerWidth >= 992) return; /* desktop: let href work */
+            e.preventDefault();
+            var wasOpen = wrap.classList.contains('is-open');
+            closeAllDDs();
+            if (!wasOpen) {
+              wrap.classList.add('is-open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
           });
-          if (!wasOpen) {
-            dd.classList.add('is-open');
-            this.setAttribute('aria-expanded', 'true');
-          }
-        });
-      });
-
-      /* Outside click closes nav */
-      document.addEventListener('click', function (e) {
-        if (e.target.closest('#akNavMenu') || e.target.closest('#akNavToggle')) return;
-        navMenu.classList.remove('open');
-        toggle.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-        navMenu.querySelectorAll('.ak-dd-wrap.is-open').forEach(function (d) {
-          d.classList.remove('is-open');
-          var b = d.querySelector('.ak-dd-btn');
-          if (b) b.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      /* Close on link tap */
-      navMenu.querySelectorAll('a:not(.ak-dd-btn)').forEach(function (a) {
-        a.addEventListener('click', function () {
-          navMenu.classList.remove('open');
-          toggle.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      });
-
-      /* ESC key */
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && navMenu.classList.contains('open')) {
-          navMenu.classList.remove('open');
-          toggle.classList.remove('is-open');
-          toggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-          toggle.focus();
         }
       });
+
+      /* Outside click / overlay tap — close everything */
+      document.addEventListener('click', function (e) {
+        /* If click is inside the drawer or on the toggle button, do nothing */
+        if (e.target.closest('#akNavToggle')) return;
+        if (e.target.closest('#akNavMenu')) {
+          /* Clicked inside drawer — only close if it's on the overlay (::before)
+             We detect this by checking if the click X is outside the drawer width */
+          var drawerEl = navMenu;
+          var rect = drawerEl.getBoundingClientRect();
+          if (e.clientX >= rect.left) return; /* click inside drawer content area */
+        }
+        closeMobileMenu();
+      });
+
+      /* Close mobile menu when a leaf-link is tapped */
+      navMenu.querySelectorAll('a:not(.ak-dd-btn)').forEach(function (a) {
+        a.addEventListener('click', function () {
+          closeMobileMenu();
+        });
+      });
+
+      /* ESC closes everything */
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          closeMobileMenu();
+          if (toggle) toggle.focus();
+        }
+      });
+
+      /* Resize: if going to desktop, close mobile menu */
+      window.addEventListener('resize', function () {
+        if (window.innerWidth >= 992) {
+          navMenu.classList.remove('open');
+          toggle.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('ak-nav-open');
+          document.body.style.overflow = '';
+          closeAllDDs();
+        }
+      }, { passive: true });
     }
 
     /* Scroll shadow on header */
@@ -421,6 +513,56 @@
         });
         var empty = document.getElementById('districtEmpty');
         if (empty) empty.hidden = vis !== 0;
+      });
+    }
+
+    /* ─── Auto-populate service.html district grid ───────── */
+    var grid2 = document.getElementById('districtGrid2');
+    if (grid2 && DISTRICTS.length > 0) {
+      /* Color palette — cycles through 10 gradients */
+      var GRADIENTS = [
+        'linear-gradient(135deg,#0f3d1c,#1a5c2a)',
+        'linear-gradient(135deg,#1a3a5c,#2563a8)',
+        'linear-gradient(135deg,#4c1d1d,#b91c1c)',
+        'linear-gradient(135deg,#1a3a1c,#16a34a)',
+        'linear-gradient(135deg,#3d2c1a,#ca8a04)',
+        'linear-gradient(135deg,#1a2c3c,#0d9488)',
+        'linear-gradient(135deg,#1a1a3c,#7c3aed)',
+        'linear-gradient(135deg,#1c3a2a,#15803d)',
+        'linear-gradient(135deg,#3d1a1a,#dc2626)',
+        'linear-gradient(135deg,#1a3c3a,#059669)'
+      ];
+      var ICON_COLORS = ['#c6f6d5','#bfdbfe','#fecaca','#dcfce7','#fef9c3','#ccfbf1','#ede9fe','#dcfce7','#fecaca','#d1fae5'];
+      var html = '';
+      DISTRICTS.forEach(function (d, i) {
+        var g = GRADIENTS[i % GRADIENTS.length];
+        var ic = ICON_COLORS[i % ICON_COLORS.length];
+        html += '<a href="' + d[1] + '" class="ak-dist-svc-card" data-name="' + d[0] + '">'
+          + '<div class="ak-dist-svc-top" style="background:' + g + '">'
+          + '<i class="fa-solid fa-store" style="color:' + ic + ';font-size:26px"></i>'
+          + '</div>'
+          + '<div class="ak-dist-svc-bottom">'
+          + '<strong>' + d[0] + '</strong>'
+          + '</div></a>';
+      });
+      grid2.innerHTML = html;
+    }
+
+    /* District search (service page) */
+    var dSearch2 = document.getElementById('districtSearch2');
+    var dGrid2   = document.getElementById('districtGrid2');
+    var dEmpty2  = document.getElementById('districtEmpty2');
+    if (dSearch2 && dGrid2) {
+      dSearch2.addEventListener('input', function () {
+        var q = this.value.trim().toLowerCase();
+        var vis = 0;
+        dGrid2.querySelectorAll('a').forEach(function (a) {
+          var name = (a.dataset.name || a.textContent).toLowerCase();
+          var match = !q || name.includes(q);
+          a.style.display = match ? '' : 'none';
+          if (match) vis++;
+        });
+        if (dEmpty2) dEmpty2.style.display = vis === 0 ? 'block' : 'none';
       });
     }
 
