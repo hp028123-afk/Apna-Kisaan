@@ -530,7 +530,7 @@ button { cursor: pointer; font-family: var(--ak-font-hi); }
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 9px;
+  padding: 8px;
   background: var(--ak-white);
   border: 1.5px solid var(--ak-border-mid);
   border-radius: var(--ak-r);
